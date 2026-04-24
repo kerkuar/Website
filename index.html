@@ -623,6 +623,25 @@
         .bg-cards      { grid-template-columns: 1fr; }
         .pillars-grid  { grid-template-columns: 1fr; }
     }
+
+    /* Collapsible background details */
+    .bg-details { margin-top: 2.2rem; }
+    .bg-details summary {
+        display: inline-flex; align-items: center; gap: 0.4rem;
+        font-size: 0.8rem; font-weight: 600; color: var(--text-muted);
+        cursor: pointer; user-select: none; list-style: none;
+        padding: 0.45rem 1rem; border-radius: var(--radius-full);
+        border: 1px solid var(--border); background: var(--surface);
+        transition: all var(--transition);
+    }
+    .bg-details summary::-webkit-details-marker { display: none; }
+    .bg-details summary:hover { color: var(--primary); border-color: var(--primary-light); }
+    .bg-details[open] summary { color: var(--primary); border-color: var(--primary-light); }
+    .bg-details .bg-cards { margin-top: 1.25rem; }
+
+    /* Reading section: let CSS handle columns, not inline JS */
+    .reading-cols.loaded { display: grid; }
+    .reading-cols.single-col { grid-template-columns: 1fr; }
     </style>
 </head>
 <body>
@@ -699,8 +718,8 @@
                     <span class="ff-text">Reads more books than is strictly healthy. Has the shelves to prove it.</span>
                 </div>
                 <div class="ff-card">
-                    <span class="ff-emoji">🎮</span>
-                    <span class="ff-text">Occasional gamer. Saves fictional worlds, works on the real one.</span>
+                    <span class="ff-emoji">👥</span>
+                    <span class="ff-text">Community organiser & team builder. Ran campaigns with 1,100+ people. Coalitions over committees.</span>
                 </div>
                 <div class="ff-card">
                     <span class="ff-emoji">🦸</span>
@@ -747,7 +766,7 @@
                 <p>
                     I'm a policy and advocacy professional with 10+ years of experience across civil society,
                     EU-level advocacy, and political movements. Right now I'm a policy officer at
-                    <a href="https://www.thegoodlobby.eu" target="_blank" style="color:var(--primary);font-weight:600;">The Good Lobby Italia</a>,
+                    <a href="https://www.thegoodlobby.it/" target="_blank" style="color:var(--primary);font-weight:600;">The Good Lobby Italia</a>,
                     where I focus on democratic engagement, transparency, and direct lobbying — while also training others to do the same.
                 </p>
                 <p>
@@ -778,28 +797,31 @@
                     <span class="tag">Workshop facilitation</span>
                     <span class="tag">International relations</span>
                 </div>
-                <div class="bg-cards">
-                    <div class="bg-card">
-                        <div class="bg-card-icon">🎓</div>
-                        <div class="bg-card-title">Education</div>
-                        <div class="bg-card-detail">BSc chemistry · MA history &amp; civilization · International economic history</div>
+                <details class="bg-details">
+                    <summary>More background ↓</summary>
+                    <div class="bg-cards">
+                        <div class="bg-card">
+                            <div class="bg-card-icon">🎓</div>
+                            <div class="bg-card-title">Education</div>
+                            <div class="bg-card-detail">BSc chemistry · MA history &amp; civilization · International economic history</div>
+                        </div>
+                        <div class="bg-card">
+                            <div class="bg-card-icon">🗣️</div>
+                            <div class="bg-card-title">Languages</div>
+                            <div class="bg-card-detail">English · Italian · Albanian · French</div>
+                        </div>
+                        <div class="bg-card">
+                            <div class="bg-card-icon">✍️</div>
+                            <div class="bg-card-title">Newsletter</div>
+                            <div class="bg-card-detail">The Continental Brief · 300+ subscribers</div>
+                        </div>
+                        <div class="bg-card">
+                            <div class="bg-card-icon">📍</div>
+                            <div class="bg-card-title">Based in</div>
+                            <div class="bg-card-detail">Rome, Italy · working across Europe</div>
+                        </div>
                     </div>
-                    <div class="bg-card">
-                        <div class="bg-card-icon">🗣️</div>
-                        <div class="bg-card-title">Languages</div>
-                        <div class="bg-card-detail">English · Italian · Albanian · French</div>
-                    </div>
-                    <div class="bg-card">
-                        <div class="bg-card-icon">✍️</div>
-                        <div class="bg-card-title">Newsletter</div>
-                        <div class="bg-card-detail">The Continental Brief · 300+ subscribers</div>
-                    </div>
-                    <div class="bg-card">
-                        <div class="bg-card-icon">📍</div>
-                        <div class="bg-card-title">Based in</div>
-                        <div class="bg-card-detail">Rome, Italy · working across Europe</div>
-                    </div>
-                </div>
+                </details>
             </div>
         </div>
     </div>
@@ -1003,7 +1025,7 @@
                 <p>Whether it's a collaboration, a speaking invitation, a media request, or just a question about EU politics — I'd love to hear from you.</p>
                 <a href="mailto:andi.shehu@gmail.com" class="contact-detail"><div class="cd-icon">✉️</div><div><span class="cd-label">Email</span><span class="cd-value">andi.shehu@gmail.com</span></div></a>
                 <a href="https://linkedin.com/in/inandishehu/" target="_blank" rel="noopener" class="contact-detail"><div class="cd-icon">💼</div><div><span class="cd-label">Professional network</span><span class="cd-value">LinkedIn — Andi Shehu</span></div></a>
-                <a href="https://www.thegoodlobby.eu" target="_blank" rel="noopener" class="contact-detail"><div class="cd-icon">🏛️</div><div><span class="cd-label">Organisation</span><span class="cd-value">The Good Lobby Italia</span></div></a>
+                <a href="https://www.thegoodlobby.it/" target="_blank" rel="noopener" class="contact-detail"><div class="cd-icon">🏛️</div><div><span class="cd-label">Organisation</span><span class="cd-value">The Good Lobby Italia</span></div></a>
             </div>
             <div class="fade-in">
                 <!-- CONTACT FORM: sign up at formspree.io and replace YOUR_FORM_ID below -->
@@ -1043,8 +1065,8 @@
                     <div class="nav-logo-mark" style="width:36px;height:36px;font-size:1.1rem;">AS</div>
                     <span style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--text);">Andi Shehu</span>
                 </div>
-                <p>Sense-maker. Democracy advocate. Chemist at heart. Making European politics accessible, one article at a time.</p>
-                <a href="https://www.thegoodlobby.eu" target="_blank" rel="noopener" class="tgl-badge">
+                <p>Sense-maker. Democracy advocate. Historian at heart. Making European politics accessible, one article at a time.</p>
+                <a href="https://www.thegoodlobby.it/" target="_blank" rel="noopener" class="tgl-badge">
                     <div class="tgl-logo">GL</div>The Good Lobby Italia
                 </a>
             </div>
@@ -1056,7 +1078,7 @@
             <p>© 2025 Andi Shehu · andishehu.eu</p>
             <div class="footer-links-row">
                 <a href="mailto:andi.shehu@gmail.com">Contact</a>
-                <a href="https://www.thegoodlobby.eu" target="_blank" rel="noopener">The Good Lobby Italia</a>
+                <a href="https://www.thegoodlobby.it/" target="_blank" rel="noopener">The Good Lobby Italia</a>
                 <span class="easter-star" id="easterStar">✦</span>
             </div>
         </div>
@@ -1202,7 +1224,7 @@ document.getElementById('newsletterBtn').addEventListener('click', launchConfett
 /* TOAST */
 const toastEl=document.getElementById('toast');
 let toastTimer;
-const toasts=['🌍 Fun fact: I\'ve attended more EU committee meetings than I\'ve eaten pasta. Almost.','📖 Secret truth: the best policy ideas are stolen from sci-fi novels.','🦕 Evolution reminder: everything interesting takes longer than you think.','🎮 Achievement unlocked: you found a hidden corner of this website.','🔬 Lab confession: I still miss the smell of a chemistry lab sometimes.'];
+const toasts=['🌍 Fun fact: I\'ve attended more EU committee meetings than I\'ve eaten pasta. Almost.','📖 Secret truth: the best policy ideas are stolen from sci-fi novels.','🦕 Evolution reminder: everything interesting takes longer than you think.','🎮 Gamer confession: I still save fictional worlds on weekends. Someone has to.','🔬 Lab confession: I still miss the smell of a chemistry lab sometimes.','👾 Hidden level unlocked. No extra lives though — this is democracy work.'];
 let toastIdx=0;
 function showToast(msg) {
     toastEl.textContent=msg||toasts[toastIdx++%toasts.length];
@@ -1254,7 +1276,8 @@ function renderReading(data) {
     const curHTML=cur?`<div><div class="recs-label">Currently reading</div><div class="current-book-card"><div class="book-spine"></div><div class="book-body"><span class="book-type-badge">${cur.type||'book'}</span><span class="book-emoji">${cur.emoji||'📖'}</span><div class="book-title">${cur.title}</div><div class="book-author">by ${cur.author}</div>${cur.note?`<div class="book-note">${cur.note}</div>`:''}<div class="reading-bar"><div class="reading-bar-fill"></div></div><div class="reading-bar-label">In progress…</div></div></div></div>`:'';
     const recsHTML=recs.length?`<div><div class="recs-label">Recommendations</div><div class="rec-list">${recs.map(b=>`<div class="rec-card"><span class="rec-emoji">${b.emoji||'📚'}</span><div class="rec-info"><div class="rec-title">${b.title}</div><div class="rec-author">by ${b.author}</div>${b.note?`<div class="rec-note">${b.note}</div>`:''}</div><span class="rec-type" style="color:${typeColor[b.type]||'var(--primary)'};">${b.type||'book'}</span></div>`).join('')}</div></div>`:'';
     cols.innerHTML=curHTML+recsHTML;
-    cols.style.cssText=`display:grid;grid-template-columns:${cur?'1fr 1.6fr':'1fr'};gap:3rem;align-items:start;`;
+    cols.classList.add('loaded');
+    if(!cur) cols.classList.add('single-col');
     addTilt('.rec-card',4);
 }
 async function loadReading(){try{const res=await fetch('./reading.json?v='+Date.now());if(!res.ok)throw 0;renderReading(await res.json());}catch{renderReading(FALLBACK);}}
