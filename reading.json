@@ -1,0 +1,48 @@
+{
+  "currently_reading": [
+    {
+      "title": "The Age of Surveillance Capitalism",
+      "author": "Shoshana Zuboff",
+      "type": "book",
+      "emoji": "📖",
+      "note": "Dense but essential. About who owns the future."
+    }
+  ],
+  "recommendations": [
+    {
+      "title": "Sandman",
+      "author": "Neil Gaiman",
+      "type": "comic",
+      "emoji": "🦸",
+      "note": "The best thing ever written. Fight me."
+    },
+    {
+      "title": "The Sleepwalkers",
+      "author": "Christopher Clark",
+      "type": "book",
+      "emoji": "📚",
+      "note": "How Europe stumbled into WWI — and why it matters now"
+    },
+    {
+      "title": "Sapiens",
+      "author": "Yuval Noah Harari",
+      "type": "book",
+      "emoji": "🦕",
+      "note": "Changed how I think about basically everything"
+    },
+    {
+      "title": "Maus",
+      "author": "Art Spiegelman",
+      "type": "comic",
+      "emoji": "🖤",
+      "note": "Proof that comics can carry the weight of history"
+    },
+    {
+      "title": "The Origins of Political Order",
+      "author": "Francis Fukuyama",
+      "type": "book",
+      "emoji": "🏛️",
+      "note": "Why states fail and why institutions matter"
+    }
+  ]
+}
