@@ -16,7 +16,7 @@
 
     <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
 
     :root {
         --bg:          #F5F3FF;
@@ -89,7 +89,7 @@
     a  { text-decoration: none; color: inherit; }
     img { max-width: 100%; display: block; }
 
-    .container { max-width: 1160px; margin: 0 auto; padding: 0 2rem; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 2rem; width: 100%; }
     .section    { padding: 96px 0; }
 
     /* Animated rainbow divider between sections */
@@ -708,39 +708,8 @@
                 <a href="#blog" class="btn btn-primary">📝 Read my writing</a>
                 <a href="#about" class="btn btn-outline">Who am I?</a>
             </div>
-            <div class="fun-facts-row">
-                <div class="ff-card" id="chemistCard" data-clicks="0">
-                    <span class="ff-emoji">🔬</span>
-                    <span class="ff-text">Started as a chemist. Ended up fighting for democracy. No regrets.</span>
-                </div>
-                <div class="ff-card">
-                    <span class="ff-emoji">📖</span>
-                    <span class="ff-text">Reads more books than is strictly healthy. Has the shelves to prove it.</span>
-                </div>
-                <div class="ff-card">
-                    <span class="ff-emoji">👥</span>
-                    <span class="ff-text">Community organiser & team builder. Ran campaigns with 1,100+ people. Coalitions over committees.</span>
-                </div>
-                <div class="ff-card">
-                    <span class="ff-emoji">🦸</span>
-                    <span class="ff-text">Comics are serious literature. This is not a debate.</span>
-                </div>
-                <div class="ff-card">
-                    <span class="ff-emoji">🌍</span>
-                    <span class="ff-text">Thinks in 4 languages. Works across 3 countries. Sleeps too little.</span>
-                </div>
-                <div class="ff-card">
-                    <span class="ff-emoji">🏛️</span>
-                    <span class="ff-text">Has sat through more EU hearings than most MEPs. Still believes in it.</span>
-                </div>
-                <div class="ff-card">
-                    <span class="ff-emoji">🦕</span>
-                    <span class="ff-text">Fascinated by evolution since childhood. The questions never got smaller.</span>
-                </div>
-                <div class="ff-card">
-                    <span class="ff-emoji">🤝</span>
-                    <span class="ff-text">Warning: workshops will involve pair work. You've been warned.</span>
-                </div>
+            <div class="fun-facts-row" id="funFactsRow">
+                <!-- Cards loaded from fun-facts.json -->
             </div>
         </div>
     </div>
@@ -1240,11 +1209,14 @@ document.getElementById('logoTrigger').addEventListener('click',()=>{lc++;clearT
 let pc=0,pt;
 document.getElementById('photoFrame').addEventListener('click',()=>{pc++;clearTimeout(pt);if(pc>=3){showToast("👋 Hey, that's me! Chemist, economist, accidental democracy enthusiast.");pc=0;}else pt=setTimeout(()=>pc=0,1400);});
 
-/* EASTER EGG: Chemist card x5 */
-document.getElementById('chemistCard').addEventListener('click',function(){
-    const n=parseInt(this.dataset.clicks)+1; this.dataset.clicks=n;
-    if(n>=5){showToast("🧪 True story: the lab instilled in me a love of evidence. Politicians still aren't ready for it.");this.dataset.clicks=0;}
-});
+/* EASTER EGG: Chemist card x5 — wired up after cards load */
+function wireChemistEgg() {
+    const c=document.getElementById('chemistCard'); if(!c)return;
+    c.addEventListener('click',function(){
+        const n=parseInt(this.dataset.clicks||0)+1; this.dataset.clicks=n;
+        if(n>=5){showToast("🧪 True story: the lab instilled in me a love of evidence. Politicians still aren't ready for it.");this.dataset.clicks=0;}
+    });
+}
 
 /* EASTER EGG: Footer star x3 */
 let sc2=0;
@@ -1266,6 +1238,27 @@ function addTilt(sel,deg=8){
     });
 }
 addTilt('.social-card',10); addTilt('.service-card',7); addTilt('.pillar-card',7);
+
+/* FUN FACTS — loaded from fun-facts.json */
+const FF_FALLBACK=[
+  {emoji:'🔬',text:'Started as a chemist. Ended up fighting for democracy. No regrets.',id:'chemist'},
+  {emoji:'📖',text:'Reads more books than is strictly healthy. Has the shelves to prove it.'},
+  {emoji:'👥',text:'Community organiser & team builder. Ran campaigns with 1,100+ people. Coalitions over committees.'},
+  {emoji:'🦸',text:'Comics are serious literature. This is not a debate.'},
+  {emoji:'🌍',text:'Thinks in 4 languages. Works across 3 countries. Sleeps too little.'},
+  {emoji:'🦕',text:'Fascinated by evolution since childhood. The questions never got smaller.'},
+  {emoji:'🤝',text:'Warning: workshops will involve pair work. You\'ve been warned.'}
+];
+function renderFunFacts(cards){
+  const row=document.getElementById('funFactsRow'); if(!row)return;
+  row.innerHTML=cards.map(c=>`<div class="ff-card"${c.id?' id="'+c.id+'" data-clicks="0"':''}>
+    <span class="ff-emoji">${c.emoji}</span>
+    <span class="ff-text">${c.text}</span>
+  </div>`).join('');
+  wireChemistEgg();
+}
+async function loadFunFacts(){try{const res=await fetch('./fun-facts.json?v='+Date.now());if(!res.ok)throw 0;renderFunFacts(await res.json());}catch{renderFunFacts(FF_FALLBACK);}}
+loadFunFacts();
 
 /* READING SECTION */
 const FALLBACK={currently_reading:[{title:"The Age of Surveillance Capitalism",author:"Shoshana Zuboff",type:"book",emoji:"📖",note:"Dense but essential. About who owns the future."}],recommendations:[{title:"Sandman",author:"Neil Gaiman",type:"comic",emoji:"🦸",note:"The best thing ever written. Fight me."},{title:"The Sleepwalkers",author:"Christopher Clark",type:"book",emoji:"📚",note:"How Europe stumbled into WWI — and why it matters now"},{title:"Sapiens",author:"Yuval Noah Harari",type:"book",emoji:"🦕",note:"Changed how I think about basically everything"},{title:"Maus",author:"Art Spiegelman",type:"comic",emoji:"🖤",note:"Proof that comics can carry the weight of history"},{title:"The Origins of Political Order",author:"Francis Fukuyama",type:"book",emoji:"🏛️",note:"Why states fail and why institutions matter"}]};
