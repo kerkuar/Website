@@ -1,48 +1,48 @@
 {
   "currently_reading": [
     {
-      "title": "The Age of Surveillance Capitalism",
-      "author": "Shoshana Zuboff",
+      "title": "The American War in Afghanistan: A History",
+      "author": "Carter Malkasian",
       "type": "book",
       "emoji": "📖",
-      "note": "Dense but essential. About who owns the future."
+      "note": "Still too early for an opinion."
     }
   ],
   "recommendations": [
     {
-      "title": "Sandman",
-      "author": "Neil Gaiman",
-      "type": "comic",
-      "emoji": "🦸",
-      "note": "The best thing ever written. Fight me."
-    },
-    {
-      "title": "The Sleepwalkers",
-      "author": "Christopher Clark",
+      "title": "The Dawn of Everything: A New History of Humanity",
+      "author": "David Graeber & David Wengrow.",
       "type": "book",
-      "emoji": "📚",
-      "note": "How Europe stumbled into WWI — and why it matters now"
+      "emoji": "📕",
+      "note": "Most impactful book about how you think about humanity"
     },
     {
-      "title": "Sapiens",
-      "author": "Yuval Noah Harari",
+      "title": "An Immense World",
+      "author": "Ed Yong",
       "type": "book",
-      "emoji": "🦕",
-      "note": "Changed how I think about basically everything"
+      "emoji": "📕",
+      "note": "Discover the magical ways other animals perceive the world "
     },
     {
-      "title": "Maus",
-      "author": "Art Spiegelman",
+      "title": "The Story of Work",
+      "author": "Jan Lucassen",
+      "type": "book",
+      "emoji": "🐘",
+      "note": "Discover how our relationship  with work has changed (or not) through the ages."
+    },
+    {
+      "title": "Blade of the Immortal",
+      "author": "Hiroaki Samura",
       "type": "comic",
       "emoji": "🖤",
       "note": "Proof that comics can carry the weight of history"
     },
     {
-      "title": "The Origins of Political Order",
-      "author": "Francis Fukuyama",
+      "title": "The Earth Transformed: An Untold History",
+      "author": "Peter Frankopan",
       "type": "book",
       "emoji": "🏛️",
-      "note": "Why states fail and why institutions matter"
+      "note": "An encompassing, sometimes feels like a slog, ecological history of humanity"
     }
   ]
 }
