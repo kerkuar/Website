@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services — Andi Shehu</title>
+    <meta name="description" content="Campaign strategy, policy analysis, workshop facilitation, coalition building. Available on a fee or pro-bono basis.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+    body { background: var(--bg-services); }
+
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 1.4rem; margin-top: 1rem; }
+    .service-card {
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: var(--radius); padding: 2rem 1.8rem;
+        transition: all var(--transition); position: relative; overflow: hidden;
+    }
+    .service-card::after {
+        content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 0;
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        transition: height 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    .service-card:hover::after { height: 4px; }
+    .service-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-5px); }
+    .service-icon  { font-size: 2.4rem; margin-bottom: 1.2rem; display: block; }
+    .service-card h3 { font-size: 1.25rem; margin-bottom: 0.7rem; color: var(--text); }
+    .service-card p  { font-size: 0.9rem; margin-bottom: 1.4rem; }
+    .svc-type {
+        display: inline-flex; align-items: center; font-size: 0.74rem;
+        font-weight: 600; padding: 0.28rem 0.8rem; border-radius: var(--radius-full);
+        text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .svc-fee  { background: var(--accent-warm); color: var(--accent); }
+    .svc-free { background: #D4F5E2; color: #2A8A52; }
+    .svc-both { background: var(--surface-alt); color: var(--primary); border: 1px solid var(--border); }
+    [data-theme="dark"] .svc-fee  { background: rgba(232,144,123,0.18); }
+    [data-theme="dark"] .svc-free { background: rgba(95,173,144,0.18); color: var(--secondary); }
+
+    .closing-cta {
+        text-align: center; padding: 4rem 2rem; margin-top: 4rem;
+        background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border);
+    }
+    .closing-cta h2 { margin-bottom: 0.75rem; }
+    .closing-cta p { max-width: 540px; margin: 0 auto 2rem; }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar" class="site-nav solid">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+            <div class="nav-logo-mark">AS</div>
+            <span class="nav-logo-text">Andi Shehu</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="writing.html">Writing</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="reading.html">Reading</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <span class="theme-icon sun">☀️</span>
+                <span class="theme-icon moon">🌙</span>
+            </button>
+            <button class="hamburger" id="hamburger" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="writing.html">Writing</a>
+    <a href="services.html">Services</a>
+    <a href="reading.html">Reading</a>
+    <a href="contact.html">Contact</a>
+</div>
+
+<section class="has-nav-offset">
+    <div class="container">
+        <div class="page-intro fade-in">
+            <span class="section-label">Services</span>
+            <h1>Let's work together.</h1>
+            <p>Available on a fee basis or pro-bono depending on the project and the organisation. If you are a small civil-society group, ask anyway — we'll find a way.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card fade-in"><span class="service-icon">📣</span><h3>Campaign strategy &amp; design</h3><p>From vision to movement. I help organisations design campaigns that move people, build coalitions, and create durable policy change.</p><span class="svc-type svc-both">Fee / pro-bono</span></div>
+            <div class="service-card fade-in"><span class="service-icon">🔬</span><h3>Policy analysis &amp; research</h3><p>Clear, accessible analysis of complex EU and international policy landscapes. Position papers, briefings, and memos that actually get read.</p><span class="svc-type svc-fee">Fee-based</span></div>
+            <div class="service-card fade-in"><span class="service-icon">🎤</span><h3>Workshop facilitation</h3><p>Interactive workshops on community organising, advocacy strategy, and civic engagement — for NGOs, universities, and civic groups.</p><span class="svc-type svc-both">Fee / pro-bono</span></div>
+            <div class="service-card fade-in"><span class="service-icon">🤝</span><h3>Community organising consultation</h3><p>Helping organisations and grassroots groups build power, recruit members, and structure their advocacy for long-term impact.</p><span class="svc-type svc-free">Pro-bono available</span></div>
+            <div class="service-card fade-in"><span class="service-icon">📱</span><h3>Digital education &amp; content</h3><p>Strategic advice on using short-form video and social media to reach new audiences with policy and civic content.</p><span class="svc-type svc-fee">Fee-based</span></div>
+            <div class="service-card fade-in"><span class="service-icon">🌐</span><h3>Coalition building</h3><p>Connecting civil society actors, identifying common ground, and building strategic alliances that amplify advocacy impact.</p><span class="svc-type svc-both">Fee / pro-bono</span></div>
+        </div>
+
+        <div class="closing-cta fade-in" style="margin-bottom:5rem;">
+            <h2>Interested in working together?</h2>
+            <p>Tell me about your project, your timeline, and what you're trying to change. I read every message.</p>
+            <a href="contact.html" class="btn btn-primary">Get in touch →</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div style="display:flex;align-items:center;gap:0.7rem;">
+                    <div class="nav-logo-mark" style="width:36px;height:36px;font-size:1.1rem;">AS</div>
+                    <span style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--text);">Andi Shehu</span>
+                </div>
+                <p>Sense-maker. Democracy advocate. Historian at heart. Making European politics accessible, one article at a time.</p>
+                <a href="https://www.thegoodlobby.it/" target="_blank" rel="noopener" class="tgl-badge">
+                    <div class="tgl-logo">GL</div>The Good Lobby Italia
+                </a>
+            </div>
+            <div class="footer-col"><h4>Navigate</h4><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="writing.html">Writing</a></li><li><a href="services.html">Services</a></li><li><a href="reading.html">Reading</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+            <div class="footer-col"><h4>Connect</h4><ul class="footer-links"><li><a href="https://substack.com/@shehuandi" target="_blank" rel="noopener">Substack</a></li><li><a href="https://www.instagram.com/sheh.andi/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://linkedin.com/in/inandishehu/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://x.com/AndShehu" target="_blank" rel="noopener">X / Twitter</a></li><li><a href="https://www.tiktok.com/@andishehu670" target="_blank" rel="noopener">TikTok</a></li></ul></div>
+            <div class="footer-col"><h4>Writing</h4><ul class="footer-links"><li><a href="https://substack.com/@shehuandi" target="_blank" rel="noopener">The Continental Brief</a></li><li><a href="writing.html">Essays &amp; analysis</a></li><li><a href="contact.html">Pitch me a topic</a></li></ul></div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Andi Shehu · andishehu.eu</p>
+            <div class="footer-links-row">
+                <a href="contact.html">Contact</a>
+                <a href="https://www.thegoodlobby.it/" target="_blank" rel="noopener">The Good Lobby Italia</a>
+                <span class="easter-star">✦</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

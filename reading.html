@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading — Andi Shehu</title>
+    <meta name="description" content="What's currently on my shelf — books, articles and comics shaping how I think. Recommendations included.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+    body { background: var(--bg-reading); }
+
+    .edit-hint {
+        display: inline-flex; align-items: center; gap: 0.4rem;
+        font-size: 0.78rem; color: var(--text-muted); background: var(--surface);
+        border: 1px solid var(--border); padding: 0.35rem 0.85rem;
+        border-radius: var(--radius-full); margin-top: 0.75rem;
+    }
+
+    .reading-cols { display: grid; grid-template-columns: 1fr 1.6fr; gap: 3rem; align-items: start; margin-top: 1rem; }
+    .recs-label {
+        font-size: 0.78rem; font-weight: 600; text-transform: uppercase;
+        letter-spacing: 0.14em; color: var(--text-muted); margin-bottom: 1.25rem;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .current-book-card {
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm);
+        transition: all var(--transition);
+    }
+    .current-book-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .book-spine { height: 8px; background: linear-gradient(90deg, var(--primary), var(--accent)); }
+    .book-body  { padding: 1.5rem; }
+    .book-type-badge {
+        font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+        color: var(--primary); background: var(--surface-alt); padding: 0.25rem 0.65rem;
+        border-radius: var(--radius-full); border: 1px solid var(--border);
+        display: inline-block; margin-bottom: 0.75rem;
+    }
+    .book-emoji  { font-size: 2.5rem; display: block; margin-bottom: 0.75rem; }
+    .book-title  { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--text); margin-bottom: 0.25rem; line-height: 1.3; }
+    .book-author { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+    .book-note   { font-size: 0.85rem; color: var(--text-muted); font-style: italic; line-height: 1.6; }
+    .reading-bar { height: 4px; background: var(--border); border-radius: 4px; margin-top: 1.25rem; overflow: hidden; }
+    .reading-bar-fill {
+        height: 100%; width: 40%; border-radius: 4px;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+        animation: reading-progress 3s ease-in-out infinite alternate;
+    }
+    @keyframes reading-progress { from { width: 35%; } to { width: 55%; } }
+    .reading-bar-label { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.4rem; }
+
+    .rec-list { display: flex; flex-direction: column; gap: 0.85rem; }
+    .rec-card {
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: var(--radius-sm); padding: 1rem 1.25rem;
+        display: flex; align-items: flex-start; gap: 1rem; transition: all var(--transition);
+    }
+    .rec-card:hover { border-color: var(--primary-light); transform: translateX(5px); box-shadow: var(--shadow-sm); }
+    .rec-emoji  { font-size: 1.5rem; flex-shrink: 0; }
+    .rec-info   { flex: 1; }
+    .rec-title  { font-weight: 600; font-size: 0.95rem; color: var(--text); margin-bottom: 0.1rem; }
+    .rec-author { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.25rem; }
+    .rec-note   { font-size: 0.83rem; color: var(--text-muted); font-style: italic; }
+    .rec-type {
+        font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+        color: var(--primary); background: var(--surface-alt); padding: 0.18rem 0.5rem;
+        border-radius: var(--radius-full); margin-left: auto; flex-shrink: 0;
+        align-self: flex-start; border: 1px solid var(--border);
+    }
+    .reading-loading { color: var(--text-muted); font-style: italic; padding: 2rem 0; }
+
+    @media (max-width: 960px) {
+        .reading-cols { grid-template-columns: 1fr; }
+    }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar" class="site-nav solid">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+            <div class="nav-logo-mark">AS</div>
+            <span class="nav-logo-text">Andi Shehu</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="writing.html">Writing</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="reading.html">Reading</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <span class="theme-icon sun">☀️</span>
+                <span class="theme-icon moon">🌙</span>
+            </button>
+            <button class="hamburger" id="hamburger" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="writing.html">Writing</a>
+    <a href="services.html">Services</a>
+    <a href="reading.html">Reading</a>
+    <a href="contact.html">Contact</a>
+</div>
+
+<section class="has-nav-offset" style="padding-bottom:5rem;">
+    <div class="container">
+        <div class="page-intro fade-in">
+            <span class="section-label">What I'm reading</span>
+            <h1>On my shelf right now.</h1>
+            <p>Books, articles, comics — the things currently shaping how I think. Recommendations included.</p>
+            <span class="edit-hint">✏️ I update this directly on GitHub by editing reading.json — no web dev needed.</span>
+        </div>
+
+        <div class="reading-cols fade-in" id="readingCols">
+            <div class="reading-loading">Loading shelf… 📚</div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div style="display:flex;align-items:center;gap:0.7rem;">
+                    <div class="nav-logo-mark" style="width:36px;height:36px;font-size:1.1rem;">AS</div>
+                    <span style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--text);">Andi Shehu</span>
+                </div>
+                <p>Sense-maker. Democracy advocate. Historian at heart. Making European politics accessible, one article at a time.</p>
+                <a href="https://www.thegoodlobby.it/" target="_blank" rel="noopener" class="tgl-badge">
+                    <div class="tgl-logo">GL</div>The Good Lobby Italia
+                </a>
+            </div>
+            <div class="footer-col"><h4>Navigate</h4><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="writing.html">Writing</a></li><li><a href="services.html">Services</a></li><li><a href="reading.html">Reading</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+            <div class="footer-col"><h4>Connect</h4><ul class="footer-links"><li><a href="https://substack.com/@shehuandi" target="_blank" rel="noopener">Substack</a></li><li><a href="https://www.instagram.com/sheh.andi/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://linkedin.com/in/inandishehu/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://x.com/AndShehu" target="_blank" rel="noopener">X / Twitter</a></li><li><a href="https://www.tiktok.com/@andishehu670" target="_blank" rel="noopener">TikTok</a></li></ul></div>
+            <div class="footer-col"><h4>Writing</h4><ul class="footer-links"><li><a href="https://substack.com/@shehuandi" target="_blank" rel="noopener">The Continental Brief</a></li><li><a href="writing.html">Essays &amp; analysis</a></li><li><a href="contact.html">Pitch me a topic</a></li></ul></div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Andi Shehu · andishehu.eu</p>
+            <div class="footer-links-row">
+                <a href="contact.html">Contact</a>
+                <a href="https://www.thegoodlobby.it/" target="_blank" rel="noopener">The Good Lobby Italia</a>
+                <span class="easter-star">✦</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="app.js"></script>
+<script>
+/* Reading page — load shelf from reading.json */
+(async function () {
+    const cols = document.getElementById('readingCols');
+    if (!cols) return;
+    const escape = s => String(s || '').replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+    try {
+        const res = await fetch('reading.json');
+        if (!res.ok) throw new Error('fetch failed');
+        const data = await res.json();
+        const cur = data.currently_reading || [];
+        const recs = data.recommendations || [];
+
+        let html = '';
+
+        /* Currently reading column */
+        html += `<div><div class="recs-label">Currently reading</div>`;
+        if (cur.length) {
+            html += cur.map(b => `
+                <div class="current-book-card">
+                    <div class="book-spine"></div>
+                    <div class="book-body">
+                        <span class="book-type-badge">${escape(b.type || 'book')}</span>
+                        <span class="book-emoji">${escape(b.emoji || '📖')}</span>
+                        <div class="book-title">${escape(b.title)}</div>
+                        <div class="book-author">${escape(b.author)}</div>
+                        ${b.note ? `<div class="book-note">${escape(b.note)}</div>` : ''}
+                        <div class="reading-bar"><div class="reading-bar-fill"></div></div>
+                        <div class="reading-bar-label">In progress</div>
+                    </div>
+                </div>`).join('');
+        } else {
+            html += `<p style="color:var(--text-muted); font-style:italic;">Between books at the moment.</p>`;
+        }
+        html += `</div>`;
+
+        /* Recommendations column */
+        html += `<div><div class="recs-label">Recommendations</div><div class="rec-list">`;
+        if (recs.length) {
+            html += recs.map(r => `
+                <div class="rec-card">
+                    <span class="rec-emoji">${escape(r.emoji || '📕')}</span>
+                    <div class="rec-info">
+                        <div class="rec-title">${escape(r.title)}</div>
+                        <div class="rec-author">${escape(r.author)}</div>
+                        ${r.note ? `<div class="rec-note">${escape(r.note)}</div>` : ''}
+                    </div>
+                    <span class="rec-type">${escape(r.type || 'book')}</span>
+                </div>`).join('');
+        } else {
+            html += `<p style="color:var(--text-muted); font-style:italic;">Nothing to recommend right now.</p>`;
+        }
+        html += `</div></div>`;
+
+        cols.innerHTML = html;
+    } catch (err) {
+        cols.innerHTML = `<p class="reading-loading">Could not load the shelf. ☹️</p>`;
+    }
+})();
+</script>
+</body>
+</html>

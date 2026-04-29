@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article — Andi Shehu</title>
+    <meta name="description" content="">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+    body { background: var(--bg-blog); }
+
+    .article-wrap {
+        max-width: 760px; margin: 0 auto; padding: 0 2rem;
+    }
+    .article-back {
+        display: inline-flex; align-items: center; gap: 0.4rem;
+        font-size: 0.88rem; font-weight: 500; color: var(--text-muted);
+        margin-bottom: 2rem; transition: color 0.2s;
+    }
+    .article-back:hover { color: var(--primary); }
+
+    .article-meta-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+    .article-meta-tags .article-tag { font-size: 0.72rem; }
+
+    .article-hero h1 {
+        font-size: clamp(2rem, 4.5vw, 3.4rem);
+        margin-bottom: 0.6rem; color: var(--text);
+    }
+    .article-subtitle {
+        font-family: 'Cormorant Garamond', serif; font-style: italic;
+        font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+        color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.4;
+    }
+    .article-meta {
+        display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;
+        font-size: 0.85rem; color: var(--text-muted);
+        padding-bottom: 2rem; margin-bottom: 2.5rem;
+        border-bottom: 1px solid var(--border);
+    }
+    .article-meta strong { color: var(--text); font-weight: 600; }
+
+    .article-body {
+        font-family: 'Inter', sans-serif; font-size: 1.05rem;
+        line-height: 1.85; color: var(--text);
+    }
+    .article-body > * + * { margin-top: 1.4rem; }
+    .article-body p { color: var(--text); }
+    .article-body h2 {
+        font-size: clamp(1.55rem, 3vw, 2rem);
+        margin-top: 3rem; margin-bottom: 0.6rem;
+        color: var(--text);
+    }
+    .article-body h3 {
+        font-size: clamp(1.2rem, 2.4vw, 1.5rem);
+        margin-top: 2.2rem; margin-bottom: 0.4rem;
+        color: var(--text);
+    }
+    .article-body strong { color: var(--text); font-weight: 600; }
+    .article-body em { color: var(--text-muted); }
+    .article-body a {
+        color: var(--primary); border-bottom: 1px solid var(--primary-light);
+        transition: all 0.2s;
+    }
+    .article-body a:hover { color: var(--primary-dark); border-bottom-color: var(--primary-dark); }
+    .article-body blockquote {
+        border-left: 4px solid var(--primary);
+        padding: 0.5rem 0 0.5rem 1.5rem;
+        font-style: italic; color: var(--text-muted);
+        margin: 2rem 0;
+    }
+    .article-body ul, .article-body ol {
+        padding-left: 1.5rem; color: var(--text);
+    }
+    .article-body li { margin-bottom: 0.5rem; }
+    .article-body code {
+        background: var(--surface-alt); padding: 0.15rem 0.4rem;
+        border-radius: 4px; font-size: 0.92em;
+        font-family: 'Courier New', monospace;
+    }
+    .article-body pre {
+        background: var(--surface-alt); padding: 1rem 1.2rem;
+        border-radius: var(--radius-sm); overflow-x: auto;
+        font-size: 0.9rem; line-height: 1.5;
+    }
+    .article-body img {
+        border-radius: var(--radius-sm); margin: 2rem auto;
+        box-shadow: var(--shadow-md);
+    }
+    .article-body hr {
+        border: none; height: 1px; background: var(--border);
+        margin: 3rem 0;
+    }
+
+    .article-share {
+        margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);
+        display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+    }
+    .article-share span { font-size: 0.88rem; color: var(--text-muted); }
+    .share-buttons { display: flex; gap: 0.5rem; }
+    .share-btn {
+        width: 38px; height: 38px; border-radius: 50%;
+        background: var(--surface); border: 1px solid var(--border);
+        display: flex; align-items: center; justify-content: center;
+        font-size: 0.9rem; font-weight: 700; transition: all 0.2s;
+        cursor: pointer; color: var(--text-muted);
+    }
+    .share-btn:hover { background: var(--primary); color: white; border-color: var(--primary); transform: scale(1.1); }
+
+    .article-cta {
+        background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+        border-radius: var(--radius); padding: 2.5rem;
+        color: white; text-align: center; margin: 4rem 0 6rem;
+    }
+    .article-cta h3 { color: white; font-size: 1.7rem; margin-bottom: 0.5rem; }
+    .article-cta p { color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; }
+
+    .loading { text-align: center; padding: 5rem 2rem; color: var(--text-muted); }
+    .loading-emoji { font-size: 3rem; display: block; margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar" class="site-nav solid">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+            <div class="nav-logo-mark">AS</div>
+            <span class="nav-logo-text">Andi Shehu</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="writing.html">Writing</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="reading.html">Reading</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <span class="theme-icon sun">☀️</span>
+                <span class="theme-icon moon">🌙</span>
+            </button>
+            <button class="hamburger" id="hamburger" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="writing.html">Writing</a>
+    <a href="services.html">Services</a>
+    <a href="reading.html">Reading</a>
+    <a href="contact.html">Contact</a>
+</div>
+
+<section class="has-nav-offset" style="padding-top:6rem; padding-bottom:2rem;">
+    <div class="article-wrap">
+        <a href="writing.html" class="article-back">← All writing</a>
+        <div id="articleRoot">
+            <div class="loading"><span class="loading-emoji">⏳</span><p>Loading article…</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div style="display:flex;align-items:center;gap:0.7rem;">
+                    <div class="nav-logo-mark" style="width:36px;height:36px;font-size:1.1rem;">AS</div>
+                    <span style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--text);">Andi Shehu</span>
+                </div>
+                <p>Sense-maker. Democracy advocate. Historian at heart. Making European politics accessible, one article at a time.</p>
+                <a href="https://www.thegoodlobby.it/" target="_blank" rel="noopener" class="tgl-badge">
+                    <div class="tgl-logo">GL</div>The Good Lobby Italia
+                </a>
+            </div>
+            <div class="footer-col"><h4>Navigate</h4><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="writing.html">Writing</a></li><li><a href="services.html">Services</a></li><li><a href="reading.html">Reading</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+            <div class="footer-col"><h4>Connect</h4><ul class="footer-links"><li><a href="https://substack.com/@shehuandi" target="_blank" rel="noopener">Substack</a></li><li><a href="https://www.instagram.com/sheh.andi/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://linkedin.com/in/inandishehu/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://x.com/AndShehu" target="_blank" rel="noopener">X / Twitter</a></li><li><a href="https://www.tiktok.com/@andishehu670" target="_blank" rel="noopener">TikTok</a></li></ul></div>
+            <div class="footer-col"><h4>Writing</h4><ul class="footer-links"><li><a href="https://substack.com/@shehuandi" target="_blank" rel="noopener">The Continental Brief</a></li><li><a href="writing.html">Essays &amp; analysis</a></li><li><a href="contact.html">Pitch me a topic</a></li></ul></div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Andi Shehu · andishehu.eu</p>
+            <div class="footer-links-row">
+                <a href="contact.html">Contact</a>
+                <a href="https://www.thegoodlobby.it/" target="_blank" rel="noopener">The Good Lobby Italia</a>
+                <span class="easter-star">✦</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- Marked.js for markdown rendering -->
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="app.js"></script>
+<script>
+const TAG_LABELS = {
+    'eu-politics':  'EU politics',
+    'human-rights': 'Human rights',
+    'democracy':    'Democracy',
+    'community':    'Community',
+    'economy':      'Economy'
+};
+
+(async function () {
+    const root = document.getElementById('articleRoot');
+
+    /* Read slug from URL */
+    const params = new URLSearchParams(location.search);
+    const slug = params.get('slug');
+    if (!slug) {
+        root.innerHTML = `<div class="loading"><span class="loading-emoji">🤔</span><p>No article specified. <a href="writing.html" style="color:var(--primary);">See all writing →</a></p></div>`;
+        return;
+    }
+
+    try {
+        /* 1) Find metadata in articles.json */
+        const idxRes = await fetch('articles/articles.json');
+        if (!idxRes.ok) throw new Error('Could not load article index');
+        const articles = await idxRes.json();
+        const meta = articles.find(a => a.slug === slug);
+        if (!meta) {
+            root.innerHTML = `<div class="loading"><span class="loading-emoji">🔍</span><p>Article not found. <a href="writing.html" style="color:var(--primary);">See all writing →</a></p></div>`;
+            return;
+        }
+
+        /* If external_url is set, redirect away */
+        if (meta.external_url) {
+            location.replace(meta.external_url);
+            return;
+        }
+
+        /* 2) Load the markdown body */
+        const mdRes = await fetch(`articles/${slug}.md`);
+        if (!mdRes.ok) throw new Error('Could not load article body');
+        const md = await mdRes.text();
+
+        /* 3) Render */
+        document.title = `${meta.title} — Andi Shehu`;
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) metaDesc.setAttribute('content', meta.summary || '');
+
+        const tagsHtml = (meta.tags || []).map(t =>
+            `<span class="article-tag">${TAG_LABELS[t] || t.replace(/-/g,' ')}</span>`
+        ).join('');
+
+        const bodyHtml = window.marked ? marked.parse(md) : `<pre>${md}</pre>`;
+
+        const shareUrl = encodeURIComponent(`https://andishehu.eu/article.html?slug=${slug}`);
+        const shareText = encodeURIComponent(meta.title);
+
+        root.innerHTML = `
+            <div class="article-hero">
+                <div class="article-meta-tags">${tagsHtml}</div>
+                <h1>${meta.title}</h1>
+                ${meta.subtitle ? `<p class="article-subtitle">${meta.subtitle}</p>` : ''}
+                <div class="article-meta">
+                    <span><strong>Andi Shehu</strong></span>
+                    <span>${window.formatArticleDate(meta.date)}</span>
+                    ${meta.reading_time ? `<span>${meta.reading_time} read</span>` : ''}
+                </div>
+            </div>
+            <article class="article-body">${bodyHtml}</article>
+            <div class="article-share">
+                <span>Share this piece</span>
+                <div class="share-buttons">
+                    <a class="share-btn" target="_blank" rel="noopener" title="Share on X"
+                        href="https://x.com/intent/tweet?text=${shareText}&url=${shareUrl}">𝕏</a>
+                    <a class="share-btn" target="_blank" rel="noopener" title="Share on LinkedIn"
+                        href="https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}">in</a>
+                    <a class="share-btn" target="_blank" rel="noopener" title="Share on Facebook"
+                        href="https://www.facebook.com/sharer/sharer.php?u=${shareUrl}">f</a>
+                    <button class="share-btn" id="copyLinkBtn" title="Copy link">🔗</button>
+                </div>
+            </div>
+            <div class="article-cta">
+                <h3>📬 Subscribe to The Continental Brief</h3>
+                <p>EU politics and political economy, delivered straight to your inbox. Free.</p>
+                <a href="https://substack.com/@shehuandi" target="_blank" rel="noopener" class="btn btn-white">Subscribe →</a>
+            </div>
+        `;
+
+        /* Copy link button */
+        const copyBtn = document.getElementById('copyLinkBtn');
+        if (copyBtn) copyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(`https://andishehu.eu/article.html?slug=${slug}`).then(() => {
+                window.showToast('🔗 Link copied to clipboard');
+            }).catch(() => window.showToast('Could not copy. Sorry.'));
+        });
+    } catch (err) {
+        root.innerHTML = `<div class="loading"><span class="loading-emoji">⚠️</span><p>Could not load this article. Please try again. <a href="writing.html" style="color:var(--primary);">See all writing →</a></p></div>`;
+        console.error(err);
+    }
+})();
+</script>
+</body>
+</html>

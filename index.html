@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andi Shehu | Policy. Advocacy. Sense-making.</title>
-    <meta name="description" content="Chemist turned democracy advocate. I work at the intersection of EU politics, human rights, and making complex things understandable. Founder of The Continental Brief.">
-    <meta property="og:title" content="Andi Shehu | Policy. Advocacy. Sense-making.">
+    <title>Andi Shehu — Policy. Advocacy. Sense-making.</title>
+    <meta name="description" content="Policy and advocacy professional based in Rome. EU politics, human rights, community organising — and the art of making complex things understandable.">
+    <meta property="og:title" content="Andi Shehu — Policy. Advocacy. Sense-making.">
     <meta property="og:description" content="Making sense of European politics, human rights, and democratic accountability.">
     <meta property="og:url" content="https://andishehu.eu">
     <meta name="twitter:card" content="summary_large_image">
@@ -13,201 +13,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 
     <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; overflow-x: hidden; }
-
-    :root {
-        --bg:          #F5F3FF;
-        --bg-about:    #FFF9F5;
-        --bg-blog:     #F3FBF7;
-        --bg-mission:  #F3F5FF;
-        --bg-services: #FFF6F2;
-        --bg-reading:  #FFFDF3;
-        --bg-connect:  #FAF3FF;
-        --bg-contact:  #F3F8FF;
-        --surface:     #FFFFFF;
-        --surface-alt: #F0EEF8;
-        --primary:     #7C6FAF;
-        --primary-light:#C4BDE8;
-        --primary-dark: #5A4E8A;
-        --secondary:   #5FAD90;
-        --accent:      #E8907B;
-        --accent-warm: #F5D8C0;
-        --gold:        #D4A843;
-        --text:        #1E1B2E;
-        --text-muted:  #6B6484;
-        --border:      #E2DDF0;
-        --shadow-sm:   0 2px 8px rgba(124,111,175,0.10);
-        --shadow-md:   0 4px 20px rgba(124,111,175,0.15);
-        --shadow-lg:   0 8px 40px rgba(124,111,175,0.20);
-        --radius:      16px;
-        --radius-sm:   10px;
-        --radius-full: 9999px;
-        --transition:  0.3s cubic-bezier(0.4,0,0.2,1);
-        --nav-height:  68px;
-    }
-    [data-theme="dark"] {
-        --bg:          #17132A;
-        --bg-about:    #1C1420;
-        --bg-blog:     #131C18;
-        --bg-mission:  #13152A;
-        --bg-services: #1C1513;
-        --bg-reading:  #1C1B13;
-        --bg-connect:  #1A1326;
-        --bg-contact:  #131620;
-        --surface:     #251F3E;
-        --surface-alt: #2D2648;
-        --primary:     #A89DD4;
-        --primary-light:#C5BEEA;
-        --primary-dark: #8A7EC0;
-        --secondary:   #7EC8A4;
-        --accent:      #E8A598;
-        --accent-warm: #3D2E24;
-        --text:        #F0EDF8;
-        --text-muted:  #9D94B5;
-        --border:      #3D3458;
-        --shadow-sm:   0 2px 8px rgba(0,0,0,0.30);
-        --shadow-md:   0 4px 20px rgba(0,0,0,0.40);
-        --shadow-lg:   0 8px 40px rgba(0,0,0,0.50);
-    }
-
-    body {
-        font-family: 'Inter', sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        line-height: 1.7;
-        transition: background var(--transition), color var(--transition);
-        overflow-x: hidden;
-    }
-    h1,h2,h3,h4 { font-family: 'Cormorant Garamond', serif; line-height: 1.2; font-weight: 600; }
-    h1 { font-size: clamp(2.6rem, 6vw, 5rem); }
-    h2 { font-size: clamp(2rem, 4vw, 3rem); }
-    h3 { font-size: clamp(1.2rem, 2.5vw, 1.65rem); }
-    p  { color: var(--text-muted); line-height: 1.85; }
-    a  { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
-
-    .container { max-width: 1160px; margin: 0 auto; padding: 0 2rem; width: 100%; }
-    .section    { padding: 96px 0; }
-
-    /* Animated rainbow divider between sections */
-    .divider {
-        height: 4px;
-        background: linear-gradient(90deg, var(--primary-light), var(--accent-warm), var(--secondary), var(--primary-light));
-        background-size: 200% 100%;
-        animation: shimmer 4s linear infinite;
-    }
-    @keyframes shimmer { to { background-position: 200% 0; } }
-
-    .section-label {
-        display: inline-block; font-size: 0.72rem; font-weight: 600;
-        letter-spacing: 0.16em; text-transform: uppercase;
-        color: var(--primary); background: var(--primary-light);
-        padding: 0.38rem 1rem; border-radius: var(--radius-full);
-        margin-bottom: 1.4rem; opacity: 0.9;
-    }
-    [data-theme="dark"] .section-label { background: rgba(168,157,212,0.18); }
-
-    /* Buttons */
-    .btn {
-        display: inline-flex; align-items: center; gap: 0.5rem;
-        padding: 0.85rem 1.9rem; border-radius: var(--radius-full);
-        font-weight: 500; font-size: 0.95rem; cursor: pointer;
-        border: none; transition: all var(--transition);
-        position: relative; overflow: hidden;
-        font-family: 'Inter', sans-serif;
-    }
-    .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 4px 18px rgba(124,111,175,0.38); }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(124,111,175,0.48); }
-    .btn-outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
-    .btn-outline:hover { background: var(--primary); color: #fff; transform: translateY(-2px); }
-    .btn-accent  { background: var(--accent); color: #fff; box-shadow: 0 4px 18px rgba(232,144,123,0.38); }
-    .btn-accent:hover  { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(232,144,123,0.48); }
-
-    .ripple {
-        position: absolute; border-radius: 50%; transform: scale(0);
-        animation: ripple-anim 0.65s linear; background: rgba(255,255,255,0.32); pointer-events: none;
-    }
-    @keyframes ripple-anim { to { transform: scale(4.5); opacity: 0; } }
-
-    .fade-in { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-    /* Cursor trail */
-    .cursor-trail {
-        position: fixed; width: 7px; height: 7px; border-radius: 50%;
-        background: var(--primary); opacity: 0.45; pointer-events: none; z-index: 9999;
-        transform: translate(-50%,-50%); animation: trail-fade 0.9s ease forwards;
-    }
-    @keyframes trail-fade { to { opacity: 0; transform: translate(-50%,-50%) scale(0.1); } }
-
-    /* NAV */
-    nav {
-        position: fixed; top: 0; left: 0; right: 0;
-        height: var(--nav-height); z-index: 1000;
-        display: flex; align-items: center; transition: all var(--transition);
-    }
-    nav.scrolled { background: var(--surface); box-shadow: var(--shadow-md); }
-    .nav-inner {
-        display: flex; align-items: center; justify-content: space-between;
-        width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 2rem;
-    }
-    .nav-logo { display: flex; align-items: center; gap: 0.7rem; cursor: pointer; user-select: none; }
-    .nav-logo-mark {
-        width: 38px; height: 38px; background: var(--primary); border-radius: 9px;
-        display: flex; align-items: center; justify-content: center;
-        color: white; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 700;
-        transition: transform 0.35s, background 0.35s;
-    }
-    .nav-logo:hover .nav-logo-mark { transform: rotate(12deg) scale(1.12); background: var(--accent); }
-    .nav-logo-text { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; color: var(--text); }
-    .nav-links { display: flex; align-items: center; gap: 0.1rem; list-style: none; }
-    .nav-links a {
-        font-size: 0.86rem; font-weight: 500; color: var(--text-muted);
-        padding: 0.45rem 0.85rem; border-radius: var(--radius-full); transition: all var(--transition);
-    }
-    .nav-links a:hover, .nav-links a.active { color: var(--primary); background: var(--surface-alt); }
-    .nav-actions { display: flex; align-items: center; gap: 0.85rem; }
-
-    .theme-toggle {
-        width: 46px; height: 25px; background: var(--border);
-        border-radius: var(--radius-full); border: none; cursor: pointer;
-        position: relative; transition: background var(--transition);
-    }
-    .theme-toggle::after {
-        content: ''; position: absolute; top: 3px; left: 3px;
-        width: 19px; height: 19px; background: var(--surface); border-radius: 50%;
-        transition: transform var(--transition); box-shadow: 0 1px 4px rgba(0,0,0,0.18);
-    }
-    [data-theme="dark"] .theme-toggle { background: var(--primary); }
-    [data-theme="dark"] .theme-toggle::after { transform: translateX(21px); }
-    .theme-icon { position: absolute; top: 50%; transform: translateY(-50%); font-size: 10px; transition: opacity var(--transition); }
-    .theme-icon.sun { left: 5px; opacity: 1; }
-    .theme-icon.moon { right: 4px; opacity: 0; }
-    [data-theme="dark"] .theme-icon.sun { opacity: 0; }
-    [data-theme="dark"] .theme-icon.moon { opacity: 1; }
-
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
-    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all var(--transition); }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    .mobile-nav {
-        display: none; position: fixed; top: var(--nav-height); left: 0; right: 0;
-        background: var(--surface); padding: 1.25rem 2rem;
-        box-shadow: var(--shadow-lg); z-index: 999;
-        flex-direction: column; gap: 0.25rem; border-top: 1px solid var(--border);
-    }
-    .mobile-nav.open { display: flex; }
-    .mobile-nav a { font-size: 1rem; font-weight: 500; color: var(--text); padding: 0.7rem 1rem; border-radius: var(--radius-sm); transition: all var(--transition); }
-    .mobile-nav a:hover { background: var(--surface-alt); color: var(--primary); }
-
-    /* HERO */
+    /* Page-specific: home */
     #home {
-        min-height: 100vh; display: flex; align-items: center;
+        min-height: calc(100vh - var(--nav-height));
+        display: flex; align-items: center;
         position: relative; overflow: hidden; padding-top: var(--nav-height);
         background: var(--bg);
     }
@@ -222,446 +34,65 @@
     @keyframes float { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-20px) scale(1.04); } }
     #starsCanvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 
-    .hero-content { position: relative; z-index: 1; max-width: 760px; }
+    .hero-grid {
+        position: relative; z-index: 1;
+        display: grid; grid-template-columns: 1.6fr 1fr; gap: 4rem;
+        align-items: center; padding: 3rem 0;
+    }
     .hero-eyebrow {
         display: inline-flex; align-items: center; gap: 0.55rem;
         font-size: 0.83rem; font-weight: 500; color: var(--text-muted); font-style: italic;
         background: var(--surface); padding: 0.5rem 1.2rem;
-        border-radius: var(--radius-full); margin-bottom: 1.8rem;
+        border-radius: var(--radius-full); margin-bottom: 1.6rem;
         box-shadow: var(--shadow-sm); border: 1px solid var(--border);
     }
     .live-dot { width: 8px; height: 8px; background: var(--secondary); border-radius: 50%; animation: pulse-dot 2s ease-in-out infinite; flex-shrink: 0; }
     @keyframes pulse-dot { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.4); opacity: 0.65; } }
 
-    .hero-headline { margin-bottom: 0.9rem; color: var(--text); }
+    .hero-headline { margin-bottom: 0.9rem; color: var(--text); font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
     .typewriter-line { display: block; color: var(--primary); font-style: italic; min-height: 1.3em; }
     .cursor { display: inline-block; width: 3px; height: 0.82em; background: var(--accent); margin-left: 3px; vertical-align: middle; animation: blink 1s step-end infinite; }
     @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
 
-    .hero-desc { font-size: 1.1rem; max-width: 580px; margin-bottom: 2.4rem; line-height: 1.85; }
-    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.8rem; }
+    .hero-desc { font-size: 1.05rem; max-width: 540px; margin-bottom: 2rem; line-height: 1.85; }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-    /* Fun facts row */
-    .fun-facts-row {
-        display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 0.5rem;
-        scrollbar-width: none; -webkit-overflow-scrolling: touch;
-        mask-image: linear-gradient(to right, transparent 0%, black 4%, black 93%, transparent 100%);
-    }
-    .fun-facts-row::-webkit-scrollbar { display: none; }
-    .ff-card {
-        flex-shrink: 0; background: var(--surface); border: 1px solid var(--border);
-        border-radius: 14px; padding: 0.9rem 1.2rem;
-        display: flex; align-items: flex-start; gap: 0.7rem;
-        max-width: 255px; min-width: 200px;
-        transition: all 0.25s; box-shadow: var(--shadow-sm); cursor: default;
-    }
-    .ff-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--primary-light); }
-    .ff-emoji { font-size: 1.4rem; flex-shrink: 0; line-height: 1.3; }
-    .ff-text  { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
-
-    /* ABOUT */
-    #about { background: var(--bg-about); }
-    .about-grid { display: grid; grid-template-columns: 1fr 1.75fr; gap: 5rem; align-items: start; }
-    .photo-col { position: relative; }
-    .photo-frame {
-        width: 100%; aspect-ratio: 3/4; border-radius: var(--radius);
-        overflow: hidden; box-shadow: var(--shadow-lg); position: relative;
-    }
-    .photo-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .photo-hover-msg {
-        position: absolute; inset: 0; background: rgba(90,78,138,0.88);
-        display: flex; align-items: center; justify-content: center;
-        opacity: 0; transition: opacity 0.35s; border-radius: var(--radius);
-        color: white; text-align: center; padding: 2rem;
-        font-family: 'Cormorant Garamond', serif; font-size: 1.2rem;
-        font-style: italic; line-height: 1.65;
-    }
-    .photo-frame:hover .photo-hover-msg { opacity: 1; }
-
-    .about-text h2 { margin-bottom: 1.4rem; }
-    .about-text > p { margin-bottom: 1.4rem; }
-    .expertise-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.8rem; }
-    .tag {
-        display: inline-block; padding: 0.38rem 1rem; border-radius: var(--radius-full);
-        font-size: 0.8rem; font-weight: 500; background: var(--surface-alt);
-        color: var(--primary); border: 1px solid var(--border); transition: all 0.22s; cursor: default;
-    }
-    .tag:hover { background: var(--primary); color: white; border-color: var(--primary); transform: translateY(-2px); }
-    .bg-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; margin-top: 2.2rem; }
-    .bg-card {
-        background: var(--surface); border: 1px solid var(--border);
-        border-radius: var(--radius-sm); padding: 1.1rem 1.25rem; transition: all var(--transition);
-    }
-    .bg-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: var(--primary-light); }
-    .bg-card-icon  { font-size: 1.3rem; margin-bottom: 0.4rem; }
-    .bg-card-title { font-weight: 600; font-size: 0.85rem; color: var(--text); margin-bottom: 0.2rem; }
-    .bg-card-detail{ font-size: 0.78rem; color: var(--text-muted); }
-
-    /* BLOG */
-    #blog { background: var(--bg-blog); }
-    .blog-controls { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin-bottom: 2.5rem; }
-    .search-wrap { position: relative; flex: 1; min-width: 230px; }
-    .search-icon { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none; }
-    .blog-search {
-        width: 100%; padding: 0.75rem 1rem 0.75rem 2.8rem;
-        border: 2px solid var(--border); border-radius: var(--radius-full);
-        background: var(--surface); color: var(--text);
-        font-size: 0.9rem; font-family: 'Inter', sans-serif;
-        transition: border-color var(--transition); outline: none;
-    }
-    .blog-search:focus { border-color: var(--primary); }
-    .filter-tags { display: flex; gap: 0.45rem; flex-wrap: wrap; }
-    .filter-btn {
-        padding: 0.48rem 1.05rem; border-radius: var(--radius-full);
-        font-size: 0.8rem; font-weight: 500; border: 2px solid var(--border);
-        background: var(--surface); color: var(--text-muted); cursor: pointer;
-        transition: all var(--transition); font-family: 'Inter', sans-serif;
-    }
-    .filter-btn:hover { border-color: var(--primary); color: var(--primary); }
-    .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
-
-    .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); gap: 1.8rem; }
-    .blog-card {
-        background: var(--surface); border: 1px solid var(--border);
+    .hero-photo {
+        width: 100%; max-width: 320px; aspect-ratio: 3/4; margin-left: auto;
         border-radius: var(--radius); overflow: hidden;
-        transition: all var(--transition); display: flex; flex-direction: column;
+        box-shadow: var(--shadow-lg); border: 4px solid var(--surface);
     }
-    .blog-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-6px); border-color: transparent; }
-    .blog-card-img { height: 170px; display: flex; align-items: center; justify-content: center; font-size: 2.8rem; }
-    .blog-card-img.lav   { background: linear-gradient(135deg, #D4CAEE, var(--primary-light)); }
-    .blog-card-img.mint  { background: linear-gradient(135deg, #B5EAD7, #C9F0E2); }
-    .blog-card-img.peach { background: linear-gradient(135deg, #F5D8C0, #F2C2AE); }
-    .blog-card-body  { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
-    .blog-card-tags  { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 0.7rem; }
-    .blog-tag {
-        font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
-        color: var(--primary); background: var(--surface-alt); padding: 0.22rem 0.6rem;
-        border-radius: var(--radius-full); border: 1px solid var(--border);
-    }
-    .blog-card h3 { font-size: 1.2rem; margin-bottom: 0.65rem; color: var(--text); transition: color var(--transition); }
-    .blog-card:hover h3 { color: var(--primary); }
-    .blog-card p { font-size: 0.88rem; flex: 1; margin-bottom: 1.4rem; }
-    .blog-card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--border); }
-    .blog-date { font-size: 0.78rem; color: var(--text-muted); }
-    .share-btns { display: flex; gap: 0.4rem; }
-    .share-btn {
-        width: 30px; height: 30px; border-radius: 50%; background: var(--surface-alt);
-        border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
-        font-size: 0.78rem; font-weight: 700; transition: all 0.2s;
-        text-decoration: none; color: var(--text-muted); cursor: pointer;
-    }
-    .share-btn:hover { background: var(--primary); color: white; border-color: var(--primary); transform: scale(1.12); }
-    .no-results { grid-column: 1/-1; text-align: center; padding: 4rem; color: var(--text-muted); }
-    .no-results-emoji { font-size: 3rem; display: block; margin-bottom: 1rem; }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-    .newsletter-banner {
-        margin-top: 4rem; border-radius: var(--radius); padding: 3rem;
-        text-align: center; position: relative; overflow: hidden;
-        background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-    }
-    .newsletter-banner::before { content: '✦'; position: absolute; font-size: 12rem; opacity: 0.04; top: -3rem; right: -2rem; color: white; line-height: 1; }
-    .newsletter-banner h3 { font-size: 2rem; margin-bottom: 0.75rem; color: white; }
-    .newsletter-banner p  { color: rgba(255,255,255,0.82); margin-bottom: 2rem; }
+    /* Latest articles section */
+    #latest { background: var(--bg-blog); }
+    #latest .section-head { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+    #latest h2 { margin-bottom: 0.4rem; }
+    .all-link { font-size: 0.92rem; font-weight: 600; color: var(--primary); border-bottom: 2px solid transparent; transition: border-color 0.2s; }
+    .all-link:hover { border-color: var(--primary); }
 
-    /* MISSION */
-    #mission { background: var(--bg-mission); }
-    .mission-intro { max-width: 680px; margin: 0 auto 5rem; text-align: center; }
-    .mission-intro h2 { margin-bottom: 1.25rem; }
-    .blockquote {
-        font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-style: italic;
-        color: var(--text); border-left: 4px solid var(--primary);
-        padding: 1.4rem 2rem; text-align: left;
-        background: var(--surface); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-        margin-top: 2rem; box-shadow: var(--shadow-sm);
-    }
-    .pillars-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.8rem; }
-    .pillar-card {
-        background: var(--surface); border: 1px solid var(--border);
-        border-radius: var(--radius); padding: 2.5rem 1.8rem; text-align: center;
-        transition: all var(--transition); position: relative; overflow: hidden;
-    }
-    .pillar-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--pc, var(--primary)); }
-    .pillar-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
-    .pillar-icon {
-        width: 68px; height: 68px; border-radius: 18px;
-        display: flex; align-items: center; justify-content: center;
-        font-size: 2rem; margin: 0 auto 1.5rem; background: var(--surface-alt);
-    }
-    .pillar-card h3 { margin-bottom: 1rem; }
-
-    /* SERVICES */
-    #services { background: var(--bg-services); }
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px,1fr)); gap: 1.4rem; }
-    .service-card {
-        background: var(--surface); border: 1px solid var(--border);
-        border-radius: var(--radius); padding: 2rem 1.8rem;
-        transition: all var(--transition); position: relative; overflow: hidden;
-    }
-    .service-card::after {
-        content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 0;
-        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-        transition: height 0.4s cubic-bezier(0.4,0,0.2,1);
-    }
-    .service-card:hover::after { height: 4px; }
-    .service-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-5px); }
-    .service-icon  { font-size: 2.4rem; margin-bottom: 1.2rem; display: block; }
-    .service-card h3 { font-size: 1.25rem; margin-bottom: 0.7rem; color: var(--text); }
-    .service-card p  { font-size: 0.88rem; margin-bottom: 1.4rem; }
-    .svc-type {
-        display: inline-flex; align-items: center; font-size: 0.74rem;
-        font-weight: 600; padding: 0.28rem 0.8rem; border-radius: var(--radius-full);
-        text-transform: uppercase; letter-spacing: 0.08em;
-    }
-    .svc-fee  { background: var(--accent-warm); color: var(--accent); }
-    .svc-free { background: #D4F5E2; color: #2A8A52; }
-    .svc-both { background: var(--surface-alt); color: var(--primary); border: 1px solid var(--border); }
-    [data-theme="dark"] .svc-fee  { background: rgba(232,144,123,0.18); }
-    [data-theme="dark"] .svc-free { background: rgba(95,173,144,0.18); color: var(--secondary); }
-
-    /* READING */
-    #reading { background: var(--bg-reading); }
-    .reading-intro { max-width: 600px; margin-bottom: 3rem; }
-    .edit-hint {
-        display: inline-flex; align-items: center; gap: 0.4rem;
-        font-size: 0.78rem; color: var(--text-muted); background: var(--surface);
-        border: 1px solid var(--border); padding: 0.35rem 0.85rem;
-        border-radius: var(--radius-full); margin-top: 0.75rem;
-    }
-    .reading-cols { display: grid; grid-template-columns: 1fr 1.6fr; gap: 3rem; align-items: start; }
-    .recs-label {
-        font-size: 0.78rem; font-weight: 600; text-transform: uppercase;
-        letter-spacing: 0.14em; color: var(--text-muted); margin-bottom: 1.25rem;
-        font-family: 'Inter', sans-serif;
-    }
-    .current-book-card {
-        background: var(--surface); border: 1px solid var(--border);
-        border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm);
-        transition: all var(--transition);
-    }
-    .current-book-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
-    .book-spine { height: 8px; background: linear-gradient(90deg, var(--primary), var(--accent)); }
-    .book-body  { padding: 1.5rem; }
-    .book-type-badge {
-        font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
-        color: var(--primary); background: var(--surface-alt); padding: 0.25rem 0.65rem;
-        border-radius: var(--radius-full); border: 1px solid var(--border);
-        display: inline-block; margin-bottom: 0.75rem;
-    }
-    .book-emoji  { font-size: 2.5rem; display: block; margin-bottom: 0.75rem; }
-    .book-title  { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--text); margin-bottom: 0.25rem; line-height: 1.3; }
-    .book-author { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem; }
-    .book-note   { font-size: 0.85rem; color: var(--text-muted); font-style: italic; line-height: 1.6; }
-    .reading-bar { height: 4px; background: var(--border); border-radius: 4px; margin-top: 1.25rem; overflow: hidden; }
-    .reading-bar-fill {
-        height: 100%; width: 40%; border-radius: 4px;
-        background: linear-gradient(90deg, var(--primary), var(--accent));
-        animation: reading-progress 3s ease-in-out infinite alternate;
-    }
-    @keyframes reading-progress { from { width: 35%; } to { width: 55%; } }
-    .reading-bar-label { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.4rem; }
-    .rec-list { display: flex; flex-direction: column; gap: 0.85rem; }
-    .rec-card {
-        background: var(--surface); border: 1px solid var(--border);
-        border-radius: var(--radius-sm); padding: 1rem 1.25rem;
-        display: flex; align-items: flex-start; gap: 1rem; transition: all var(--transition);
-    }
-    .rec-card:hover { border-color: var(--primary-light); transform: translateX(5px); box-shadow: var(--shadow-sm); }
-    .rec-emoji  { font-size: 1.5rem; flex-shrink: 0; }
-    .rec-info   { flex: 1; }
-    .rec-title  { font-weight: 600; font-size: 0.9rem; color: var(--text); margin-bottom: 0.1rem; }
-    .rec-author { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.25rem; }
-    .rec-note   { font-size: 0.8rem; color: var(--text-muted); font-style: italic; }
-    .rec-type {
-        font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
-        color: var(--primary); background: var(--surface-alt); padding: 0.18rem 0.5rem;
-        border-radius: var(--radius-full); margin-left: auto; flex-shrink: 0;
-        align-self: flex-start; border: 1px solid var(--border);
-    }
-    .reading-loading { color: var(--text-muted); font-style: italic; padding: 2rem 0; }
-
-    /* CONNECT */
-    #connect { background: var(--bg-connect); }
-    .connect-intro { text-align: center; max-width: 560px; margin: 0 auto 3.5rem; }
-    .social-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(165px,1fr)); gap: 1.3rem; }
-    .social-card {
-        background: var(--surface); border: 1px solid var(--border);
-        border-radius: var(--radius); padding: 2rem 1.25rem; text-align: center;
-        text-decoration: none; transition: all var(--transition);
-        display: flex; flex-direction: column; align-items: center; gap: 0.7rem;
-        position: relative; overflow: hidden;
-    }
-    .social-card::before { content: ''; position: absolute; inset: 0; background: var(--sc, var(--primary)); opacity: 0; transition: opacity var(--transition); }
-    .social-card:hover::before { opacity: 0.07; }
-    .social-card:hover { transform: translateY(-7px) scale(1.02); box-shadow: var(--shadow-lg); border-color: var(--sc, var(--primary)); }
-    .social-card > * { position: relative; z-index: 1; }
-    .social-icon {
-        width: 54px; height: 54px; border-radius: 15px;
-        display: flex; align-items: center; justify-content: center;
-        font-size: 1.55rem; background: var(--sc, var(--primary)); transition: transform 0.3s;
-    }
-    .social-card:hover .social-icon { transform: rotate(-10deg) scale(1.1); }
-    .social-name   { font-weight: 600; font-size: 0.88rem; color: var(--text); }
-    .social-handle { font-size: 0.76rem; color: var(--text-muted); }
-    .substack-bar {
-        margin-top: 2.5rem; border-radius: var(--radius); padding: 2.2rem 2.5rem;
-        background: linear-gradient(135deg, #FF6C1A, #FF8A00);
-        display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
-    }
-    .substack-bar h3 { color: white; font-size: 1.7rem; }
-    .substack-bar p  { color: rgba(255,255,255,0.85); margin-top: 0.35rem; }
-    .btn-white {
-        background: white; color: #E05800; padding: 0.82rem 1.9rem;
-        border-radius: var(--radius-full); font-weight: 600; font-size: 0.95rem;
-        transition: all 0.25s; white-space: nowrap; text-decoration: none; display: inline-block;
-    }
-    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.22); }
-
-    /* CONTACT */
-    #contact { background: var(--bg-contact); }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 5rem; align-items: start; }
-    .contact-info h2 { margin-bottom: 1.4rem; }
-    .contact-info > p { margin-bottom: 2rem; }
-    .contact-detail {
-        display: flex; align-items: center; gap: 1rem;
-        padding: 1rem 1.1rem; background: var(--surface); border: 1px solid var(--border);
-        border-radius: var(--radius-sm); margin-bottom: 0.9rem;
-        text-decoration: none; color: var(--text); transition: all var(--transition);
-    }
-    .contact-detail:hover { border-color: var(--primary); transform: translateX(5px); }
-    .cd-icon  { width: 40px; height: 40px; background: var(--surface-alt); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 1.15rem; flex-shrink: 0; }
-    .cd-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.09em; display: block; }
-    .cd-value { font-size: 0.9rem; font-weight: 500; color: var(--text); display: block; }
-    .contact-form { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.4rem; }
-    .form-group { margin-bottom: 1.4rem; }
-    .form-group label { display: block; font-size: 0.83rem; font-weight: 600; color: var(--text); margin-bottom: 0.45rem; }
-    .form-control {
-        width: 100%; padding: 0.82rem 1.15rem; border: 2px solid var(--border);
-        border-radius: var(--radius-sm); background: var(--bg); color: var(--text);
-        font-size: 0.92rem; font-family: 'Inter', sans-serif;
-        transition: border-color var(--transition); outline: none; resize: vertical;
-    }
-    .form-control:focus { border-color: var(--primary); }
-    .form-control::placeholder { color: var(--text-muted); opacity: 0.65; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .form-success { display: none; text-align: center; padding: 2rem; color: var(--secondary); }
-    .form-success .success-emoji { font-size: 3rem; display: block; margin-bottom: 0.65rem; }
-
-    /* FOOTER */
-    footer { background: var(--surface); border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; }
-    .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
-    .footer-brand > p { font-size: 0.88rem; margin: 1rem 0 1.5rem; }
-    .tgl-badge {
-        display: inline-flex; align-items: center; gap: 0.7rem;
-        background: var(--bg); border: 1px solid var(--border);
-        border-radius: var(--radius-sm); padding: 0.7rem 1rem;
-        text-decoration: none; color: var(--text); font-size: 0.83rem; font-weight: 500;
-        transition: all var(--transition);
-    }
-    .tgl-badge:hover { border-color: var(--primary); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
-    .tgl-logo { width: 30px; height: 30px; background: #1B4FFF; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: white; font-weight: 700; font-family: 'Cormorant Garamond', serif; }
-    .footer-col h4 { font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-muted); margin-bottom: 1.2rem; }
-    .footer-links { list-style: none; }
-    .footer-links li { margin-bottom: 0.55rem; }
-    .footer-links a { font-size: 0.88rem; color: var(--text-muted); transition: color var(--transition); }
-    .footer-links a:hover { color: var(--primary); }
-    .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.8rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
-    .footer-bottom p { font-size: 0.8rem; color: var(--text-muted); }
-    .footer-links-row { display: flex; gap: 1.5rem; align-items: center; }
-    .footer-links-row a { font-size: 0.8rem; color: var(--text-muted); transition: color 0.2s; }
-    .footer-links-row a:hover { color: var(--primary); }
-    .easter-star { cursor: default; user-select: none; color: var(--text-muted); }
-
-    /* TOAST */
-    .toast {
-        position: fixed; bottom: 2rem; left: 50%;
-        transform: translateX(-50%) translateY(120px);
-        background: var(--surface); border: 1px solid var(--border);
-        border-radius: var(--radius); padding: 1.1rem 1.75rem;
-        box-shadow: var(--shadow-lg); z-index: 9999; font-size: 0.9rem;
-        text-align: center; max-width: 380px; width: 90%; line-height: 1.5;
-        transition: transform 0.42s cubic-bezier(0.34,1.56,0.64,1);
-    }
-    .toast.show { transform: translateX(-50%) translateY(0); }
-
-    /* KONAMI OVERLAY */
-    .konami-overlay {
-        display: none; position: fixed; inset: 0; z-index: 99999;
-        background: rgba(90,78,138,0.96);
-        align-items: center; justify-content: center;
-        flex-direction: column; gap: 1.5rem; text-align: center; color: white; padding: 2rem;
-    }
-    .konami-overlay.show { display: flex; }
-    .konami-emoji  { font-size: 5rem; animation: spin 1s linear infinite; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .konami-title  { font-family: 'Cormorant Garamond', serif; font-size: 3rem; }
-    .konami-text   { font-size: 1.1rem; opacity: 0.9; max-width: 500px; line-height: 1.6; }
-    .konami-close  { background: white; color: var(--primary-dark); border: none; padding: 0.75rem 2rem; border-radius: var(--radius-full); font-size: 1rem; font-weight: 600; cursor: pointer; margin-top: 1rem; font-family: 'Inter', sans-serif; }
-
-    /* RESPONSIVE */
-    @media (max-width: 960px) {
-        .about-grid    { grid-template-columns: 1fr; }
-        .photo-col     { max-width: 300px; margin: 0 auto; }
-        .pillars-grid  { grid-template-columns: 1fr; }
-        .contact-grid  { grid-template-columns: 1fr; }
-        .footer-grid   { grid-template-columns: 1fr 1fr; }
-        .reading-cols  { grid-template-columns: 1fr; }
-    }
     @media (max-width: 768px) {
-        .nav-links  { display: none; }
-        .hamburger  { display: flex; }
-        .section    { padding: 70px 0; }
-        .blog-grid  { grid-template-columns: 1fr; }
-        .social-grid { grid-template-columns: repeat(3,1fr); }
-        .form-row   { grid-template-columns: 1fr; }
-        .footer-grid { grid-template-columns: 1fr; }
-        .newsletter-banner { padding: 2rem; }
-        .substack-bar { text-align: center; justify-content: center; }
+        .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+        .hero-photo { max-width: 240px; margin: 0 auto; }
     }
-    @media (max-width: 480px) {
-        .social-grid   { grid-template-columns: repeat(2,1fr); }
-        .hero-ctas .btn { width: 100%; justify-content: center; }
-        .bg-cards      { grid-template-columns: 1fr; }
-        .pillars-grid  { grid-template-columns: 1fr; }
-    }
-
-    /* Collapsible background details */
-    .bg-details { margin-top: 2.2rem; }
-    .bg-details summary {
-        display: inline-flex; align-items: center; gap: 0.4rem;
-        font-size: 0.8rem; font-weight: 600; color: var(--text-muted);
-        cursor: pointer; user-select: none; list-style: none;
-        padding: 0.45rem 1rem; border-radius: var(--radius-full);
-        border: 1px solid var(--border); background: var(--surface);
-        transition: all var(--transition);
-    }
-    .bg-details summary::-webkit-details-marker { display: none; }
-    .bg-details summary:hover { color: var(--primary); border-color: var(--primary-light); }
-    .bg-details[open] summary { color: var(--primary); border-color: var(--primary-light); }
-    .bg-details .bg-cards { margin-top: 1.25rem; }
-
-    /* Reading section: let CSS handle columns, not inline JS */
-    .reading-cols.loaded { display: grid; }
-    .reading-cols.single-col { grid-template-columns: 1fr; }
     </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav id="navbar">
+<nav id="navbar" class="site-nav">
     <div class="nav-inner">
-        <div class="nav-logo" id="logoTrigger" title="(Try clicking me 3 times 👀)">
+        <a href="index.html" class="nav-logo">
             <div class="nav-logo-mark">AS</div>
             <span class="nav-logo-text">Andi Shehu</span>
-        </div>
+        </a>
         <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#blog">Writing</a></li>
-            <li><a href="#mission">Mission</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#reading">Reading</a></li>
-            <li><a href="#connect">Connect</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="writing.html">Writing</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="reading.html">Reading</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
         <div class="nav-actions">
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
@@ -675,9 +106,12 @@
     </div>
 </nav>
 <div class="mobile-nav" id="mobileNav">
-    <a href="#home">Home</a><a href="#about">About</a><a href="#blog">Writing</a>
-    <a href="#mission">Mission</a><a href="#services">Services</a>
-    <a href="#reading">Reading</a><a href="#connect">Connect</a><a href="#contact">Contact</a>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="writing.html">Writing</a>
+    <a href="services.html">Services</a>
+    <a href="reading.html">Reading</a>
+    <a href="contact.html">Contact</a>
 </div>
 
 <!-- HOME -->
@@ -689,27 +123,30 @@
         <canvas id="starsCanvas"></canvas>
     </div>
     <div class="container">
-        <div class="hero-content">
-            <div class="hero-eyebrow">
-                <div class="live-dot"></div>
-                Based in Rome · working across Europe
+        <div class="hero-grid">
+            <div class="hero-content">
+                <div class="hero-eyebrow">
+                    <div class="live-dot"></div>
+                    Based in Rome · working across Europe
+                </div>
+                <h1 class="hero-headline">
+                    Hi, I'm Andi.<br>
+                    <span class="typewriter-line">
+                        <span id="typewriter">I make sense of things.</span><span class="cursor"></span>
+                    </span>
+                </h1>
+                <p class="hero-desc">
+                    Policy officer at <a href="https://www.thegoodlobby.it/" target="_blank" rel="noopener" style="color:var(--primary);font-weight:600;">The Good Lobby Italia</a>.
+                    I work on EU politics, human rights and community organising — and I write about them on
+                    <a href="https://substack.com/@shehuandi" target="_blank" rel="noopener" style="color:var(--primary);font-weight:600;">The Continental Brief</a>.
+                </p>
+                <div class="hero-ctas">
+                    <a href="writing.html" class="btn btn-primary">📝 Read my writing</a>
+                    <a href="about.html" class="btn btn-outline">More about me →</a>
+                </div>
             </div>
-            <h1 class="hero-headline">
-                Hi, I'm Andi.<br>
-                <span class="typewriter-line">
-                    <span id="typewriter">I make sense of things.</span><span class="cursor"></span>
-                </span>
-            </h1>
-            <p class="hero-desc">
-                Chemist turned democracy advocate. I work at the intersection of EU politics, human rights,
-                and the art of making complex things understandable to everyone who matters — which is everyone.
-            </p>
-            <div class="hero-ctas">
-                <a href="#blog" class="btn btn-primary">📝 Read my writing</a>
-                <a href="#about" class="btn btn-outline">Who am I?</a>
-            </div>
-            <div class="fun-facts-row" id="funFactsRow">
-                <!-- Cards loaded from fun-facts.json -->
+            <div class="hero-photo fade-in">
+                <img src="Photo/Foto Profilo.jpg" alt="Andi Shehu" loading="lazy">
             </div>
         </div>
     </div>
@@ -717,310 +154,69 @@
 
 <div class="divider"></div>
 
-<!-- ABOUT -->
-<section id="about" class="section">
+<!-- NAV CARDS -->
+<section class="section">
     <div class="container">
-        <div class="about-grid">
-            <div class="photo-col fade-in">
-                <div class="photo-frame" id="photoFrame">
-                    <img src="Foto Profilo.jpg" alt="Andi Shehu" loading="lazy">
-                    <div class="photo-hover-msg">
-                        "Chemist and economic historian by training.<br>Avid reader, sometimes a gamer,<br>and I love my comics."
-                    </div>
-                </div>
-            </div>
-            <div class="about-text fade-in">
-                <span class="section-label">About me</span>
-                <h2>Campaign builder.<br>Sense-maker. Reluctant expert.</h2>
-                <p>
-                    I'm a policy and advocacy professional with 10+ years of experience across civil society,
-                    EU-level advocacy, and political movements. Right now I'm a policy officer at
-                    <a href="https://www.thegoodlobby.it/" target="_blank" style="color:var(--primary);font-weight:600;">The Good Lobby Italia</a>,
-                    where I focus on democratic engagement, transparency, and direct lobbying — while also training others to do the same.
-                </p>
-                <p>
-                    My previous work had me pushing EU institutions to act on gender-based violence in Sudan,
-                    human trafficking in Tunisia and Libya, and more. Before that: more campaigns,
-                    more coalition work, more trying to make institutions actually listen.
-                </p>
-                <p>
-                    My core interests have always been science (especially evolution), international relations,
-                    history and anthropology. I started as a chemist and economic historian — and those backgrounds
-                    still shape how I read the world. I'm also an avid reader, sometimes a gamer, and I love my comics.
-                </p>
-                <p>
-                    I founded <strong style="color:var(--text);">The Continental Brief</strong> — a newsletter on EU politics
-                    and political economy — because complex issues should belong to everyone, not just insiders.
-                </p>
-                <div class="expertise-tags">
-                    <span class="tag">EU policy</span>
-                    <span class="tag">Campaign strategy</span>
-                    <span class="tag">Community organizing</span>
-                    <span class="tag">Human rights</span>
-                    <span class="tag">Public speaking</span>
-                    <span class="tag">Coalition building</span>
-                    <span class="tag">Political economy</span>
-                    <span class="tag">Digital education</span>
-                    <span class="tag">Civic engagement</span>
-                    <span class="tag">Policy analysis</span>
-                    <span class="tag">Workshop facilitation</span>
-                    <span class="tag">International relations</span>
-                </div>
-                <details class="bg-details">
-                    <summary>More background ↓</summary>
-                    <div class="bg-cards">
-                        <div class="bg-card">
-                            <div class="bg-card-icon">🎓</div>
-                            <div class="bg-card-title">Education</div>
-                            <div class="bg-card-detail">BSc chemistry · MA history &amp; civilization · International economic history</div>
-                        </div>
-                        <div class="bg-card">
-                            <div class="bg-card-icon">🗣️</div>
-                            <div class="bg-card-title">Languages</div>
-                            <div class="bg-card-detail">English · Italian · Albanian · French</div>
-                        </div>
-                        <div class="bg-card">
-                            <div class="bg-card-icon">✍️</div>
-                            <div class="bg-card-title">Newsletter</div>
-                            <div class="bg-card-detail">The Continental Brief · 300+ subscribers</div>
-                        </div>
-                        <div class="bg-card">
-                            <div class="bg-card-icon">📍</div>
-                            <div class="bg-card-title">Based in</div>
-                            <div class="bg-card-detail">Rome, Italy · working across Europe</div>
-                        </div>
-                    </div>
-                </details>
-            </div>
-        </div>
-    </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- BLOG -->
-<section id="blog" class="section">
-    <div class="container">
-        <span class="section-label fade-in">Writing &amp; essays</span>
-        <h2 class="fade-in" style="margin-bottom:0.75rem;">Ideas worth reading.</h2>
-        <p class="fade-in" style="margin-bottom:2.8rem;max-width:580px;">
-            Long-form analysis, essays, and commentary on European politics, democratic accountability,
-            human rights, and the power of collective action.
+        <span class="section-label fade-in">Where to next</span>
+        <h2 class="fade-in" style="margin-bottom:0.75rem;">Pick a corner.</h2>
+        <p class="fade-in" style="margin-bottom:0;max-width:560px;">
+            The site is split into a few small rooms. Open the one that interests you.
         </p>
-        <div class="blog-controls fade-in">
-            <div class="search-wrap">
-                <span class="search-icon">🔍</span>
-                <input type="text" class="blog-search" id="blogSearch" placeholder="Search articles…">
-            </div>
-            <div class="filter-tags">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="eu-politics">EU politics</button>
-                <button class="filter-btn" data-filter="human-rights">Human rights</button>
-                <button class="filter-btn" data-filter="democracy">Democracy</button>
-                <button class="filter-btn" data-filter="community">Community</button>
-                <button class="filter-btn" data-filter="economy">Economy</button>
-            </div>
-        </div>
-        <div class="blog-grid" id="blogGrid">
-            <article class="blog-card fade-in" data-tags="democracy eu-politics" data-title="the democracy deficit: why eu institutions still feel distant">
-                <div class="blog-card-img lav">🏛️</div>
-                <div class="blog-card-body">
-                    <div class="blog-card-tags"><span class="blog-tag">Democracy</span><span class="blog-tag">EU politics</span></div>
-                    <h3>The democracy deficit: why EU institutions still feel distant</h3>
-                    <p>Millions of Europeans vote in EU elections yet feel disconnected from the institutions that shape their lives. What's really going on — and can we fix it?</p>
-                    <div class="blog-card-footer">
-                        <span class="blog-date">Coming soon</span>
-                        <div class="share-btns">
-                            <a class="share-btn" href="https://x.com/intent/tweet?text=The+democracy+deficit&url=https://andishehu.eu" target="_blank" rel="noopener" title="Share on X">𝕏</a>
-                            <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://andishehu.eu" target="_blank" rel="noopener" title="Share on LinkedIn">in</a>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="blog-card fade-in" data-tags="human-rights eu-politics" data-title="sudan and the eu: what parliament's resolution actually changed">
-                <div class="blog-card-img peach">✊</div>
-                <div class="blog-card-body">
-                    <div class="blog-card-tags"><span class="blog-tag">Human rights</span><span class="blog-tag">EU politics</span></div>
-                    <h3>Sudan and the EU: what Parliament's resolution actually changed</h3>
-                    <p>I helped shape the European Parliament's resolution on Sudan. Here's an honest assessment of what it achieved, what it failed to do, and why the work continues.</p>
-                    <div class="blog-card-footer">
-                        <span class="blog-date">Coming soon</span>
-                        <div class="share-btns">
-                            <a class="share-btn" href="https://x.com/intent/tweet?text=Sudan+and+the+EU&url=https://andishehu.eu" target="_blank" rel="noopener" title="Share on X">𝕏</a>
-                            <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://andishehu.eu" target="_blank" rel="noopener" title="Share on LinkedIn">in</a>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="blog-card fade-in" data-tags="community economy" data-title="community organizing in 2025: what movements must adapt">
-                <div class="blog-card-img mint">🤝</div>
-                <div class="blog-card-body">
-                    <div class="blog-card-tags"><span class="blog-tag">Community</span><span class="blog-tag">Economy</span></div>
-                    <h3>Community organizing in 2025: what movements must adapt</h3>
-                    <p>The playbooks of the 20th century don't always translate. After leading campaigns with 1,100+ participants, here's what I've learned about what actually works.</p>
-                    <div class="blog-card-footer">
-                        <span class="blog-date">Coming soon</span>
-                        <div class="share-btns">
-                            <a class="share-btn" href="https://x.com/intent/tweet?text=Community+organizing+in+2025&url=https://andishehu.eu" target="_blank" rel="noopener" title="Share on X">𝕏</a>
-                            <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://andishehu.eu" target="_blank" rel="noopener" title="Share on LinkedIn">in</a>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <!-- TO ADD NEW ARTICLES: copy one <article> block above, update data-tags, data-title, emoji, h3, p, blog-date -->
-            <div class="no-results" id="noResults" style="display:none">
-                <span class="no-results-emoji">🔍</span>
-                <p>No articles match your search. Try a different keyword or filter!</p>
-            </div>
-        </div>
-        <div class="newsletter-banner fade-in">
-            <h3>The Continental Brief 🗞️</h3>
-            <p>EU politics and political economy, made sense of. Join 300+ readers already subscribed.</p>
-            <a href="https://substack.com/@shehuandi" target="_blank" rel="noopener" class="btn btn-accent" id="newsletterBtn">Subscribe on Substack →</a>
+        <div class="nav-cards">
+            <a href="about.html" class="nav-card fade-in">
+                <span class="nav-card-arrow">↗</span>
+                <div class="nav-card-icon">👤</div>
+                <h3>About</h3>
+                <p>Mission, story, expertise — and why a chemist ended up doing this.</p>
+            </a>
+            <a href="writing.html" class="nav-card fade-in">
+                <span class="nav-card-arrow">↗</span>
+                <div class="nav-card-icon">✍️</div>
+                <h3>Writing</h3>
+                <p>Essays and analysis on European politics, economy and democracy.</p>
+            </a>
+            <a href="services.html" class="nav-card fade-in">
+                <span class="nav-card-arrow">↗</span>
+                <div class="nav-card-icon">🤝</div>
+                <h3>Services</h3>
+                <p>Campaign strategy, workshops, policy analysis. Fee-based or pro-bono.</p>
+            </a>
+            <a href="reading.html" class="nav-card fade-in">
+                <span class="nav-card-arrow">↗</span>
+                <div class="nav-card-icon">📚</div>
+                <h3>Reading</h3>
+                <p>What's on my shelf right now — books, articles, comics. Recommendations included.</p>
+            </a>
+            <a href="contact.html" class="nav-card fade-in">
+                <span class="nav-card-arrow">↗</span>
+                <div class="nav-card-icon">✉️</div>
+                <h3>Contact</h3>
+                <p>One form, sent straight to my inbox. Plus everywhere else you can find me.</p>
+            </a>
+            <a href="https://substack.com/@shehuandi" target="_blank" rel="noopener" class="nav-card fade-in">
+                <span class="nav-card-arrow">↗</span>
+                <div class="nav-card-icon">🗞️</div>
+                <h3>The Continental Brief</h3>
+                <p>My Substack newsletter. EU politics and political economy, made sense of.</p>
+            </a>
         </div>
     </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- MISSION -->
-<section id="mission" class="section">
+<!-- LATEST ARTICLES -->
+<section id="latest" class="section">
     <div class="container">
-        <div class="mission-intro fade-in">
-            <span class="section-label">Mission &amp; vision</span>
-            <h2>Why this work matters.</h2>
-            <p>Complex policy issues should not belong only to experts. Democracy is only as strong as the people who understand and participate in it.</p>
-            <blockquote class="blockquote">
-                "My work focuses on sense-making around European politics and economy, improving democracy,
-                and promoting human and social rights. I believe complex policy issues should be accessible to everyone."
-            </blockquote>
-        </div>
-        <div class="pillars-grid">
-            <div class="pillar-card fade-in" style="--pc:var(--primary);">
-                <div class="pillar-icon">🧭</div>
-                <h3>Sense-making</h3>
-                <p>Breaking down the complexity of EU institutions, political economy, and international dynamics into language anyone can engage with. From newsletters to short-form video, I translate the machinery of power into accessible insight.</p>
+        <div class="section-head fade-in">
+            <div>
+                <span class="section-label">Latest writing</span>
+                <h2>Most recent.</h2>
             </div>
-            <div class="pillar-card fade-in" style="--pc:var(--secondary);">
-                <div class="pillar-icon">🗳️</div>
-                <h3>Improving democracy</h3>
-                <p>Working to close the gap between citizens and the institutions that govern them. Through advocacy, coalition building, and civic education, I push for accountable, transparent, and participatory democratic systems.</p>
-            </div>
-            <div class="pillar-card fade-in" style="--pc:var(--accent);">
-                <div class="pillar-icon">⚖️</div>
-                <h3>Human &amp; social rights</h3>
-                <p>From Sudan to civic space in Europe, I work to ensure human rights remain at the centre of policy decisions. Amplifying voices, building coalitions, and holding institutions to account.</p>
-            </div>
+            <a href="writing.html" class="all-link">All articles →</a>
         </div>
-    </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- SERVICES -->
-<section id="services" class="section">
-    <div class="container">
-        <span class="section-label fade-in">Services</span>
-        <h2 class="fade-in" style="margin-bottom:0.75rem;">Let's work together.</h2>
-        <p class="fade-in" style="margin-bottom:2.8rem;max-width:580px;">
-            Available on a fee basis or pro-bono depending on the project and organisation.
-        </p>
-        <div class="services-grid">
-            <div class="service-card fade-in"><span class="service-icon">📣</span><h3>Campaign strategy &amp; design</h3><p>From vision to movement. I help organisations design campaigns that move people, build coalitions, and create durable policy change.</p><span class="svc-type svc-both">Fee / pro-bono</span></div>
-            <div class="service-card fade-in"><span class="service-icon">🔬</span><h3>Policy analysis &amp; research</h3><p>Clear, accessible analysis of complex EU and international policy landscapes. Position papers, briefings, and memos that actually get read.</p><span class="svc-type svc-fee">Fee-based</span></div>
-            <div class="service-card fade-in"><span class="service-icon">🎤</span><h3>Workshop facilitation</h3><p>Interactive workshops on community organising, advocacy strategy, and civic engagement — for NGOs, universities, and civic groups.</p><span class="svc-type svc-both">Fee / pro-bono</span></div>
-            <div class="service-card fade-in"><span class="service-icon">🤝</span><h3>Community organizing consultation</h3><p>Helping organisations and grassroots groups build power, recruit members, and structure their advocacy for long-term impact.</p><span class="svc-type svc-free">Pro-bono available</span></div>
-            <div class="service-card fade-in"><span class="service-icon">📱</span><h3>Digital education &amp; content</h3><p>Strategic advice on using short-form video and social media to reach new audiences with policy and civic content.</p><span class="svc-type svc-fee">Fee-based</span></div>
-            <div class="service-card fade-in"><span class="service-icon">🌐</span><h3>Coalition building</h3><p>Connecting civil society actors, identifying common ground, and building strategic alliances that amplify advocacy impact.</p><span class="svc-type svc-both">Fee / pro-bono</span></div>
-        </div>
-        <div class="fade-in" style="text-align:center;margin-top:3rem;">
-            <p style="margin-bottom:1.5rem;">Interested in working together? Let's talk.</p>
-            <a href="#contact" class="btn btn-primary">Get in touch →</a>
-        </div>
-    </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- READING -->
-<section id="reading" class="section">
-    <div class="container">
-        <div class="reading-intro fade-in">
-            <span class="section-label">What I'm reading</span>
-            <h2>On my shelf right now.</h2>
-            <p>Books, articles, comics — the things currently shaping how I think. Recommendations included.</p>
-            <span class="edit-hint">✏️ I update this directly on GitHub — no web dev needed</span>
-        </div>
-        <div class="reading-cols fade-in" id="readingCols">
-            <div class="reading-loading">Loading shelf… 📚</div>
-        </div>
-    </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- CONNECT -->
-<section id="connect" class="section">
-    <div class="container">
-        <div class="connect-intro fade-in">
-            <span class="section-label">Connect</span>
-            <h2>Find me online.</h2>
-            <p>Follow along for EU politics breakdowns, policy insights, and occasional takes on why democracy is worth fighting for.</p>
-        </div>
-        <div class="social-grid">
-            <a class="social-card fade-in" href="https://www.instagram.com/sheh.andi/" target="_blank" rel="noopener" style="--sc:#C13584;"><div class="social-icon" style="background:linear-gradient(135deg,#405DE6,#833AB4,#C13584,#FD1D1D);">📸</div><span class="social-name">Instagram</span><span class="social-handle">@sheh.andi</span></a>
-            <a class="social-card fade-in" href="https://www.tiktok.com/@andishehu670" target="_blank" rel="noopener" style="--sc:#010101;"><div class="social-icon" style="background:#010101;">🎵</div><span class="social-name">TikTok</span><span class="social-handle">@andishehu670</span></a>
-            <a class="social-card fade-in" href="https://linkedin.com/in/inandishehu/" target="_blank" rel="noopener" style="--sc:#0A66C2;"><div class="social-icon" style="background:#0A66C2;">💼</div><span class="social-name">LinkedIn</span><span class="social-handle">Andi Shehu</span></a>
-            <a class="social-card fade-in" href="https://www.facebook.com/shehu.and" target="_blank" rel="noopener" style="--sc:#1877F2;"><div class="social-icon" style="background:#1877F2;">📘</div><span class="social-name">Facebook</span><span class="social-handle">shehu.and</span></a>
-            <a class="social-card fade-in" href="https://www.threads.com/@sheh.andi" target="_blank" rel="noopener" style="--sc:#101010;"><div class="social-icon" style="background:#101010;">🧵</div><span class="social-name">Threads</span><span class="social-handle">@sheh.andi</span></a>
-            <a class="social-card fade-in" href="https://x.com/AndShehu" target="_blank" rel="noopener" style="--sc:#000000;"><div class="social-icon" style="background:#000;font-family:serif;font-size:1.3rem;font-weight:700;color:white;">𝕏</div><span class="social-name">X / Twitter</span><span class="social-handle">@AndShehu</span></a>
-        </div>
-        <div class="substack-bar fade-in">
-            <div><h3>📬 The Continental Brief</h3><p>My Substack newsletter on EU politics and political economy.</p></div>
-            <a href="https://substack.com/@shehuandi" target="_blank" rel="noopener" class="btn-white">Subscribe free →</a>
-        </div>
-    </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- CONTACT -->
-<section id="contact" class="section">
-    <div class="container">
-        <div class="contact-grid">
-            <div class="contact-info fade-in">
-                <span class="section-label">Contact</span>
-                <h2>Let's start a conversation.</h2>
-                <p>Whether it's a collaboration, a speaking invitation, a media request, or just a question about EU politics — I'd love to hear from you.</p>
-                <a href="mailto:andi.shehu@gmail.com" class="contact-detail"><div class="cd-icon">✉️</div><div><span class="cd-label">Email</span><span class="cd-value">andi.shehu@gmail.com</span></div></a>
-                <a href="https://linkedin.com/in/inandishehu/" target="_blank" rel="noopener" class="contact-detail"><div class="cd-icon">💼</div><div><span class="cd-label">Professional network</span><span class="cd-value">LinkedIn — Andi Shehu</span></div></a>
-                <a href="https://www.thegoodlobby.it/" target="_blank" rel="noopener" class="contact-detail"><div class="cd-icon">🏛️</div><div><span class="cd-label">Organisation</span><span class="cd-value">The Good Lobby Italia</span></div></a>
-            </div>
-            <div class="fade-in">
-                <!-- CONTACT FORM: sign up at formspree.io and replace YOUR_FORM_ID below -->
-                <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-                    <div class="form-row">
-                        <div class="form-group"><label for="firstName">First name</label><input type="text" id="firstName" name="firstName" class="form-control" placeholder="Your first name" required></div>
-                        <div class="form-group"><label for="lastName">Last name</label><input type="text" id="lastName" name="lastName" class="form-control" placeholder="Your last name"></div>
-                    </div>
-                    <div class="form-group"><label for="email">Email address</label><input type="email" id="email" name="email" class="form-control" placeholder="your@email.com" required></div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <select id="subject" name="subject" class="form-control" style="cursor:pointer;appearance:auto;">
-                            <option value="">Select a topic…</option>
-                            <option>Collaboration or partnership</option>
-                            <option>Speaking or workshop invitation</option>
-                            <option>Media or press inquiry</option>
-                            <option>Community organizing consultation</option>
-                            <option>Policy analysis request</option>
-                            <option>Just saying hello 👋</option>
-                        </select>
-                    </div>
-                    <div class="form-group"><label for="message">Message</label><textarea id="message" name="message" class="form-control" rows="5" placeholder="Tell me about your project, question, or idea…" required></textarea></div>
-                    <button type="submit" class="btn btn-primary" id="submitBtn" style="width:100%;justify-content:center;">Send message →</button>
-                    <div class="form-success" id="formSuccess"><span class="success-emoji">🎉</span>Message sent! I'll get back to you soon.</div>
-                </form>
-            </div>
+        <div class="article-list" id="latestList">
+            <div class="no-results"><span class="no-results-emoji">⏳</span><p>Loading…</p></div>
         </div>
     </div>
 </section>
@@ -1039,250 +235,121 @@
                     <div class="tgl-logo">GL</div>The Good Lobby Italia
                 </a>
             </div>
-            <div class="footer-col"><h4>Navigate</h4><ul class="footer-links"><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#blog">Writing</a></li><li><a href="#mission">Mission</a></li><li><a href="#services">Services</a></li><li><a href="#reading">Reading</a></li></ul></div>
-            <div class="footer-col"><h4>Connect</h4><ul class="footer-links"><li><a href="https://substack.com/@shehuandi" target="_blank" rel="noopener">Substack</a></li><li><a href="https://www.instagram.com/sheh.andi/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://linkedin.com/in/inandishehu/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://x.com/AndShehu" target="_blank" rel="noopener">X / Twitter</a></li><li><a href="https://www.tiktok.com/@andishehu670" target="_blank" rel="noopener">TikTok</a></li><li><a href="https://www.threads.com/@sheh.andi" target="_blank" rel="noopener">Threads</a></li></ul></div>
-            <div class="footer-col"><h4>Writing</h4><ul class="footer-links"><li><a href="https://substack.com/@shehuandi" target="_blank" rel="noopener">The Continental Brief</a></li><li><a href="#blog">Essays &amp; analysis</a></li><li><a href="#contact">Pitch me a topic</a></li></ul></div>
+            <div class="footer-col"><h4>Navigate</h4><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="writing.html">Writing</a></li><li><a href="services.html">Services</a></li><li><a href="reading.html">Reading</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+            <div class="footer-col"><h4>Connect</h4><ul class="footer-links"><li><a href="https://substack.com/@shehuandi" target="_blank" rel="noopener">Substack</a></li><li><a href="https://www.instagram.com/sheh.andi/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://linkedin.com/in/inandishehu/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://x.com/AndShehu" target="_blank" rel="noopener">X / Twitter</a></li><li><a href="https://www.tiktok.com/@andishehu670" target="_blank" rel="noopener">TikTok</a></li></ul></div>
+            <div class="footer-col"><h4>Writing</h4><ul class="footer-links"><li><a href="https://substack.com/@shehuandi" target="_blank" rel="noopener">The Continental Brief</a></li><li><a href="writing.html">Essays &amp; analysis</a></li><li><a href="contact.html">Pitch me a topic</a></li></ul></div>
         </div>
         <div class="footer-bottom">
-            <p>© 2025 Andi Shehu · andishehu.eu</p>
+            <p>© 2026 Andi Shehu · andishehu.eu</p>
             <div class="footer-links-row">
-                <a href="mailto:andi.shehu@gmail.com">Contact</a>
+                <a href="contact.html">Contact</a>
                 <a href="https://www.thegoodlobby.it/" target="_blank" rel="noopener">The Good Lobby Italia</a>
-                <span class="easter-star" id="easterStar">✦</span>
+                <span class="easter-star">✦</span>
             </div>
         </div>
     </div>
 </footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<canvas id="confettiCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9998;display:none;"></canvas>
-<div class="konami-overlay" id="konamiOverlay">
-    <div class="konami-emoji">🎮</div>
-    <div class="konami-title">Achievement unlocked!</div>
-    <div class="konami-text">You know the Konami code. Andi would approve — he's a gamer too. Now go save the real world, not just the virtual one.</div>
-    <button class="konami-close" onclick="document.getElementById('konamiOverlay').classList.remove('show')">Back to reality →</button>
-</div>
 
+<script src="app.js"></script>
 <script>
-'use strict';
-
-/* THEME */
-const html = document.documentElement;
-html.setAttribute('data-theme', localStorage.getItem('as-theme') || 'light');
-document.getElementById('themeToggle').addEventListener('click', () => {
-    const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-    html.setAttribute('data-theme', next);
-    localStorage.setItem('as-theme', next);
-});
-
-/* NAV */
-const navbar = document.getElementById('navbar');
-const navLinks = document.querySelectorAll('.nav-links a');
-const sections = document.querySelectorAll('section[id]');
-window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 24);
-    let cur = '';
-    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
-    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
-}, { passive: true });
-
-/* HAMBURGER */
-const ham = document.getElementById('hamburger');
-const mob = document.getElementById('mobileNav');
-ham.addEventListener('click', () => { ham.classList.toggle('open'); mob.classList.toggle('open'); });
-mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { ham.classList.remove('open'); mob.classList.remove('open'); }));
-
 /* TYPEWRITER */
-const roles = ['I make sense of things.','Policy officer.','Campaign builder.','Community organizer.','Digital educator.','Avid reader.','Recovering chemist.'];
-let ri = 0, ci = 0, deleting = false;
-const tw = document.getElementById('typewriter');
-function type() {
-    const word = roles[ri];
-    if (deleting) { tw.textContent = word.slice(0, ci--); if (ci < 0) { deleting = false; ri = (ri+1) % roles.length; return setTimeout(type, 380); } return setTimeout(type, 50); }
-    tw.textContent = word.slice(0, ci++);
-    if (ci > word.length) { deleting = true; return setTimeout(type, 2000); }
-    setTimeout(type, 90);
-}
-setTimeout(type, 1000);
+(function () {
+    const roles = ['I make sense of things.','Policy officer.','Campaign builder.','Community organiser.','Digital educator.','Avid reader.','Recovering chemist.'];
+    let ri = 0, ci = 0, deleting = false;
+    const tw = document.getElementById('typewriter');
+    if (!tw) return;
+    function type() {
+        const word = roles[ri];
+        if (deleting) {
+            tw.textContent = word.slice(0, ci--);
+            if (ci < 0) { deleting = false; ri = (ri + 1) % roles.length; return setTimeout(type, 380); }
+            return setTimeout(type, 50);
+        }
+        tw.textContent = word.slice(0, ci++);
+        if (ci > word.length) { deleting = true; return setTimeout(type, 2000); }
+        setTimeout(type, 90);
+    }
+    setTimeout(type, 800);
+})();
 
 /* EU STARS */
-const sc = document.getElementById('starsCanvas'), sctx = sc.getContext('2d');
-let stars = [];
-function resizeSC() { sc.width = sc.offsetWidth; sc.height = sc.offsetHeight; }
-function initStars() {
-    stars = Array.from({length:12}, (_,i) => ({
-        angle: (i/12)*Math.PI*2, radius: 150+Math.random()*190,
-        cx: sc.width*0.74, cy: sc.height*0.44,
-        speed: 0.00025+Math.random()*0.00025, size: 2.5+Math.random()*3, alpha: 0.08+Math.random()*0.22
-    }));
-}
-function drawStar5(x,y,r,a) {
-    sctx.save(); sctx.globalAlpha=a; sctx.fillStyle='#D4A843'; sctx.translate(x,y); sctx.beginPath();
-    for(let i=0;i<5;i++){const o=(i*4*Math.PI/5)-Math.PI/2,inn=o+Math.PI/5; i===0?sctx.moveTo(Math.cos(o)*r,Math.sin(o)*r):sctx.lineTo(Math.cos(o)*r,Math.sin(o)*r); sctx.lineTo(Math.cos(inn)*r*0.4,Math.sin(inn)*r*0.4);}
-    sctx.closePath(); sctx.fill(); sctx.restore();
-}
-function animStars() {
-    sctx.clearRect(0,0,sc.width,sc.height);
-    stars.forEach(s => { s.angle+=s.speed; drawStar5(s.cx+Math.cos(s.angle)*s.radius, s.cy+Math.sin(s.angle)*s.radius, s.size, s.alpha); });
-    requestAnimationFrame(animStars);
-}
-resizeSC(); initStars(); animStars();
-window.addEventListener('resize', () => { resizeSC(); initStars(); }, {passive:true});
+(function () {
+    const sc = document.getElementById('starsCanvas');
+    if (!sc) return;
+    const sctx = sc.getContext('2d');
+    let stars = [];
+    function resizeSC() { sc.width = sc.offsetWidth; sc.height = sc.offsetHeight; }
+    function initStars() {
+        stars = Array.from({length:12}, (_,i) => ({
+            angle: (i/12)*Math.PI*2, radius: 150+Math.random()*190,
+            cx: sc.width*0.74, cy: sc.height*0.44,
+            speed: 0.00025+Math.random()*0.00025, size: 2.5+Math.random()*3, alpha: 0.08+Math.random()*0.22
+        }));
+    }
+    function drawStar5(x,y,r,a) {
+        sctx.save(); sctx.globalAlpha = a; sctx.fillStyle = '#D4A843'; sctx.translate(x,y); sctx.beginPath();
+        for (let i=0; i<5; i++) {
+            const o = (i*4*Math.PI/5) - Math.PI/2, inn = o + Math.PI/5;
+            i === 0 ? sctx.moveTo(Math.cos(o)*r, Math.sin(o)*r) : sctx.lineTo(Math.cos(o)*r, Math.sin(o)*r);
+            sctx.lineTo(Math.cos(inn)*r*0.4, Math.sin(inn)*r*0.4);
+        }
+        sctx.closePath(); sctx.fill(); sctx.restore();
+    }
+    function animStars() {
+        sctx.clearRect(0, 0, sc.width, sc.height);
+        stars.forEach(s => {
+            s.angle += s.speed;
+            drawStar5(s.cx + Math.cos(s.angle) * s.radius, s.cy + Math.sin(s.angle) * s.radius, s.size, s.alpha);
+        });
+        requestAnimationFrame(animStars);
+    }
+    resizeSC(); initStars(); animStars();
+    window.addEventListener('resize', () => { resizeSC(); initStars(); }, { passive: true });
+})();
 
-/* SCROLL FADE-IN */
-const io = new IntersectionObserver(entries => {
-    entries.forEach((e,i) => { if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),i*75); io.unobserve(e.target); } });
-}, {threshold:0.08, rootMargin:'0px 0px -30px 0px'});
-document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
-
-/* CURSOR TRAIL */
-let trailT = 0;
-document.addEventListener('mousemove', e => {
-    if (Date.now()-trailT < 80 || Math.random()>0.6) return;
-    trailT = Date.now();
-    const d = document.createElement('div'); d.className='cursor-trail';
-    d.style.left=e.clientX+'px'; d.style.top=e.clientY+'px';
-    document.body.appendChild(d); setTimeout(()=>d.remove(), 900);
-}, {passive:true});
-
-/* BLOG FILTER */
-const blogSearch = document.getElementById('blogSearch');
-const filterBtns = document.querySelectorAll('.filter-btn');
-const blogCards  = document.querySelectorAll('.blog-card');
-const noResults  = document.getElementById('noResults');
-let activeFilter = 'all';
-function filterBlog() {
-    const q = blogSearch.value.toLowerCase().trim(); let any = false;
-    blogCards.forEach(c => { const show=(activeFilter==='all'||c.dataset.tags.includes(activeFilter))&&(!q||c.dataset.title.includes(q)); c.style.display=show?'':'none'; if(show)any=true; });
-    noResults.style.display = any?'none':'block';
-}
-blogSearch.addEventListener('input', filterBlog);
-filterBtns.forEach(btn => btn.addEventListener('click', () => {
-    filterBtns.forEach(b=>b.classList.remove('active')); btn.classList.add('active');
-    activeFilter=btn.dataset.filter; filterBlog();
-}));
-
-/* RIPPLE */
-document.querySelectorAll('.btn').forEach(btn => {
-    btn.addEventListener('click', function(e) {
-        const r=document.createElement('span'); r.classList.add('ripple');
-        const rect=this.getBoundingClientRect(), sz=Math.max(rect.width,rect.height)*2;
-        r.style.cssText=`width:${sz}px;height:${sz}px;left:${e.clientX-rect.left-sz/2}px;top:${e.clientY-rect.top-sz/2}px`;
-        this.appendChild(r); r.addEventListener('animationend',()=>r.remove());
-    });
-});
-
-/* CONFETTI */
-const cc=document.getElementById('confettiCanvas'), cctx=cc.getContext('2d');
-let cfParts=[], cfAnimId=null;
-function launchConfetti() {
-    cc.style.display='block'; cc.width=window.innerWidth; cc.height=window.innerHeight;
-    const cols=['#7C6FAF','#5FAD90','#E8907B','#C4BDE8','#F5D8C0','#B5EAD7','#D4A843'];
-    cfParts=Array.from({length:120},()=>({x:Math.random()*cc.width,y:-12,vx:(Math.random()-0.5)*4.5,vy:3+Math.random()*4,col:cols[~~(Math.random()*cols.length)],w:5+Math.random()*9,h:3+Math.random()*6,rot:Math.random()*360,rs:(Math.random()-0.5)*9,shape:Math.random()>0.5?'rect':'circle'}));
-    if(cfAnimId)cancelAnimationFrame(cfAnimId); animConf();
-    setTimeout(()=>{cancelAnimationFrame(cfAnimId);cc.style.display='none';},3400);
-}
-function animConf() {
-    cctx.clearRect(0,0,cc.width,cc.height);
-    cfParts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=0.08;p.rot+=p.rs;cctx.save();cctx.translate(p.x,p.y);cctx.rotate(p.rot*Math.PI/180);cctx.fillStyle=p.col;cctx.globalAlpha=Math.max(0,Math.min(1,(cc.height-p.y)/cc.height*2));if(p.shape==='rect')cctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);else{cctx.beginPath();cctx.arc(0,0,p.w/2,0,Math.PI*2);cctx.fill();}cctx.restore();});
-    cfParts=cfParts.filter(p=>p.y<cc.height+20);
-    if(cfParts.length)cfAnimId=requestAnimationFrame(animConf);
-}
-document.getElementById('newsletterBtn').addEventListener('click', launchConfetti);
-
-/* TOAST */
-const toastEl=document.getElementById('toast');
-let toastTimer;
-const toasts=['🌍 Fun fact: I\'ve attended more EU committee meetings than I\'ve eaten pasta. Almost.','📖 Secret truth: the best policy ideas are stolen from sci-fi novels.','🦕 Evolution reminder: everything interesting takes longer than you think.','🎮 Gamer confession: I still save fictional worlds on weekends. Someone has to.','🔬 Lab confession: I still miss the smell of a chemistry lab sometimes.','👾 Hidden level unlocked. No extra lives though — this is democracy work.'];
-let toastIdx=0;
-function showToast(msg) {
-    toastEl.textContent=msg||toasts[toastIdx++%toasts.length];
-    toastEl.classList.add('show'); clearTimeout(toastTimer);
-    toastTimer=setTimeout(()=>toastEl.classList.remove('show'),4500);
-}
-
-/* EASTER EGG: Logo x3 */
-let lc=0,lt;
-document.getElementById('logoTrigger').addEventListener('click',()=>{lc++;clearTimeout(lt);if(lc>=3){showToast();lc=0;}else lt=setTimeout(()=>lc=0,1400);});
-
-/* EASTER EGG: Photo x3 */
-let pc=0,pt;
-document.getElementById('photoFrame').addEventListener('click',()=>{pc++;clearTimeout(pt);if(pc>=3){showToast("👋 Hey, that's me! Chemist, economist, accidental democracy enthusiast.");pc=0;}else pt=setTimeout(()=>pc=0,1400);});
-
-/* EASTER EGG: Chemist card x5 — wired up after cards load */
-function wireChemistEgg() {
-    const c=document.getElementById('chemistCard'); if(!c)return;
-    c.addEventListener('click',function(){
-        const n=parseInt(this.dataset.clicks||0)+1; this.dataset.clicks=n;
-        if(n>=5){showToast("🧪 True story: the lab instilled in me a love of evidence. Politicians still aren't ready for it.");this.dataset.clicks=0;}
-    });
-}
-
-/* EASTER EGG: Footer star x3 */
-let sc2=0;
-document.getElementById('easterStar').addEventListener('click',()=>{sc2++;if(sc2>=3){showToast("✦ You found the secret star. No prize — just my respect.");sc2=0;}setTimeout(()=>sc2=0,1800);});
-
-/* EASTER EGG: Konami code */
-const KONAMI=['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
-let kIdx=0;
-document.addEventListener('keydown',e=>{
-    kIdx=(e.key===KONAMI[kIdx])?kIdx+1:(e.key===KONAMI[0]?1:0);
-    if(kIdx===KONAMI.length){kIdx=0;document.getElementById('konamiOverlay').classList.add('show');launchConfetti();}
-});
-
-/* 3D TILT */
-function addTilt(sel,deg=8){
-    document.querySelectorAll(sel).forEach(c=>{
-        c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-0.5,y=(e.clientY-r.top)/r.height-0.5;c.style.transform=`translateY(-5px) perspective(700px) rotateY(${x*deg}deg) rotateX(${-y*deg}deg)`;});
-        c.addEventListener('mouseleave',()=>{c.style.transform='';});
-    });
-}
-addTilt('.social-card',10); addTilt('.service-card',7); addTilt('.pillar-card',7);
-
-/* FUN FACTS — loaded from fun-facts.json */
-const FF_FALLBACK=[
-  {emoji:'🔬',text:'Started as a chemist. Ended up fighting for democracy. No regrets.',id:'chemist'},
-  {emoji:'📖',text:'Reads more books than is strictly healthy. Has the shelves to prove it.'},
-  {emoji:'👥',text:'Community organiser & team builder. Ran campaigns with 1,100+ people. Coalitions over committees.'},
-  {emoji:'🦸',text:'Comics are serious literature. This is not a debate.'},
-  {emoji:'🌍',text:'Thinks in 4 languages. Works across 3 countries. Sleeps too little.'},
-  {emoji:'🦕',text:'Fascinated by evolution since childhood. The questions never got smaller.'},
-  {emoji:'🤝',text:'Warning: workshops will involve pair work. You\'ve been warned.'}
-];
-function renderFunFacts(cards){
-  const row=document.getElementById('funFactsRow'); if(!row)return;
-  row.innerHTML=cards.map(c=>`<div class="ff-card"${c.id?' id="'+c.id+'" data-clicks="0"':''}>
-    <span class="ff-emoji">${c.emoji}</span>
-    <span class="ff-text">${c.text}</span>
-  </div>`).join('');
-  wireChemistEgg();
-}
-async function loadFunFacts(){try{const res=await fetch('./fun-facts.json?v='+Date.now());if(!res.ok)throw 0;renderFunFacts(await res.json());}catch{renderFunFacts(FF_FALLBACK);}}
-loadFunFacts();
-
-/* READING SECTION */
-const FALLBACK={currently_reading:[{title:"The Age of Surveillance Capitalism",author:"Shoshana Zuboff",type:"book",emoji:"📖",note:"Dense but essential. About who owns the future."}],recommendations:[{title:"Sandman",author:"Neil Gaiman",type:"comic",emoji:"🦸",note:"The best thing ever written. Fight me."},{title:"The Sleepwalkers",author:"Christopher Clark",type:"book",emoji:"📚",note:"How Europe stumbled into WWI — and why it matters now"},{title:"Sapiens",author:"Yuval Noah Harari",type:"book",emoji:"🦕",note:"Changed how I think about basically everything"},{title:"Maus",author:"Art Spiegelman",type:"comic",emoji:"🖤",note:"Proof that comics can carry the weight of history"},{title:"The Origins of Political Order",author:"Francis Fukuyama",type:"book",emoji:"🏛️",note:"Why states fail and why institutions matter"}]};
-const typeColor={book:'#7C6FAF',comic:'#E8907B',article:'#5FAD90'};
-
-function renderReading(data) {
-    const cols=document.getElementById('readingCols'), cur=data.currently_reading&&data.currently_reading[0], recs=data.recommendations||[];
-    const curHTML=cur?`<div><div class="recs-label">Currently reading</div><div class="current-book-card"><div class="book-spine"></div><div class="book-body"><span class="book-type-badge">${cur.type||'book'}</span><span class="book-emoji">${cur.emoji||'📖'}</span><div class="book-title">${cur.title}</div><div class="book-author">by ${cur.author}</div>${cur.note?`<div class="book-note">${cur.note}</div>`:''}<div class="reading-bar"><div class="reading-bar-fill"></div></div><div class="reading-bar-label">In progress…</div></div></div></div>`:'';
-    const recsHTML=recs.length?`<div><div class="recs-label">Recommendations</div><div class="rec-list">${recs.map(b=>`<div class="rec-card"><span class="rec-emoji">${b.emoji||'📚'}</span><div class="rec-info"><div class="rec-title">${b.title}</div><div class="rec-author">by ${b.author}</div>${b.note?`<div class="rec-note">${b.note}</div>`:''}</div><span class="rec-type" style="color:${typeColor[b.type]||'var(--primary)'};">${b.type||'book'}</span></div>`).join('')}</div></div>`:'';
-    cols.innerHTML=curHTML+recsHTML;
-    cols.classList.add('loaded');
-    if(!cur) cols.classList.add('single-col');
-    addTilt('.rec-card',4);
-}
-async function loadReading(){try{const res=await fetch('./reading.json?v='+Date.now());if(!res.ok)throw 0;renderReading(await res.json());}catch{renderReading(FALLBACK);}}
-loadReading();
-
-/* CONTACT FORM */
-const form=document.getElementById('contactForm'), submitBtn=document.getElementById('submitBtn'), formSuc=document.getElementById('formSuccess');
-form.addEventListener('submit',async e=>{
-    e.preventDefault(); submitBtn.textContent='Sending…'; submitBtn.disabled=true;
-    try{const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});if(res.ok){form.reset();formSuc.style.display='block';submitBtn.style.display='none';launchConfetti();}else throw 0;}
-    catch{window.location.href=`mailto:andi.shehu@gmail.com?subject=${encodeURIComponent(form.querySelector('#subject').value||'Website contact')}&body=${encodeURIComponent(form.querySelector('#message').value||'')}`;submitBtn.textContent='Send message →';submitBtn.disabled=false;}
-});
+/* LATEST ARTICLES on home */
+(async function () {
+    const list = document.getElementById('latestList');
+    if (!list) return;
+    try {
+        const res = await fetch('articles/articles.json');
+        if (!res.ok) throw new Error('fetch failed');
+        const articles = await res.json();
+        const sorted = articles.slice().sort((a,b) => new Date(b.date) - new Date(a.date));
+        const top = sorted.slice(0, 3);
+        if (!top.length) {
+            list.innerHTML = '<div class="no-results"><span class="no-results-emoji">📭</span><p>No articles yet — first one coming soon!</p></div>';
+            return;
+        }
+        list.innerHTML = top.map(a => {
+            const href = a.external_url ? a.external_url : `article.html?slug=${encodeURIComponent(a.slug)}`;
+            const target = a.external_url ? ' target="_blank" rel="noopener"' : '';
+            const tags = (a.tags || []).map(t => `<span class="article-tag">${t.replace(/-/g,' ')}</span>`).join('');
+            return `
+                <a class="article-card fade-in" href="${href}"${target}>
+                    <div class="article-card-img ${a.color || 'lav'}">${a.emoji || '📝'}</div>
+                    <div class="article-card-body">
+                        <div class="article-card-tags">${tags}</div>
+                        <h3>${a.title}</h3>
+                        <p>${a.summary || ''}</p>
+                        <div class="article-card-footer">
+                            <span class="article-date">${window.formatArticleDate(a.date)}</span>
+                            <span class="article-readmore">Read →</span>
+                        </div>
+                    </div>
+                </a>`;
+        }).join('');
+        // re-arm fade-in observer for new cards
+        const io = new IntersectionObserver(entries => {
+            entries.forEach((e,i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i*60); io.unobserve(e.target); } });
+        }, { threshold: 0.08 });
+        list.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+    } catch (err) {
+        list.innerHTML = '<div class="no-results"><span class="no-results-emoji">⚠️</span><p>Could not load articles.</p></div>';
+    }
+})();
 </script>
 </body>
 </html>

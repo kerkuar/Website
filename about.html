@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — Andi Shehu</title>
+    <meta name="description" content="Mission, story and background. Policy officer at The Good Lobby Italia, working on EU politics, human rights and community organising.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+    body { background: var(--bg-about); }
+
+    .page-intro { max-width: 760px; }
+
+    /* Mission pillars */
+    .pillars-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.8rem; margin-top: 1rem; }
+    .pillar-card {
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: var(--radius); padding: 2.4rem 1.8rem; text-align: left;
+        transition: all var(--transition); position: relative; overflow: hidden;
+    }
+    .pillar-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--pc, var(--primary)); }
+    .pillar-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .pillar-icon {
+        width: 60px; height: 60px; border-radius: 16px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.8rem; margin-bottom: 1.3rem; background: var(--surface-alt);
+    }
+    .pillar-card h3 { margin-bottom: 0.7rem; }
+    .pillar-card p { font-size: 0.92rem; }
+
+    .blockquote {
+        font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-style: italic;
+        color: var(--text); border-left: 4px solid var(--primary);
+        padding: 1.4rem 2rem; text-align: left;
+        background: var(--surface); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        margin: 2rem 0; box-shadow: var(--shadow-sm); max-width: 720px;
+    }
+
+    /* Bio */
+    .about-grid { display: grid; grid-template-columns: 1fr 1.75fr; gap: 5rem; align-items: start; }
+    .photo-col { position: relative; }
+    .photo-frame {
+        width: 100%; aspect-ratio: 3/4; border-radius: var(--radius);
+        overflow: hidden; box-shadow: var(--shadow-lg); position: relative;
+    }
+    .photo-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo-hover-msg {
+        position: absolute; inset: 0; background: rgba(90,78,138,0.88);
+        display: flex; align-items: center; justify-content: center;
+        opacity: 0; transition: opacity 0.35s; border-radius: var(--radius);
+        color: white; text-align: center; padding: 2rem;
+        font-family: 'Cormorant Garamond', serif; font-size: 1.15rem;
+        font-style: italic; line-height: 1.65;
+    }
+    .photo-frame:hover .photo-hover-msg { opacity: 1; }
+
+    .about-text h2 { margin-bottom: 1.4rem; }
+    .about-text > p { margin-bottom: 1.4rem; }
+
+    .expertise-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.8rem; }
+
+    .bg-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; margin-top: 2.2rem; }
+    .bg-card {
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: var(--radius-sm); padding: 1.1rem 1.25rem; transition: all var(--transition);
+    }
+    .bg-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: var(--primary-light); }
+    .bg-card-icon  { font-size: 1.3rem; margin-bottom: 0.4rem; }
+    .bg-card-title { font-weight: 600; font-size: 0.85rem; color: var(--text); margin-bottom: 0.2rem; }
+    .bg-card-detail{ font-size: 0.78rem; color: var(--text-muted); }
+
+    /* Fun facts */
+    .ff-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+    .ff-card {
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: 14px; padding: 1.1rem 1.3rem;
+        display: flex; align-items: flex-start; gap: 0.8rem;
+        transition: all 0.25s; box-shadow: var(--shadow-sm); cursor: default;
+    }
+    .ff-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--primary-light); }
+    .ff-emoji { font-size: 1.5rem; flex-shrink: 0; line-height: 1.3; }
+    .ff-text  { font-size: 0.86rem; color: var(--text-muted); line-height: 1.55; }
+
+    @media (max-width: 960px) {
+        .about-grid    { grid-template-columns: 1fr; }
+        .photo-col     { max-width: 300px; margin: 0 auto; }
+        .pillars-grid  { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+        .bg-cards { grid-template-columns: 1fr; }
+    }
+
+    /* Konami easter egg */
+    .konami-overlay {
+        display: none; position: fixed; inset: 0; z-index: 99999;
+        background: rgba(90,78,138,0.96);
+        align-items: center; justify-content: center;
+        flex-direction: column; gap: 1.5rem; text-align: center; color: white; padding: 2rem;
+    }
+    .konami-overlay.show { display: flex; }
+    .konami-emoji  { font-size: 5rem; animation: spin 1s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .konami-title  { font-family: 'Cormorant Garamond', serif; font-size: 3rem; }
+    .konami-text   { font-size: 1.1rem; opacity: 0.9; max-width: 500px; line-height: 1.6; }
+    .konami-close  { background: white; color: var(--primary-dark); border: none; padding: 0.75rem 2rem; border-radius: var(--radius-full); font-size: 1rem; font-weight: 600; cursor: pointer; margin-top: 1rem; font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar" class="site-nav solid">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+            <div class="nav-logo-mark">AS</div>
+            <span class="nav-logo-text">Andi Shehu</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="writing.html">Writing</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="reading.html">Reading</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <span class="theme-icon sun">☀️</span>
+                <span class="theme-icon moon">🌙</span>
+            </button>
+            <button class="hamburger" id="hamburger" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="writing.html">Writing</a>
+    <a href="services.html">Services</a>
+    <a href="reading.html">Reading</a>
+    <a href="contact.html">Contact</a>
+</div>
+
+<!-- Page intro / Mission -->
+<section class="has-nav-offset">
+    <div class="container">
+        <div class="page-intro fade-in">
+            <span class="section-label">About</span>
+            <h1>Why this work — and why me.</h1>
+            <p>Complex policy issues should not belong only to experts. Democracy is only as strong as the people who understand and participate in it. That conviction is the through-line behind everything on this site.</p>
+            <blockquote class="blockquote">
+                "My work focuses on sense-making around European politics and economy, improving democracy,
+                and promoting human and social rights. Complex policy issues should be accessible to everyone."
+            </blockquote>
+        </div>
+
+        <div class="pillars-grid">
+            <div class="pillar-card fade-in" style="--pc:var(--primary);">
+                <div class="pillar-icon">🧭</div>
+                <h3>Sense-making</h3>
+                <p>Breaking down EU institutions, political economy, and international dynamics into language anyone can engage with — from newsletters to short-form video.</p>
+            </div>
+            <div class="pillar-card fade-in" style="--pc:var(--secondary);">
+                <div class="pillar-icon">🗳️</div>
+                <h3>Improving democracy</h3>
+                <p>Closing the gap between citizens and the institutions that govern them — through advocacy, coalition building, and civic education.</p>
+            </div>
+            <div class="pillar-card fade-in" style="--pc:var(--accent);">
+                <div class="pillar-icon">⚖️</div>
+                <h3>Human &amp; social rights</h3>
+                <p>From Sudan to civic space in Europe — making sure rights stay at the centre of policy decisions, not in the footnotes.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider" style="margin-top:6rem;"></div>
+
+<!-- Bio -->
+<section class="section">
+    <div class="container">
+        <div class="about-grid">
+            <div class="photo-col fade-in">
+                <div class="photo-frame">
+                    <img src="Photo/Foto Profilo.jpg" alt="Andi Shehu" loading="lazy">
+                    <div class="photo-hover-msg">
+                        "Chemist and economic historian by training.<br>Avid reader, sometimes a gamer,<br>and I love my comics."
+                    </div>
+                </div>
+            </div>
+            <div class="about-text fade-in">
+                <span class="section-label">The story</span>
+                <h2>Campaign builder.<br>Sense-maker. Reluctant expert.</h2>
+                <p>
+                    I'm a policy and advocacy professional with 10+ years of experience across civil society,
+                    EU-level advocacy, and political movements. Right now I'm a policy officer at
+                    <a href="https://www.thegoodlobby.it/" target="_blank" rel="noopener" style="color:var(--primary);font-weight:600;">The Good Lobby Italia</a>,
+                    where I focus on democratic engagement, transparency, and direct lobbying — while also training others to do the same.
+                </p>
+                <p>
+                    My previous work had me pushing EU institutions to act on gender-based violence in Sudan,
+                    human trafficking in Tunisia and Libya, and more. Before that: more campaigns,
+                    more coalition work, more trying to make institutions actually listen.
+                </p>
+                <p>
+                    My core interests have always been science (especially evolution), international relations,
+                    history and anthropology. I started as a chemist and economic historian — and those backgrounds
+                    still shape how I read the world.
+                </p>
+                <p>
+                    I founded <strong style="color:var(--text);">The Continental Brief</strong> — a newsletter on EU politics
+                    and political economy — because complex issues should belong to everyone, not just insiders.
+                </p>
+
+                <div class="expertise-tags">
+                    <span class="tag">EU policy</span>
+                    <span class="tag">Campaign strategy</span>
+                    <span class="tag">Community organising</span>
+                    <span class="tag">Human rights</span>
+                    <span class="tag">Public speaking</span>
+                    <span class="tag">Coalition building</span>
+                    <span class="tag">Political economy</span>
+                    <span class="tag">Digital education</span>
+                    <span class="tag">Civic engagement</span>
+                    <span class="tag">Policy analysis</span>
+                    <span class="tag">Workshop facilitation</span>
+                    <span class="tag">International relations</span>
+                </div>
+
+                <div class="bg-cards">
+                    <div class="bg-card">
+                        <div class="bg-card-icon">🎓</div>
+                        <div class="bg-card-title">Education</div>
+                        <div class="bg-card-detail">BSc chemistry · MA history &amp; civilization · International economic history</div>
+                    </div>
+                    <div class="bg-card">
+                        <div class="bg-card-icon">🗣️</div>
+                        <div class="bg-card-title">Languages</div>
+                        <div class="bg-card-detail">English · Italian · Albanian · French</div>
+                    </div>
+                    <div class="bg-card">
+                        <div class="bg-card-icon">✍️</div>
+                        <div class="bg-card-title">Newsletter</div>
+                        <div class="bg-card-detail">The Continental Brief · 300+ subscribers</div>
+                    </div>
+                    <div class="bg-card">
+                        <div class="bg-card-icon">📍</div>
+                        <div class="bg-card-title">Based in</div>
+                        <div class="bg-card-detail">Rome, Italy · working across Europe</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Fun facts -->
+<section class="section">
+    <div class="container">
+        <span class="section-label fade-in">A few more things</span>
+        <h2 class="fade-in" style="margin-bottom:0.5rem;">Off the clock.</h2>
+        <p class="fade-in" style="max-width:580px;">The bits that don't fit on a CV but probably tell you more.</p>
+        <div class="ff-grid" id="funFactsGrid">
+            <!-- Loaded from fun-facts.json -->
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div style="display:flex;align-items:center;gap:0.7rem;">
+                    <div class="nav-logo-mark" style="width:36px;height:36px;font-size:1.1rem;">AS</div>
+                    <span style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--text);">Andi Shehu</span>
+                </div>
+                <p>Sense-maker. Democracy advocate. Historian at heart. Making European politics accessible, one article at a time.</p>
+                <a href="https://www.thegoodlobby.it/" target="_blank" rel="noopener" class="tgl-badge">
+                    <div class="tgl-logo">GL</div>The Good Lobby Italia
+                </a>
+            </div>
+            <div class="footer-col"><h4>Navigate</h4><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="writing.html">Writing</a></li><li><a href="services.html">Services</a></li><li><a href="reading.html">Reading</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+            <div class="footer-col"><h4>Connect</h4><ul class="footer-links"><li><a href="https://substack.com/@shehuandi" target="_blank" rel="noopener">Substack</a></li><li><a href="https://www.instagram.com/sheh.andi/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://linkedin.com/in/inandishehu/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://x.com/AndShehu" target="_blank" rel="noopener">X / Twitter</a></li><li><a href="https://www.tiktok.com/@andishehu670" target="_blank" rel="noopener">TikTok</a></li></ul></div>
+            <div class="footer-col"><h4>Writing</h4><ul class="footer-links"><li><a href="https://substack.com/@shehuandi" target="_blank" rel="noopener">The Continental Brief</a></li><li><a href="writing.html">Essays &amp; analysis</a></li><li><a href="contact.html">Pitch me a topic</a></li></ul></div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Andi Shehu · andishehu.eu</p>
+            <div class="footer-links-row">
+                <a href="contact.html">Contact</a>
+                <a href="https://www.thegoodlobby.it/" target="_blank" rel="noopener">The Good Lobby Italia</a>
+                <span class="easter-star" id="easterStar">✦</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- Konami easter egg -->
+<div class="konami-overlay" id="konamiOverlay">
+    <div class="konami-emoji">🎮</div>
+    <div class="konami-title">Achievement unlocked!</div>
+    <div class="konami-text">You know the Konami code. Andi would approve — he's a gamer too. Now go save the real world, not just the virtual one.</div>
+    <button class="konami-close" onclick="document.getElementById('konamiOverlay').classList.remove('show')">Back to reality →</button>
+</div>
+
+<script src="app.js"></script>
+<script>
+/* Load fun facts */
+(async function () {
+    const grid = document.getElementById('funFactsGrid');
+    if (!grid) return;
+    try {
+        const res = await fetch('fun-facts.json');
+        const facts = await res.json();
+        grid.innerHTML = facts.map(f => `
+            <div class="ff-card fade-in">
+                <span class="ff-emoji">${f.emoji}</span>
+                <span class="ff-text">${f.text}</span>
+            </div>`).join('');
+        const io = new IntersectionObserver(entries => {
+            entries.forEach((e,i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i*40); io.unobserve(e.target); } });
+        }, { threshold: 0.08 });
+        grid.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+    } catch (err) {
+        grid.innerHTML = '';
+    }
+})();
+
+/* Konami code */
+(function () {
+    const seq = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+    let idx = 0;
+    document.addEventListener('keydown', e => {
+        const k = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+        if (k === seq[idx]) {
+            idx++;
+            if (idx === seq.length) {
+                document.getElementById('konamiOverlay').classList.add('show');
+                idx = 0;
+            }
+        } else {
+            idx = 0;
+        }
+    });
+
+    /* Easter star toast */
+    const star = document.getElementById('easterStar');
+    if (star) star.addEventListener('click', () => {
+        window.showToast('🌟 You found it. The footer star says hi.');
+    });
+})();
+</script>
+</body>
+</html>
