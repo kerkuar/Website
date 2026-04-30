@@ -55,11 +55,13 @@ Open `articles/articles.json` and add a new object to the array. Use this templa
   "subtitle": "An optional one-line subtitle",
   "date": "2026-05-15",
   "tags": ["eu-politics", "economy"],
-  "summary": "1–2 sentences for the listing card. Keep it punchy.",
+  "summary": "1-2 sentences for the listing card. Keep it punchy.",
   "emoji": "🛢️",
   "color": "lav",
   "reading_time": "9 min",
-  "external_url": ""
+  "external_url": "",
+  "hero_image": "articles/images/your-article-slug.jpg",
+  "hero_caption": "Optional caption shown under the hero image."
 }
 ```
 
@@ -77,6 +79,8 @@ Open `articles/articles.json` and add a new object to the array. Use this templa
 | `color` | Card thumbnail background. Options: `lav` (lavender), `mint` (green), `peach` (warm), `gold` (yellow), `sky` (blue). |
 | `reading_time` | Optional, e.g. `"7 min"`. Empty string `""` to hide. |
 | `external_url` | Optional. **If set**, clicking the card opens this URL (Substack, etc.) instead of `article.html`. Leave as `""` to host the article on your site. |
+| `hero_image` | Optional. Path to a hero image, relative to the site root. Convention: drop the file in `articles/images/` named after the slug (e.g. `articles/images/your-article-slug.jpg`). Shown under the title on the article page. |
+| `hero_caption` | Optional. Italic caption under the hero image. Useful for crediting historical photos, sources, or giving context (e.g. "Signing ceremony of the Treaty of Rome at the Palazzo dei Conservatori, Rome."). |
 
 ### Example: full entry with comma between articles
 
@@ -143,6 +147,7 @@ If you'd rather link out to Substack (no internal page on andishehu.eu), set `ex
 
 - [ ] Body file at `articles/<slug>.md`
 - [ ] Filename matches the `slug` field exactly
+- [ ] Hero image (optional) saved at `articles/images/<slug>.jpg`
 - [ ] New entry added to `articles/articles.json`
 - [ ] Comma between entries (except the last)
 - [ ] Date in `YYYY-MM-DD` format

@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Article — Andi Shehu</title>
+    <title>Article, Andi Shehu</title>
     <meta name="description" content="">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <style>
     body { background: var(--bg-blog); }
@@ -129,7 +130,7 @@
 <nav id="navbar" class="site-nav solid">
     <div class="nav-inner">
         <a href="index.html" class="nav-logo">
-            <div class="nav-logo-mark">AS</div>
+            <div class="nav-logo-mark"><svg viewBox="0 0 64 64" aria-hidden="true"><rect class="logo-bg" width="64" height="64" rx="14"/><path class="logo-star" d="M32 12 L36.7 25.4 L51 25.4 L39.4 33.7 L43.9 47 L32 38.8 L20.1 47 L24.6 33.7 L13 25.4 L27.3 25.4 Z"/></svg></div>
             <span class="nav-logo-text">Andi Shehu</span>
         </a>
         <ul class="nav-links">
@@ -175,7 +176,7 @@
         <div class="footer-grid">
             <div class="footer-brand">
                 <div style="display:flex;align-items:center;gap:0.7rem;">
-                    <div class="nav-logo-mark" style="width:36px;height:36px;font-size:1.1rem;">AS</div>
+                    <div class="nav-logo-mark" style="width:36px;height:36px;"><svg viewBox="0 0 64 64" aria-hidden="true"><rect class="logo-bg" width="64" height="64" rx="14"/><path class="logo-star" d="M32 12 L36.7 25.4 L51 25.4 L39.4 33.7 L43.9 47 L32 38.8 L20.1 47 L24.6 33.7 L13 25.4 L27.3 25.4 Z"/></svg></div>
                     <span style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--text);">Andi Shehu</span>
                 </div>
                 <p>Sense-maker. Democracy advocate. Historian at heart. Making European politics accessible, one article at a time.</p>
@@ -246,7 +247,7 @@ const TAG_LABELS = {
         const md = await mdRes.text();
 
         /* 3) Render */
-        document.title = `${meta.title} — Andi Shehu`;
+        document.title = `${meta.title}, Andi Shehu`;
         const metaDesc = document.querySelector('meta[name="description"]');
         if (metaDesc) metaDesc.setAttribute('content', meta.summary || '');
 
@@ -259,6 +260,13 @@ const TAG_LABELS = {
         const shareUrl = encodeURIComponent(`https://andishehu.eu/article.html?slug=${slug}`);
         const shareText = encodeURIComponent(meta.title);
 
+        const heroImageHtml = meta.hero_image
+            ? `<figure class="article-hero-image">
+                   <img src="${meta.hero_image}" alt="${(meta.hero_caption || meta.title).replace(/"/g,'&quot;')}" loading="lazy">
+                   ${meta.hero_caption ? `<figcaption class="article-hero-caption">${meta.hero_caption}</figcaption>` : ''}
+               </figure>`
+            : '';
+
         root.innerHTML = `
             <div class="article-hero">
                 <div class="article-meta-tags">${tagsHtml}</div>
@@ -270,6 +278,7 @@ const TAG_LABELS = {
                     ${meta.reading_time ? `<span>${meta.reading_time} read</span>` : ''}
                 </div>
             </div>
+            ${heroImageHtml}
             <article class="article-body">${bodyHtml}</article>
             <div class="article-share">
                 <span>Share this piece</span>

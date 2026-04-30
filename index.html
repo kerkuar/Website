@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andi Shehu — Policy. Advocacy. Sense-making.</title>
-    <meta name="description" content="Policy and advocacy professional based in Rome. EU politics, human rights, community organising — and the art of making complex things understandable.">
-    <meta property="og:title" content="Andi Shehu — Policy. Advocacy. Sense-making.">
-    <meta property="og:description" content="Making sense of European politics, human rights, and democratic accountability.">
+    <title>Andi Shehu, Policy. Advocacy. Sense-making.</title>
+    <meta name="description" content="Policy and advocacy professional based in Rome. EU politics, human rights, community organising and the art of making complex things understandable.">
+    <meta property="og:title" content="Andi Shehu, Policy. Advocacy. Sense-making.">
+    <meta property="og:description" content="Making sense of European politics, human rights and democratic accountability.">
     <meta property="og:url" content="https://andishehu.eu">
     <meta name="twitter:card" content="summary_large_image">
 
@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <style>
     /* Page-specific: home */
@@ -57,12 +58,14 @@
     .hero-desc { font-size: 1.05rem; max-width: 540px; margin-bottom: 2rem; line-height: 1.85; }
     .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
 
+    .hero-photo-col { margin-left: auto; max-width: 320px; width: 100%; }
     .hero-photo {
-        width: 100%; max-width: 320px; aspect-ratio: 3/4; margin-left: auto;
+        width: 100%; aspect-ratio: 3/4;
         border-radius: var(--radius); overflow: hidden;
         box-shadow: var(--shadow-lg); border: 4px solid var(--surface);
     }
     .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-photo-col .hero-socials { margin-top: 1rem; }
 
     /* Latest articles section */
     #latest { background: var(--bg-blog); }
@@ -73,7 +76,7 @@
 
     @media (max-width: 768px) {
         .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-        .hero-photo { max-width: 240px; margin: 0 auto; }
+        .hero-photo-col { max-width: 240px; margin: 0 auto; }
     }
     </style>
 </head>
@@ -83,7 +86,7 @@
 <nav id="navbar" class="site-nav">
     <div class="nav-inner">
         <a href="index.html" class="nav-logo">
-            <div class="nav-logo-mark">AS</div>
+            <div class="nav-logo-mark"><svg viewBox="0 0 64 64" aria-hidden="true"><rect class="logo-bg" width="64" height="64" rx="14"/><path class="logo-star" d="M32 12 L36.7 25.4 L51 25.4 L39.4 33.7 L43.9 47 L32 38.8 L20.1 47 L24.6 33.7 L13 25.4 L27.3 25.4 Z"/></svg></div>
             <span class="nav-logo-text">Andi Shehu</span>
         </a>
         <ul class="nav-links">
@@ -137,7 +140,7 @@
                 </h1>
                 <p class="hero-desc">
                     Policy officer at <a href="https://www.thegoodlobby.it/" target="_blank" rel="noopener" style="color:var(--primary);font-weight:600;">The Good Lobby Italia</a>.
-                    I work on EU politics, human rights and community organising — and I write about them on
+                    I work on EU politics, human rights and community organising and I write about them on
                     <a href="https://substack.com/@shehuandi" target="_blank" rel="noopener" style="color:var(--primary);font-weight:600;">The Continental Brief</a>.
                 </p>
                 <div class="hero-ctas">
@@ -145,8 +148,19 @@
                     <a href="about.html" class="btn btn-outline">More about me →</a>
                 </div>
             </div>
-            <div class="hero-photo fade-in">
-                <img src="Photo/Foto Profilo.jpg" alt="Andi Shehu" loading="lazy">
+            <div class="hero-photo-col fade-in">
+                <div class="hero-photo">
+                    <img src="Photo/Foto Profilo.jpg" alt="Andi Shehu" loading="lazy">
+                </div>
+                <div class="hero-socials">
+                    <a href="https://substack.com/@shehuandi" target="_blank" rel="noopener" title="Substack" aria-label="Substack">📬</a>
+                    <a href="https://linkedin.com/in/inandishehu/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">in</a>
+                    <a href="https://x.com/AndShehu" target="_blank" rel="noopener" title="X / Twitter" aria-label="X" style="font-family:serif;font-weight:700;">𝕏</a>
+                    <a href="https://www.instagram.com/sheh.andi/" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram">📸</a>
+                    <a href="https://www.tiktok.com/@andishehu670" target="_blank" rel="noopener" title="TikTok" aria-label="TikTok">🎵</a>
+                    <a href="https://www.threads.com/@sheh.andi" target="_blank" rel="noopener" title="Threads" aria-label="Threads">🧵</a>
+                    <a href="https://www.facebook.com/shehu.and" target="_blank" rel="noopener" title="Facebook" aria-label="Facebook" style="font-family:serif;font-weight:700;">f</a>
+                </div>
             </div>
         </div>
     </div>
@@ -167,7 +181,7 @@
                 <span class="nav-card-arrow">↗</span>
                 <div class="nav-card-icon">👤</div>
                 <h3>About</h3>
-                <p>Mission, story, expertise — and why a chemist ended up doing this.</p>
+                <p>Mission, story, expertise and why a chemist ended up doing this.</p>
             </a>
             <a href="writing.html" class="nav-card fade-in">
                 <span class="nav-card-arrow">↗</span>
@@ -185,7 +199,7 @@
                 <span class="nav-card-arrow">↗</span>
                 <div class="nav-card-icon">📚</div>
                 <h3>Reading</h3>
-                <p>What's on my shelf right now — books, articles, comics. Recommendations included.</p>
+                <p>What's on my shelf right now, books, articles, comics. Recommendations included.</p>
             </a>
             <a href="contact.html" class="nav-card fade-in">
                 <span class="nav-card-arrow">↗</span>
@@ -227,7 +241,7 @@
         <div class="footer-grid">
             <div class="footer-brand">
                 <div style="display:flex;align-items:center;gap:0.7rem;">
-                    <div class="nav-logo-mark" style="width:36px;height:36px;font-size:1.1rem;">AS</div>
+                    <div class="nav-logo-mark" style="width:36px;height:36px;"><svg viewBox="0 0 64 64" aria-hidden="true"><rect class="logo-bg" width="64" height="64" rx="14"/><path class="logo-star" d="M32 12 L36.7 25.4 L51 25.4 L39.4 33.7 L43.9 47 L32 38.8 L20.1 47 L24.6 33.7 L13 25.4 L27.3 25.4 Z"/></svg></div>
                     <span style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--text);">Andi Shehu</span>
                 </div>
                 <p>Sense-maker. Democracy advocate. Historian at heart. Making European politics accessible, one article at a time.</p>
@@ -320,7 +334,7 @@
         const sorted = articles.slice().sort((a,b) => new Date(b.date) - new Date(a.date));
         const top = sorted.slice(0, 3);
         if (!top.length) {
-            list.innerHTML = '<div class="no-results"><span class="no-results-emoji">📭</span><p>No articles yet — first one coming soon!</p></div>';
+            list.innerHTML = '<div class="no-results"><span class="no-results-emoji">📭</span><p>No articles yet, first one coming soon!</p></div>';
             return;
         }
         list.innerHTML = top.map(a => {
