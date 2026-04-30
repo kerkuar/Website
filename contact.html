@@ -184,7 +184,7 @@
                     3) Replace YOUR_FORMSPREE_ID below with that ID.
                     Free tier = 50 messages/month.
                 -->
-                <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+                <form class="contact-form" id="contactForm" action="https://formspree.io/f/mykogvan" method="POST">
                     <div class="form-error" id="formError"></div>
 
                     <div class="form-row">
@@ -298,8 +298,8 @@
         errBox.classList.remove('show');
 
         const action = form.action;
-        if (action.includes('YOUR_FORMSPREE_ID')) {
-            errBox.textContent = '⚠️ Form not yet activated. Andi: replace YOUR_FORMSPREE_ID in contact.html with your Formspree form ID.';
+        if (action.includes('mykogvan')) {
+            errBox.textContent = '⚠️ Form not yet activated. Andi: replace mykogvan in contact.html with your Formspree form ID.';
             errBox.classList.add('show');
             return;
         }
