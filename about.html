@@ -8,7 +8,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,30..100;1,9..144,300..700,30..100&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
@@ -35,7 +35,7 @@
     .pillar-card p { font-size: 0.92rem; }
 
     .blockquote {
-        font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-style: italic;
+        font-family: 'Fraunces', 'Cormorant Garamond', Georgia, serif; font-size: 1.35rem; font-style: italic;
         color: var(--text); border-left: 4px solid var(--primary);
         padding: 1.4rem 2rem; text-align: left;
         background: var(--surface); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
@@ -55,15 +55,13 @@
         display: flex; align-items: center; justify-content: center;
         opacity: 0; transition: opacity 0.35s; border-radius: var(--radius);
         color: white; text-align: center; padding: 2rem;
-        font-family: 'Cormorant Garamond', serif; font-size: 1.15rem;
+        font-family: 'Fraunces', 'Cormorant Garamond', Georgia, serif; font-size: 1.15rem;
         font-style: italic; line-height: 1.65;
     }
     .photo-frame:hover .photo-hover-msg { opacity: 1; }
 
     .about-text h2 { margin-bottom: 1.4rem; }
     .about-text > p { margin-bottom: 1.4rem; }
-
-    .expertise-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.8rem; }
 
     .bg-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; margin-top: 2.2rem; }
     .bg-card {
@@ -106,7 +104,7 @@
     .konami-overlay.show { display: flex; }
     .konami-emoji  { font-size: 5rem; animation: spin 1s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
-    .konami-title  { font-family: 'Cormorant Garamond', serif; font-size: 3rem; }
+    .konami-title  { font-family: 'Fraunces', 'Cormorant Garamond', Georgia, serif; font-size: 3rem; }
     .konami-text   { font-size: 1.1rem; opacity: 0.9; max-width: 500px; line-height: 1.6; }
     .konami-close  { background: white; color: var(--primary-dark); border: none; padding: 0.75rem 2rem; border-radius: var(--radius-full); font-size: 1rem; font-weight: 600; cursor: pointer; margin-top: 1rem; font-family: 'Inter', sans-serif; }
     </style>
@@ -153,11 +151,11 @@
     <div class="container">
         <div class="page-intro fade-in">
             <span class="section-label">About</span>
-            <h1>Why this work and why me.</h1>
-            <p>Complex policy issues should not belong only to experts. Democracy is only as strong as the people who understand and participate in it. That conviction is the through-line behind everything on this site.</p>
+            <h1>Why this work, and why me.</h1>
+            <p>Most European decisions are made through technical files almost nobody reads. That is not a moral failing of the public. It is a structural feature of how power communicates, and a fixable one. The work on this site lives at that fix.</p>
             <blockquote class="blockquote">
-                "My work focuses on sense-making around European politics and economy, improving democracy,
-                and promoting human and social rights. Complex policy issues should be accessible to everyone."
+                "I work on European politics and human rights for a living and I write about them for everyone else.
+                When the mechanism of a decision is visible, the politics of it becomes possible."
             </blockquote>
         </div>
 
@@ -165,17 +163,17 @@
             <div class="pillar-card fade-in" style="--pc:var(--primary);">
                 <div class="pillar-icon">🧭</div>
                 <h3>Sense-making</h3>
-                <p>Breaking down EU institutions, political economy and international dynamics into language anyone can engage with, from newsletters to short-form video.</p>
+                <p>Translating treaties, votes and budget lines into the kind of explanation a curious non-specialist can act on. Newsletters, short video, public talks.</p>
             </div>
             <div class="pillar-card fade-in" style="--pc:var(--secondary);">
                 <div class="pillar-icon">🗳️</div>
-                <h3>Improving democracy</h3>
-                <p>Closing the gap between citizens and the institutions that govern them, through advocacy, coalition building and civic education.</p>
+                <h3>Organising</h3>
+                <p>Building campaigns and coalitions that move institutions. Most of what looks like public opinion is the visible end of organising work that started years earlier.</p>
             </div>
             <div class="pillar-card fade-in" style="--pc:var(--accent);">
                 <div class="pillar-icon">⚖️</div>
-                <h3>Human &amp; social rights</h3>
-                <p>From Sudan to civic space in Europe, making sure rights stay at the centre of policy decisions, not in the footnotes.</p>
+                <h3>Rights</h3>
+                <p>Pushing rights into the operative parts of European policy. Sudan, Tunisia, Libya, civic space at home. Symbolic resolutions are not where the leverage is.</p>
             </div>
         </div>
     </div>
@@ -197,26 +195,21 @@
             </div>
             <div class="about-text fade-in">
                 <span class="section-label">The story</span>
-                <h2>Campaign builder.<br>Sense-maker. Reluctant expert.</h2>
+                <h2>How I got here.</h2>
                 <p>
-                    I'm a policy and advocacy professional with 10+ years of experience across civil society,
-                    EU-level advocacy and political movements. Right now I'm a policy officer at
+                    I have spent the last decade in civil society, EU advocacy and political movements.
+                    Right now I am a policy officer at
                     <a href="https://www.thegoodlobby.it/" target="_blank" rel="noopener" style="color:var(--primary);font-weight:600;">The Good Lobby Italia</a>,
-                    where I focus on democratic engagement, transparency and direct lobbying, while also training others to do the same.
+                    working on democratic engagement, transparency and direct lobbying, and training other organisations to do the same.
                 </p>
                 <p>
-                    My previous work had me pushing EU institutions to act on gender-based violence in Sudan,
-                    human trafficking in Tunisia and Libya and more. Before that: more campaigns,
-                    more coalition work, more trying to make institutions actually listen.
+                    Before this role I spent years pushing European institutions to act on gender-based violence in Sudan and on human trafficking in Tunisia and Libya. None of that work moved as much as it should have. Some of it moved more than the press picked up. Both lessons inform how I work now.
                 </p>
                 <p>
-                    My core interests have always been science (especially evolution), international relations,
-                    history and anthropology. I started as a chemist and economic historian and those backgrounds
-                    still shape how I read the world.
+                    My background reads strangely from a distance. I trained as a chemist, then took a master in international economic history, then drifted into politics through community organising. The threads that actually connect those steps are evolution, mechanism and patient curiosity about how systems behave under pressure.
                 </p>
                 <p>
-                    I founded <strong style="color:var(--text);">The Continental Brief</strong>, a newsletter on EU politics
-                    and political economy, because complex issues should belong to everyone, not just insiders.
+                    I founded <strong style="color:var(--text);">The Continental Brief</strong> because the analytical Substacks I read are mostly American. Europeans deserve their own.
                 </p>
 
                 <div class="bg-cards">
@@ -267,7 +260,7 @@
             <div class="footer-brand">
                 <div style="display:flex;align-items:center;gap:0.7rem;">
                     <div class="nav-logo-mark" style="width:36px;height:36px;"><svg viewBox="0 0 64 64" aria-hidden="true"><rect class="logo-bg" width="64" height="64" rx="14"/><path class="logo-star" d="M32 12 L36.7 25.4 L51 25.4 L39.4 33.7 L43.9 47 L32 38.8 L20.1 47 L24.6 33.7 L13 25.4 L27.3 25.4 Z"/></svg></div>
-                    <span style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--text);">Andi Shehu</span>
+                    <span style="font-family:'Fraunces','Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:600;color:var(--text);">Andi Shehu</span>
                 </div>
                 <p>Sense-maker. Democracy advocate. Historian at heart. Making European politics accessible, one article at a time.</p>
                 <a href="https://www.thegoodlobby.it/" target="_blank" rel="noopener" class="tgl-badge">

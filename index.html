@@ -12,7 +12,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,30..100;1,9..144,300..700,30..100&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
@@ -29,9 +29,9 @@
         position: absolute; border-radius: 50%;
         filter: blur(90px); opacity: 0.32; animation: float 9s ease-in-out infinite;
     }
-    .hero-blob:nth-child(1) { width: 640px; height: 640px; background: var(--primary-light); top: -200px; right: -80px; }
-    .hero-blob:nth-child(2) { width: 420px; height: 420px; background: var(--accent-warm); bottom: -120px; left: -60px; animation-delay: 3s; }
-    .hero-blob:nth-child(3) { width: 300px; height: 300px; background: #B5EAD7; top: 40%; left: 30%; animation-delay: 5.5s; }
+    .hero-blob:nth-child(1) { width: 640px; height: 640px; background: var(--primary-light); top: -200px; right: -80px; opacity: 0.18; }
+    .hero-blob:nth-child(2) { width: 420px; height: 420px; background: var(--accent-warm); bottom: -120px; left: -60px; animation-delay: 3s; opacity: 0.36; }
+    .hero-blob:nth-child(3) { width: 300px; height: 300px; background: var(--accent); top: 40%; left: 30%; animation-delay: 5.5s; opacity: 0.10; }
     @keyframes float { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-20px) scale(1.04); } }
     #starsCanvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 
@@ -140,7 +140,7 @@
                 </h1>
                 <p class="hero-desc">
                     Policy officer at <a href="https://www.thegoodlobby.it/" target="_blank" rel="noopener" style="color:var(--primary);font-weight:600;">The Good Lobby Italia</a>.
-                    I work on EU politics, human rights and community organising and I write about them on
+                    I work on European politics and human rights, train people in community organising, and write a newsletter about how power actually moves in Europe:
                     <a href="https://substack.com/@shehuandi" target="_blank" rel="noopener" style="color:var(--primary);font-weight:600;">The Continental Brief</a>.
                 </p>
                 <div class="hero-ctas">
@@ -153,13 +153,27 @@
                     <img src="Photo/Foto Profilo.jpg" alt="Andi Shehu" loading="lazy">
                 </div>
                 <div class="hero-socials">
-                    <a href="https://substack.com/@shehuandi" target="_blank" rel="noopener" title="Substack" aria-label="Substack">📬</a>
-                    <a href="https://linkedin.com/in/inandishehu/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">in</a>
-                    <a href="https://x.com/AndShehu" target="_blank" rel="noopener" title="X / Twitter" aria-label="X" style="font-family:serif;font-weight:700;">𝕏</a>
-                    <a href="https://www.instagram.com/sheh.andi/" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram">📸</a>
-                    <a href="https://www.tiktok.com/@andishehu670" target="_blank" rel="noopener" title="TikTok" aria-label="TikTok">🎵</a>
-                    <a href="https://www.threads.com/@sheh.andi" target="_blank" rel="noopener" title="Threads" aria-label="Threads">🧵</a>
-                    <a href="https://www.facebook.com/shehu.and" target="_blank" rel="noopener" title="Facebook" aria-label="Facebook" style="font-family:serif;font-weight:700;">f</a>
+                    <a href="https://www.instagram.com/sheh.andi/" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram" data-brand="ig">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.07 1.17.05 1.8.25 2.22.42.56.22.96.48 1.38.9.42.42.68.82.9 1.38.17.42.37 1.05.42 2.22.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.05 1.17-.25 1.8-.42 2.22-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.17-1.05.37-2.22.42-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-1.17-.05-1.8-.25-2.22-.42-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.17-.42-.37-1.05-.42-2.22C2.21 15.6 2.2 15.2 2.2 12s0-3.58.07-4.85c.05-1.17.25-1.8.42-2.22.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.17 1.05-.37 2.22-.42C8.42 2.21 8.8 2.2 12 2.2zm0 1.95c-3.15 0-3.5 0-4.74.07-1.07.05-1.65.23-2.04.38-.51.2-.88.44-1.26.82-.38.38-.62.75-.82 1.26-.15.39-.33.97-.38 2.04-.05 1.24-.07 1.59-.07 4.74s0 3.5.07 4.74c.05 1.07.23 1.65.38 2.04.2.51.44.88.82 1.26.38.38.75.62 1.26.82.39.15.97.33 2.04.38 1.24.05 1.59.07 4.74.07s3.5 0 4.74-.07c1.07-.05 1.65-.23 2.04-.38.51-.2.88-.44 1.26-.82.38-.38.62-.75.82-1.26.15-.39.33-.97.38-2.04.05-1.24.07-1.59.07-4.74s0-3.5-.07-4.74c-.05-1.07-.23-1.65-.38-2.04-.2-.51-.44-.88-.82-1.26-.38-.38-.75-.62-1.26-.82-.39-.15-.97-.33-2.04-.38-1.24-.05-1.59-.07-4.74-.07zm0 3.32a4.53 4.53 0 1 1 0 9.06 4.53 4.53 0 0 1 0-9.06zm0 1.95a2.58 2.58 0 1 0 0 5.16 2.58 2.58 0 0 0 0-5.16zm5.74-2.17a1.06 1.06 0 1 1-2.12 0 1.06 1.06 0 0 1 2.12 0z"/></svg>
+                    </a>
+                    <a href="https://linkedin.com/in/inandishehu/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn" data-brand="li">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+                    </a>
+                    <a href="https://substack.com/@shehuandi" target="_blank" rel="noopener" title="Substack" aria-label="Substack" data-brand="ss">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.539 24V10.812H1.46zM22.539 0H1.46v2.836h21.08V0z"/></svg>
+                    </a>
+                    <a href="https://x.com/AndShehu" target="_blank" rel="noopener" title="X / Twitter" aria-label="X" data-brand="x">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@andishehu670" target="_blank" rel="noopener" title="TikTok" aria-label="TikTok" data-brand="tt">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.93a8.16 8.16 0 0 0 4.77 1.52V7a4.85 4.85 0 0 1-1.84-.31z"/></svg>
+                    </a>
+                    <a href="https://www.threads.com/@sheh.andi" target="_blank" rel="noopener" title="Threads" aria-label="Threads" data-brand="th">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717-1.34 1.667-2.03 4.077-2.057 7.166.027 3.09.717 5.5 2.057 7.167 1.43 1.781 3.63 2.695 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.27 8.094c.98-1.46 2.568-2.26 4.71-2.26h.044c3.59.022 5.726 2.198 5.937 5.953.114.063.228.13.34.196 1.535.913 2.665 2.302 3.207 3.92.728 2.224.262 5.064-1.97 7.236C17.797 22.93 15.32 23.972 12.186 24z"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/shehu.and" target="_blank" rel="noopener" title="Facebook" aria-label="Facebook" data-brand="fb">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12S0 5.446 0 12.073C0 18.06 4.388 23.027 10.125 23.927v-8.385H7.078V12.07h3.047V9.43c0-3.007 1.792-4.668 4.533-4.668 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.875v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
                 </div>
             </div>
         </div>
@@ -174,44 +188,44 @@
         <span class="section-label fade-in">Where to next</span>
         <h2 class="fade-in" style="margin-bottom:0.75rem;">Pick a corner.</h2>
         <p class="fade-in" style="margin-bottom:0;max-width:560px;">
-            The site is split into a few small rooms. Open the one that interests you.
+            Six small rooms. Each one stands on its own.
         </p>
         <div class="nav-cards">
             <a href="about.html" class="nav-card fade-in">
                 <span class="nav-card-arrow">↗</span>
                 <div class="nav-card-icon">👤</div>
                 <h3>About</h3>
-                <p>Mission, story, expertise and why a chemist ended up doing this.</p>
+                <p>How a chemist ended up shaping European policy, and what I do all day.</p>
             </a>
             <a href="writing.html" class="nav-card fade-in">
                 <span class="nav-card-arrow">↗</span>
                 <div class="nav-card-icon">✍️</div>
                 <h3>Writing</h3>
-                <p>Essays and analysis on European politics, economy and democracy.</p>
+                <p>Essays that try to explain how European decisions actually get made.</p>
             </a>
             <a href="services.html" class="nav-card fade-in">
                 <span class="nav-card-arrow">↗</span>
                 <div class="nav-card-icon">🤝</div>
                 <h3>Services</h3>
-                <p>Campaign strategy, workshops, policy analysis. Fee-based or pro-bono.</p>
+                <p>Campaign strategy, workshops, policy analysis. Paid or pro-bono.</p>
             </a>
             <a href="reading.html" class="nav-card fade-in">
                 <span class="nav-card-arrow">↗</span>
                 <div class="nav-card-icon">📚</div>
                 <h3>Reading</h3>
-                <p>What's on my shelf right now, books, articles, comics. Recommendations included.</p>
+                <p>What I am currently reading, and what is worth borrowing from me.</p>
             </a>
             <a href="contact.html" class="nav-card fade-in">
                 <span class="nav-card-arrow">↗</span>
                 <div class="nav-card-icon">✉️</div>
                 <h3>Contact</h3>
-                <p>One form, sent straight to my inbox. Plus everywhere else you can find me.</p>
+                <p>One form. Goes straight to my inbox. I read every message.</p>
             </a>
             <a href="https://substack.com/@shehuandi" target="_blank" rel="noopener" class="nav-card fade-in">
                 <span class="nav-card-arrow">↗</span>
                 <div class="nav-card-icon">🗞️</div>
                 <h3>The Continental Brief</h3>
-                <p>My Substack newsletter. EU politics and political economy, made sense of.</p>
+                <p>A weekly newsletter on European political economy. Free.</p>
             </a>
         </div>
     </div>
@@ -242,7 +256,7 @@
             <div class="footer-brand">
                 <div style="display:flex;align-items:center;gap:0.7rem;">
                     <div class="nav-logo-mark" style="width:36px;height:36px;"><svg viewBox="0 0 64 64" aria-hidden="true"><rect class="logo-bg" width="64" height="64" rx="14"/><path class="logo-star" d="M32 12 L36.7 25.4 L51 25.4 L39.4 33.7 L43.9 47 L32 38.8 L20.1 47 L24.6 33.7 L13 25.4 L27.3 25.4 Z"/></svg></div>
-                    <span style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--text);">Andi Shehu</span>
+                    <span style="font-family:'Fraunces','Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:600;color:var(--text);">Andi Shehu</span>
                 </div>
                 <p>Sense-maker. Democracy advocate. Historian at heart. Making European politics accessible, one article at a time.</p>
                 <a href="https://www.thegoodlobby.it/" target="_blank" rel="noopener" class="tgl-badge">
@@ -341,9 +355,12 @@
             const href = a.external_url ? a.external_url : `article.html?slug=${encodeURIComponent(a.slug)}`;
             const target = a.external_url ? ' target="_blank" rel="noopener"' : '';
             const tags = (a.tags || []).map(t => `<span class="article-tag">${t.replace(/-/g,' ')}</span>`).join('');
+            const thumb = a.hero_image
+                ? `<div class="article-card-img has-photo"><img src="${a.hero_image}" alt="${(a.title || '').replace(/"/g,'&quot;')}" loading="lazy"></div>`
+                : `<div class="article-card-img ${a.color || 'lav'}">${a.emoji || '📝'}</div>`;
             return `
                 <a class="article-card fade-in" href="${href}"${target}>
-                    <div class="article-card-img ${a.color || 'lav'}">${a.emoji || '📝'}</div>
+                    ${thumb}
                     <div class="article-card-body">
                         <div class="article-card-tags">${tags}</div>
                         <h3>${a.title}</h3>
