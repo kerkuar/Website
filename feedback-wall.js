@@ -97,21 +97,30 @@
 
     async function load() {
         if (!isConfigured) {
-            renderAll(seeds);
-            if (disabledNoteEl) disabledNoteEl.hidden = false;
-            if (submitBtn) {
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Connect Supabase first';
+            // Hide everything testimonial-related; show "coming soon" only.
+            if (featuredEl) { featuredEl.hidden = true; featuredEl.innerHTML = ''; }
+            if (moreBtn)    { moreBtn.hidden = true; }
+            if (gridEl) {
+                gridEl.innerHTML = `
+                    <div class="feedback-empty" style="grid-column:1/-1;">
+                        Coming soon.
+                    </div>`;
             }
+            const leaveNote = document.querySelector('.leave-note');
+            if (leaveNote) leaveNote.hidden = true;
             return;
         }
         try {
             const data = await fetchLive();
-            renderAll(data.length ? data : seeds);
+            renderAll(data);
         } catch (e) {
-            console.warn('Feedback wall: live fetch failed, showing seeds', e);
-            renderAll(seeds);
-            if (statusEl) statusEl.textContent = 'Showing recent notes from cache. Live wall will appear once it reconnects.';
+            console.warn('Feedback wall: live fetch failed', e);
+            if (gridEl) {
+                gridEl.innerHTML = `
+                    <div class="feedback-empty" style="grid-column:1/-1;">
+                        Coming soon.
+                    </div>`;
+            }
         }
     }
 
