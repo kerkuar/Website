@@ -15,8 +15,21 @@
     <style>
     body { background: var(--bg-blog); }
 
+    /* ===== Reading progress bar (top of viewport) ===== */
+    .read-progress {
+        position: fixed; top: 0; left: 0; right: 0;
+        height: 3px; z-index: 9999;
+        background: var(--primary);
+        transform-origin: left center;
+        transform: scaleX(0);
+        transition: transform 0.08s linear;
+        pointer-events: none;
+    }
+
+    /* ===== Article wrap ===== */
     .article-wrap {
         max-width: 760px; margin: 0 auto; padding: 0 2rem;
+        position: relative;
     }
     .article-back {
         display: inline-flex; align-items: center; gap: 0.4rem;
@@ -67,16 +80,21 @@
         font-weight: 500;
         margin-top: 3.2rem; margin-bottom: 0.6rem;
         color: var(--text); letter-spacing: -0.005em;
+        scroll-margin-top: 90px;
     }
     .article-body h3 {
         font-size: clamp(1.2rem, 2.4vw, 1.5rem);
         margin-top: 2.2rem; margin-bottom: 0.4rem;
-        color: var(--text);
+        color: var(--text); scroll-margin-top: 90px;
     }
     .article-body strong { color: var(--text); font-weight: 600; }
-    .article-body em { color: var(--text); font-style: italic; }
-    /* Pull-quote: an em alone on its own paragraph styled larger */
-    .article-body p > em:only-child { display: block; font-size: 1.45rem; line-height: 1.45; color: var(--primary); padding: 0.5rem 0; }
+    .article-body em {
+        color: var(--text); font-style: italic;
+        font-variation-settings: 'opsz' 14, 'SOFT' 60;
+    }
+    /* Inline italic quoted phrase — warm tint, stays inline */
+    .article-body em.q { color: var(--primary); font-style: italic; }
+
     .article-body blockquote {
         position: relative;
         border-left: 3px solid var(--accent);
@@ -93,9 +111,7 @@
         font-family: 'Fraunces', Georgia, serif; color: var(--accent-warm);
         z-index: -1;
     }
-    .article-body ul, .article-body ol {
-        padding-left: 1.5rem; color: var(--text);
-    }
+    .article-body ul, .article-body ol { padding-left: 1.5rem; color: var(--text); }
     .article-body li { margin-bottom: 0.5rem; }
     .article-body code {
         background: var(--surface-alt); padding: 0.15rem 0.4rem;
@@ -111,10 +127,144 @@
         border-radius: var(--radius-sm); margin: 2rem auto;
         box-shadow: var(--shadow-md);
     }
-    .article-body hr {
-        border: none; height: 1px; background: var(--border);
-        margin: 3rem 0;
+    .article-body hr { border: none; height: 1px; background: var(--border); margin: 3rem 0; }
+
+    /* ===== Footnotes (popup style) ===== */
+    .fn-ref {
+        color: var(--primary);
+        font-size: 0.62em;
+        margin-left: 0.05em;
+        padding: 0 0.18em;
+        cursor: pointer;
+        text-decoration: none;
+        vertical-align: super;
+        line-height: 0;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-feature-settings: "lnum";
+        font-style: normal;
+        border-bottom: 1px dotted var(--primary);
+        transition: background 0.2s;
     }
+    .fn-ref:hover, .fn-ref.is-open {
+        background: var(--accent-warm);
+        border-radius: 2px;
+    }
+    .fn-popup {
+        position: absolute; z-index: 2000;
+        max-width: 360px; min-width: 220px;
+        padding: 0.85rem 1rem;
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: var(--radius-sm); box-shadow: var(--shadow-md);
+        font-family: 'Inter', sans-serif; font-size: 0.84rem;
+        font-style: normal;
+        color: var(--text); line-height: 1.55;
+        opacity: 0; transform: translateY(4px);
+        transition: opacity 0.18s, transform 0.18s;
+        pointer-events: none;
+    }
+    .fn-popup.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .fn-popup::before {
+        content: ''; position: absolute; top: -7px; left: var(--arrow-x, 1rem);
+        width: 12px; height: 12px;
+        background: var(--surface);
+        border-left: 1px solid var(--border);
+        border-top: 1px solid var(--border);
+        transform: rotate(45deg);
+    }
+    .fn-popup .fn-label {
+        font-family: 'Fraunces', Georgia, serif; font-style: italic;
+        font-size: 0.78rem; color: var(--text-muted);
+        display: block; margin-bottom: 0.3rem;
+    }
+
+    /* ===== Marginalia / sidenotes ===== */
+    .sidenote-marker {
+        color: var(--primary);
+        font-family: 'Fraunces', Georgia, serif; font-style: italic;
+        font-weight: 500;
+        padding: 0 0.15em;
+        cursor: default;
+    }
+    .sidenote {
+        float: right; clear: right;
+        width: 180px; margin-right: -218px;
+        margin-top: 0.2em; margin-bottom: 0.6em; margin-left: 1.2rem;
+        font-family: 'Fraunces', Georgia, serif; font-style: italic;
+        font-size: 0.92rem; line-height: 1.5;
+        color: var(--text-muted);
+        padding-left: 0.9rem; border-left: 2px solid var(--accent);
+    }
+    @media (max-width: 1180px) {
+        .sidenote {
+            float: none; width: auto; margin: 0.8rem 0;
+            background: var(--surface-alt); padding: 0.7rem 0.95rem;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: 0.95rem;
+        }
+    }
+
+    /* ===== Hover-reveal definitions ===== */
+    .article-body abbr[title], .def-term {
+        border-bottom: 1px dashed var(--primary-light);
+        cursor: help;
+        text-decoration: none;
+        color: inherit;
+    }
+    .article-body abbr[title]:hover, .def-term:hover {
+        color: var(--primary);
+        border-bottom-color: var(--primary);
+    }
+
+    /* ===== TOC sidebar (only on wide screens) ===== */
+    .article-toc {
+        display: none;
+        position: fixed;
+        top: 110px;
+        left: calc(50% + 410px);
+        width: 200px;
+        max-height: calc(100vh - 150px);
+        overflow-y: auto;
+        padding: 0 0 0 1.2rem;
+        border-left: 1px solid var(--border);
+        font-family: 'Inter', sans-serif;
+        font-size: 0.82rem;
+    }
+    .article-toc h4 {
+        font-family: 'Fraunces', Georgia, serif;
+        font-style: italic;
+        font-weight: 500;
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin-bottom: 0.7rem;
+        padding-bottom: 0.45rem;
+        border-bottom: 1px solid var(--border);
+        letter-spacing: 0;
+    }
+    .article-toc ul { list-style: none; padding: 0; margin: 0; }
+    .article-toc li { margin-bottom: 0.35rem; }
+    .article-toc li.depth-3 { padding-left: 0.85rem; }
+    .article-toc a {
+        color: var(--text-muted);
+        text-decoration: none;
+        display: block;
+        padding: 0.18rem 0 0.18rem 0.7rem;
+        margin-left: -0.7rem;
+        border-left: 2px solid transparent;
+        transition: color 0.2s, border-color 0.2s;
+        line-height: 1.4;
+    }
+    .article-toc a:hover { color: var(--primary); }
+    .article-toc a.active {
+        color: var(--primary);
+        border-left-color: var(--primary);
+    }
+    @media (min-width: 1180px) {
+        .article-toc.has-items { display: block; }
+    }
+
+    /* Hide the raw markdown footnote list at the bottom — we use popups */
+    .article-body .fn-block { display: none; }
 
     .article-share {
         margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);
@@ -145,11 +295,14 @@
 </head>
 <body>
 
+<!-- Reading progress bar -->
+<div class="read-progress" id="readProgress" aria-hidden="true"></div>
+
 <!-- NAV -->
 <nav id="navbar" class="site-nav solid">
     <div class="nav-inner">
         <a href="index.html" class="nav-logo">
-            <div class="nav-logo-mark"><svg viewBox="0 0 64 64" aria-hidden="true"><rect class="logo-bg" width="64" height="64" rx="14"/><path class="logo-star" d="M32 12 L36.7 25.4 L51 25.4 L39.4 33.7 L43.9 47 L32 38.8 L20.1 47 L24.6 33.7 L13 25.4 L27.3 25.4 Z"/></svg></div>
+            <div class="nav-logo-mark"><svg viewBox="0 0 64 64" aria-hidden="true"><rect class="logo-bg" width="64" height="64" rx="14"/><g class="logo-tower"><path d="M 25 52 L 39 52 L 36 22 L 28 22 Z"/><rect x="24" y="19" width="16" height="3"/><rect x="27" y="11" width="10" height="8"/><path d="M 25 11 L 39 11 L 32 4 Z"/></g><circle class="logo-beacon" cx="32" cy="15" r="2.5"/></svg></div>
             <span class="nav-logo-text">Andi Shehu</span>
         </a>
         <ul class="nav-links">
@@ -187,6 +340,10 @@
             <div class="loading"><span class="loading-emoji">⏳</span><p>Loading article…</p></div>
         </div>
     </div>
+    <aside class="article-toc" id="articleToc" aria-label="In this article">
+        <h4>In this piece</h4>
+        <ul></ul>
+    </aside>
 </section>
 
 <!-- FOOTER -->
@@ -195,15 +352,15 @@
         <div class="footer-grid">
             <div class="footer-brand">
                 <div style="display:flex;align-items:center;gap:0.7rem;">
-                    <div class="nav-logo-mark" style="width:36px;height:36px;"><svg viewBox="0 0 64 64" aria-hidden="true"><rect class="logo-bg" width="64" height="64" rx="14"/><path class="logo-star" d="M32 12 L36.7 25.4 L51 25.4 L39.4 33.7 L43.9 47 L32 38.8 L20.1 47 L24.6 33.7 L13 25.4 L27.3 25.4 Z"/></svg></div>
+                    <div class="nav-logo-mark" style="width:36px;height:36px;"><svg viewBox="0 0 64 64" aria-hidden="true"><rect class="logo-bg" width="64" height="64" rx="14"/><g class="logo-tower"><path d="M 25 52 L 39 52 L 36 22 L 28 22 Z"/><rect x="24" y="19" width="16" height="3"/><rect x="27" y="11" width="10" height="8"/><path d="M 25 11 L 39 11 L 32 4 Z"/></g><circle class="logo-beacon" cx="32" cy="15" r="2.5"/></svg></div>
                     <span style="font-family:'Fraunces','Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:600;color:var(--text);">Andi Shehu</span>
                 </div>
-                <p>Sense-maker. Democracy advocate. Historian at heart. Making European politics accessible, one article at a time.</p>
+                <p>Policy officer. Community organiser. Historian at heart. Making European decisions legible to the people who have to live with them.</p>
                 <a href="https://www.thegoodlobby.it/" target="_blank" rel="noopener" class="tgl-badge">
                     <div class="tgl-logo">GL</div>The Good Lobby Italia
                 </a>
             </div>
-            <div class="footer-col"><h4>Navigate</h4><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="writing.html">Writing</a></li><li><a href="services.html">Services</a></li><li><a href="reading.html">Reading</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+            <div class="footer-col"><h4>Navigate</h4><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="writing.html">Writing</a></li><li><a href="services.html">Services</a></li><li><a href="reading.html">Reading</a></li><li><a href="now.html">Now</a></li><li><a href="contact.html">Contact</a></li></ul></div>
             <div class="footer-col"><h4>Connect</h4><ul class="footer-links"><li><a href="https://substack.com/@shehuandi" target="_blank" rel="noopener">Substack</a></li><li><a href="https://www.instagram.com/sheh.andi/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://linkedin.com/in/inandishehu/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://x.com/AndShehu" target="_blank" rel="noopener">X / Twitter</a></li><li><a href="https://www.tiktok.com/@andishehu670" target="_blank" rel="noopener">TikTok</a></li></ul></div>
             <div class="footer-col"><h4>Writing</h4><ul class="footer-links"><li><a href="https://substack.com/@shehuandi" target="_blank" rel="noopener">The Continental Brief</a></li><li><a href="writing.html">Essays &amp; analysis</a></li><li><a href="contact.html">Pitch me a topic</a></li></ul></div>
         </div>
@@ -232,10 +389,188 @@ const TAG_LABELS = {
     'economy':      'Economy'
 };
 
+/* ============================================================
+   MARKDOWN PRE-PROCESSORS — Andi's editorial flourishes
+   ============================================================
+   These run on the raw markdown BEFORE marked.js parses it. They
+   add features marked.js doesn't ship by default:
+
+   - Smart typography:  "..." → "...",  '...' → '...',  ... → …,  -- → —
+   - Footnotes:         `text[^1]` + `[^1]: explanation` → popup-able superscripts
+   - Sidenotes:         `{{side: aside}}` → margin notes
+   - Definitions:       `[term](?:explanation)` → hover-tooltip terms
+*/
+function smartenTypography(text) {
+    return text
+        .replace(/(\w)'(\w)/g, '$1’$2')
+        .replace(/(^|[\s\-(\[*_>])"/g, '$1“')
+        .replace(/"/g, '”')
+        .replace(/(^|[\s\-(\[*_>])'/g, '$1‘')
+        .replace(/'/g, '’')
+        .replace(/--/g, '—')
+        .replace(/\.{3}/g, '…');
+}
+
+function processSidenotes(md) {
+    return md.replace(/\{\{side:\s*([^}]+?)\}\}/g, (_, text) =>
+        `<span class="sidenote-marker">*</span><span class="sidenote">${text.trim()}</span>`
+    );
+}
+
+/* Hover-reveal definition: `[term](?:explanation)` becomes
+   <abbr title="explanation">term</abbr>. The (?:) is the trigger.
+   Use this when you don't want a link, just a hoverable explanation. */
+function processDefinitions(md) {
+    return md.replace(/\[([^\]]+)\]\(\?:([^)]+)\)/g, (_, term, def) =>
+        `<abbr title="${def.replace(/"/g, '&quot;')}">${term}</abbr>`
+    );
+}
+
+/* Footnotes:
+   - `…sentence[^1].`           — inline reference
+   - `[^1]: The explanation.`   — definition (anywhere in the file)
+   Definitions get stripped from the visible body; references become
+   superscripts with the content baked into a data attribute. */
+function processFootnotes(md) {
+    const fns = {};
+    md = md.replace(/^\[\^([^\]]+)\]:[ \t]*((?:.+(?:\n(?!\s*\n)(?!\s*\[\^).*)*))/gm, (_, id, content) => {
+        fns[id] = content.trim().replace(/\s+/g, ' ');
+        return '';
+    });
+    md = md.replace(/\[\^([^\]]+)\]/g, (_, id) => {
+        const content = (fns[id] || '').replace(/"/g, '&quot;');
+        return `<sup class="fn-ref" data-fn="${id}" data-fncontent="${content}">${id}</sup>`;
+    });
+    return md;
+}
+
+/* ============================================================
+   POST-PROCESSORS — run on the rendered HTML
+   ============================================================
+*/
+/* Tag <em> spans that wrap a quoted phrase so they render in the
+   primary terracotta (which is what Andi means when he writes *"..."*). */
+function tagInlineQuotes(html) {
+    return html.replace(/<em>(\s*[“"][^<]*?[”"]\s*)<\/em>/g, '<em class="q">$1</em>');
+}
+
+/* Build the right-margin TOC from h2/h3 in the rendered body. */
+function buildTOC(bodyEl, tocEl) {
+    const headings = bodyEl.querySelectorAll('h2, h3');
+    if (headings.length < 2) { tocEl.style.display = 'none'; return; }
+    const ul = tocEl.querySelector('ul');
+    const items = [];
+    headings.forEach((h, i) => {
+        const slug = h.id || ('s-' + i + '-' + (h.textContent.toLowerCase().replace(/[^a-z0-9]+/g,'-').slice(0,40)));
+        h.id = slug;
+        const li = document.createElement('li');
+        if (h.tagName === 'H3') li.className = 'depth-3';
+        const a = document.createElement('a');
+        a.href = '#' + slug;
+        a.textContent = h.textContent;
+        a.dataset.target = slug;
+        li.appendChild(a);
+        ul.appendChild(li);
+        items.push({ h, a });
+    });
+    tocEl.classList.add('has-items');
+
+    /* Active section highlight on scroll */
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            const slug = e.target.id;
+            const link = tocEl.querySelector(`a[data-target="${slug}"]`);
+            if (!link) return;
+            if (e.isIntersecting) {
+                tocEl.querySelectorAll('a.active').forEach(x => x.classList.remove('active'));
+                link.classList.add('active');
+            }
+        });
+    }, { rootMargin: '-100px 0px -60% 0px', threshold: 0 });
+    items.forEach(i => io.observe(i.h));
+}
+
+/* Footnote popup — click toggles, hover shows.
+   Cleanup happens when you click elsewhere or scroll the popup off-screen. */
+function setupFootnotePopups(bodyEl) {
+    let popup = null;
+    let activeRef = null;
+
+    function closePopup() {
+        if (popup) {
+            const p = popup;
+            p.classList.remove('show');
+            setTimeout(() => p.remove(), 220);
+            popup = null;
+        }
+        if (activeRef) { activeRef.classList.remove('is-open'); activeRef = null; }
+    }
+    function openPopup(ref) {
+        closePopup();
+        const content = ref.dataset.fncontent || '';
+        const id = ref.dataset.fn || '';
+        popup = document.createElement('div');
+        popup.className = 'fn-popup';
+        popup.innerHTML = `<span class="fn-label">Note ${id}</span>${content}`;
+        document.body.appendChild(popup);
+
+        const rect = ref.getBoundingClientRect();
+        const popupWidth = Math.min(360, Math.max(220, popup.offsetWidth));
+        const padding = 12;
+        let left = rect.left + window.scrollX + rect.width / 2 - popupWidth / 2;
+        left = Math.max(padding, Math.min(left, window.innerWidth - popupWidth - padding));
+        const top = rect.bottom + window.scrollY + 12;
+        popup.style.left = left + 'px';
+        popup.style.top  = top  + 'px';
+        popup.style.width = 'auto';
+        popup.style.maxWidth = '360px';
+        popup.style.setProperty('--arrow-x', (rect.left + window.scrollX - left + rect.width/2 - 6) + 'px');
+
+        requestAnimationFrame(() => popup.classList.add('show'));
+        ref.classList.add('is-open');
+        activeRef = ref;
+    }
+
+    bodyEl.addEventListener('click', e => {
+        const ref = e.target.closest('.fn-ref');
+        if (ref) {
+            e.preventDefault();
+            if (activeRef === ref) closePopup();
+            else openPopup(ref);
+        }
+    });
+    document.addEventListener('click', e => {
+        if (!popup) return;
+        if (e.target.closest('.fn-popup') || e.target.closest('.fn-ref')) return;
+        closePopup();
+    });
+    document.addEventListener('scroll', () => { if (popup) closePopup(); }, { passive: true });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+}
+
+/* Reading progress bar */
+function setupProgressBar(bodyEl) {
+    const bar = document.getElementById('readProgress');
+    if (!bar || !bodyEl) return;
+    function update() {
+        const rect = bodyEl.getBoundingClientRect();
+        const total = rect.height - window.innerHeight;
+        if (total <= 0) { bar.style.transform = 'scaleX(1)'; return; }
+        const progress = Math.max(0, Math.min(1, -rect.top / total));
+        bar.style.transform = `scaleX(${progress.toFixed(3)})`;
+    }
+    update();
+    document.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+}
+
+/* ============================================================
+   MAIN — load article, render, wire up flourishes
+   ============================================================
+*/
 (async function () {
     const root = document.getElementById('articleRoot');
 
-    /* Read slug from URL */
     const params = new URLSearchParams(location.search);
     const slug = params.get('slug');
     if (!slug) {
@@ -244,7 +579,6 @@ const TAG_LABELS = {
     }
 
     try {
-        /* 1) Find metadata in articles.json */
         const idxRes = await fetch('articles/articles.json');
         if (!idxRes.ok) throw new Error('Could not load article index');
         const articles = await idxRes.json();
@@ -254,18 +588,24 @@ const TAG_LABELS = {
             return;
         }
 
-        /* If external_url is set, redirect away */
-        if (meta.external_url) {
-            location.replace(meta.external_url);
-            return;
-        }
+        if (meta.external_url) { location.replace(meta.external_url); return; }
 
-        /* 2) Load the markdown body */
         const mdRes = await fetch(`articles/${slug}.md`);
         if (!mdRes.ok) throw new Error('Could not load article body');
-        const md = await mdRes.text();
+        let md = await mdRes.text();
 
-        /* 3) Render */
+        /* Pipeline: typography → sidenotes → definitions → footnotes → marked */
+        md = smartenTypography(md);
+        md = processSidenotes(md);
+        md = processDefinitions(md);
+        md = processFootnotes(md);
+
+        if (window.marked && marked.setOptions) {
+            marked.setOptions({ gfm: true, breaks: false });
+        }
+        let bodyHtml = window.marked ? marked.parse(md) : `<pre>${md}</pre>`;
+        bodyHtml = tagInlineQuotes(bodyHtml);
+
         document.title = `${meta.title}, Andi Shehu`;
         const metaDesc = document.querySelector('meta[name="description"]');
         if (metaDesc) metaDesc.setAttribute('content', meta.summary || '');
@@ -273,8 +613,6 @@ const TAG_LABELS = {
         const tagsHtml = (meta.tags || []).map(t =>
             `<span class="article-tag">${TAG_LABELS[t] || t.replace(/-/g,' ')}</span>`
         ).join('');
-
-        const bodyHtml = window.marked ? marked.parse(md) : `<pre>${md}</pre>`;
 
         const shareUrl = encodeURIComponent(`https://andishehu.eu/article.html?slug=${slug}`);
         const shareText = encodeURIComponent(meta.title);
@@ -318,7 +656,12 @@ const TAG_LABELS = {
             </div>
         `;
 
-        /* Copy link button */
+        const bodyEl = root.querySelector('.article-body');
+        const tocEl  = document.getElementById('articleToc');
+        if (bodyEl && tocEl)  buildTOC(bodyEl, tocEl);
+        if (bodyEl)           setupFootnotePopups(bodyEl);
+        if (bodyEl)           setupProgressBar(bodyEl);
+
         const copyBtn = document.getElementById('copyLinkBtn');
         if (copyBtn) copyBtn.addEventListener('click', () => {
             navigator.clipboard.writeText(`https://andishehu.eu/article.html?slug=${slug}`).then(() => {

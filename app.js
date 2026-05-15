@@ -90,3 +90,31 @@ window.formatArticleDate = function (iso) {
     if (isNaN(d)) return iso;
     return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
 };
+
+/* ---------- Footer star — cycle through hand-written observations.
+   Edit the OBSERVATIONS array to change what the star says. Each click cycles to the next one. ---------- */
+const OBSERVATIONS = [
+    "Still here. Still reading.",
+    "Currently re-reading Tooze.",
+    "Coffee count today: too many to count.",
+    "The Continental Brief comes out on Sundays.",
+    "If you found this star, you read footnotes too.",
+    "Slack is closed; the inbox is open.",
+    "Yes, I do answer DMs.",
+    "Currently between two campaigns and three deadlines.",
+    "Rome is hot in May. Send shade.",
+    "Made with HTML, coffee and stubbornness."
+];
+document.addEventListener('DOMContentLoaded', () => {
+    const stars = document.querySelectorAll('.easter-star, #easterStar');
+    let idx = Math.floor(Math.random() * OBSERVATIONS.length);
+    stars.forEach(star => {
+        star.style.cursor = 'pointer';
+        star.setAttribute('title', 'Click for a note');
+        star.addEventListener('click', () => {
+            const msg = OBSERVATIONS[idx % OBSERVATIONS.length];
+            idx++;
+            if (window.showToast) window.showToast('✦  ' + msg);
+        });
+    });
+});

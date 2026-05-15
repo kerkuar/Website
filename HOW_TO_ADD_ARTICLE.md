@@ -38,9 +38,34 @@ and > block quotes.
 A few tips:
 
 - Don't add a `# Title` at the top — the title comes from the JSON, not the body.
-- Use `##` for section headings inside the article.
+- Use `##` for section headings inside the article (they also become the right-margin table of contents on wide screens).
 - For images, drop the file in a folder (e.g. `articles/images/`) and reference with `![alt text](images/filename.jpg)`.
 - If copying from Word, paste into a plain Markdown editor (or TextEdit / Notepad) first to strip Word formatting. Then add Markdown syntax for headings, bold, etc.
+- Smart quotes, em-dashes and ellipses are converted automatically. Write `"text"` and `--` and `...`; they render as `"text"`, `—`, `…`.
+
+### Three editorial extras the site supports
+
+These are custom syntax you can use anywhere in the body:
+
+**1 · Footnotes** — put a `[^N]` after the sentence, then define it anywhere with `[^N]: …`. The number renders as a small clickable superscript; clicking opens a popup with the note. The definitions block at the bottom is hidden.
+
+```markdown
+Spain refused the bases, in a register Madrid hasn't used since 2003.[^1]
+
+[^1]: Reuters obtained the internal Pentagon email on 24 April. Sánchez was asked about it the next morning.
+```
+
+**2 · Sidenotes (marginalia)** — put `{{side: short aside}}` at the end of a paragraph. On wide screens it floats into the right margin in italic. On mobile it inlines below the paragraph with a left rule.
+
+```markdown
+The Treaty of Rome was signed in March 1957. {{side: Negotiations had been going on for years — the Six did not invent the EEC overnight.}}
+```
+
+**3 · Hover-reveal definitions** — wrap a term with `[term](?:explanation)`. On hover the explanation appears as a small tooltip. Useful for EU jargon a casual reader might not know.
+
+```markdown
+The [European Council](?:not to be confused with the Council of the EU — this one is the heads of state) does not have a formal legislative role.
+```
 
 ---
 

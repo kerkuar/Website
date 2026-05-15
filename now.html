@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Now, Andi Shehu</title>
+    <meta name="description" content="What I'm working on, reading, writing and travelling to. A /now page in the indie-web tradition.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,30..100;1,9..144,300..700,30..100&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <style>
+    body { background: var(--bg-reading); }
+
+    .now-wrap { max-width: 760px; }
+
+    .now-meta {
+        display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+        font-size: 0.85rem; color: var(--text-muted);
+        margin-bottom: 2rem;
+    }
+    .now-meta-dot {
+        width: 8px; height: 8px; border-radius: 50%; background: var(--secondary);
+        animation: pulse-dot 2.4s ease-in-out infinite;
+    }
+    @keyframes pulse-dot { 0%,100%{transform:scale(1);opacity:1;} 50%{transform:scale(1.4);opacity:0.6;} }
+
+    .now-intro {
+        font-family: 'Fraunces', 'Cormorant Garamond', Georgia, serif; font-style: italic;
+        font-size: 1.25rem; line-height: 1.6;
+        color: var(--text); margin-bottom: 3rem;
+        max-width: 640px;
+        border-left: 3px solid var(--accent);
+        padding-left: 1.4rem;
+    }
+
+    .now-section { margin-bottom: 2.6rem; position: relative; }
+    .now-section h2 {
+        font-family: 'Fraunces', Georgia, serif;
+        font-size: 1.4rem; font-weight: 500;
+        color: var(--text); margin-bottom: 0.6rem;
+        padding-bottom: 0.45rem;
+        border-bottom: 1px solid var(--border);
+    }
+    .now-section ul {
+        list-style: none; padding: 0; margin: 0;
+    }
+    .now-section li {
+        padding: 0.55rem 0 0.55rem 1.6rem;
+        position: relative;
+        font-size: 1rem; line-height: 1.65;
+        color: var(--text);
+        border-bottom: 1px dashed var(--border);
+    }
+    .now-section li:last-child { border-bottom: none; }
+    .now-section li::before {
+        content: '·';
+        position: absolute; left: 0.3rem; top: 0.55rem;
+        color: var(--primary); font-weight: 700; font-size: 1.2rem;
+    }
+
+    .now-footnote {
+        margin-top: 4rem; padding-top: 2rem;
+        border-top: 1px solid var(--border);
+        font-size: 0.85rem; color: var(--text-muted); font-style: italic;
+        max-width: 640px;
+    }
+    .now-footnote a { color: var(--primary); text-decoration: underline; text-decoration-color: rgba(156,61,46,0.3); }
+    .now-footnote a:hover { text-decoration-color: var(--primary); }
+
+    .now-loading { padding: 4rem 0; text-align: center; color: var(--text-muted); font-style: italic; }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar" class="site-nav solid">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+            <div class="nav-logo-mark"><svg viewBox="0 0 64 64" aria-hidden="true"><rect class="logo-bg" width="64" height="64" rx="14"/><g class="logo-tower"><path d="M 25 52 L 39 52 L 36 22 L 28 22 Z"/><rect x="24" y="19" width="16" height="3"/><rect x="27" y="11" width="10" height="8"/><path d="M 25 11 L 39 11 L 32 4 Z"/></g><circle class="logo-beacon" cx="32" cy="15" r="2.5"/></svg></div>
+            <span class="nav-logo-text">Andi Shehu</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="writing.html">Writing</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="reading.html">Reading</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <span class="theme-icon sun">☀️</span>
+                <span class="theme-icon moon">🌙</span>
+            </button>
+            <button class="hamburger" id="hamburger" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="writing.html">Writing</a>
+    <a href="services.html">Services</a>
+    <a href="reading.html">Reading</a>
+    <a href="contact.html">Contact</a>
+</div>
+
+<section class="has-nav-offset">
+    <div class="container">
+        <div class="now-wrap">
+            <div class="page-intro fade-in" style="padding-bottom:1rem;">
+                <span class="section-label">/ now</span>
+                <h1>What I'm doing now.</h1>
+                <div class="now-meta">
+                    <span class="now-meta-dot"></span>
+                    <span id="nowLastUpdated">Updated recently</span>
+                </div>
+            </div>
+
+            <div id="nowRoot" class="fade-in">
+                <div class="now-loading">Loading…</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div style="display:flex;align-items:center;gap:0.7rem;">
+                    <div class="nav-logo-mark" style="width:36px;height:36px;"><svg viewBox="0 0 64 64" aria-hidden="true"><rect class="logo-bg" width="64" height="64" rx="14"/><g class="logo-tower"><path d="M 25 52 L 39 52 L 36 22 L 28 22 Z"/><rect x="24" y="19" width="16" height="3"/><rect x="27" y="11" width="10" height="8"/><path d="M 25 11 L 39 11 L 32 4 Z"/></g><circle class="logo-beacon" cx="32" cy="15" r="2.5"/></svg></div>
+                    <span style="font-family:'Fraunces','Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:600;color:var(--text);">Andi Shehu</span>
+                </div>
+                <p>Policy officer. Community organiser. Historian at heart. Making European decisions legible to the people who have to live with them.</p>
+                <a href="https://www.thegoodlobby.it/" target="_blank" rel="noopener" class="tgl-badge">
+                    <div class="tgl-logo">GL</div>The Good Lobby Italia
+                </a>
+            </div>
+            <div class="footer-col"><h4>Navigate</h4><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="writing.html">Writing</a></li><li><a href="services.html">Services</a></li><li><a href="reading.html">Reading</a></li><li><a href="now.html">Now</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+            <div class="footer-col"><h4>Connect</h4><ul class="footer-links"><li><a href="https://substack.com/@shehuandi" target="_blank" rel="noopener">Substack</a></li><li><a href="https://www.instagram.com/sheh.andi/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://linkedin.com/in/inandishehu/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://x.com/AndShehu" target="_blank" rel="noopener">X / Twitter</a></li><li><a href="https://www.tiktok.com/@andishehu670" target="_blank" rel="noopener">TikTok</a></li></ul></div>
+            <div class="footer-col"><h4>Writing</h4><ul class="footer-links"><li><a href="https://substack.com/@shehuandi" target="_blank" rel="noopener">The Continental Brief</a></li><li><a href="writing.html">Essays &amp; analysis</a></li><li><a href="contact.html">Pitch me a topic</a></li></ul></div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Andi Shehu · andishehu.eu</p>
+            <div class="footer-links-row">
+                <a href="contact.html">Contact</a>
+                <a href="https://www.thegoodlobby.it/" target="_blank" rel="noopener">The Good Lobby Italia</a>
+                <span class="easter-star">✦</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="app.js"></script>
+<script>
+(async function () {
+    const root = document.getElementById('nowRoot');
+    const updatedEl = document.getElementById('nowLastUpdated');
+    if (!root) return;
+    const esc = s => String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+    try {
+        const res = await fetch('now.json');
+        if (!res.ok) throw new Error('Could not load now.json');
+        const data = await res.json();
+
+        if (data.last_updated) {
+            const d = new Date(data.last_updated);
+            const niceDate = isNaN(d) ? data.last_updated :
+                d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+            updatedEl.textContent = `Updated ${niceDate}`;
+        }
+
+        let html = '';
+        if (data.intro) html += `<p class="now-intro">${esc(data.intro)}</p>`;
+
+        (data.sections || []).forEach(sec => {
+            const items = (sec.items || []).map(i => `<li>${esc(i)}</li>`).join('');
+            html += `
+                <section class="now-section">
+                    <h2>${esc(sec.label)}</h2>
+                    <ul>${items}</ul>
+                </section>`;
+        });
+
+        if (data.footnote) {
+            html += `<div class="now-footnote">${esc(data.footnote).replace(/(nownownow\.com)/, '<a href="https://nownownow.com" target="_blank" rel="noopener">$1</a>')}</div>`;
+        }
+
+        root.innerHTML = html;
+    } catch (err) {
+        console.error(err);
+        root.innerHTML = `<div class="now-loading">Couldn't load the /now data.</div>`;
+    }
+})();
+</script>
+</body>
+</html>

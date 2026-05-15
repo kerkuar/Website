@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services, Andi Shehu</title>
-    <meta name="description" content="Campaign strategy, policy analysis, workshop facilitation, coalition building. Available on a fee or pro-bono basis.">
+    <meta name="description" content="Community organising, campaign strategy, workshops, policy analysis. Available on a fee or pro-bono basis. Plus a wall of notes from past workshop participants.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +20,15 @@
         background: var(--surface); border: 1px solid var(--border);
         border-radius: var(--radius); padding: 2rem 1.8rem;
         transition: all var(--transition); position: relative; overflow: hidden;
+    }
+    .service-card.lead {
+        border-color: var(--primary-light);
+        background: linear-gradient(180deg, var(--surface) 0%, var(--surface) 100%);
+        box-shadow: var(--shadow-sm);
+    }
+    .service-card.lead::before {
+        content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+        background: var(--primary);
     }
     .service-card::after {
         content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 0;
@@ -42,12 +51,116 @@
     [data-theme="dark"] .svc-fee  { background: rgba(232,144,123,0.18); }
     [data-theme="dark"] .svc-free { background: rgba(95,173,144,0.18); color: var(--secondary); }
 
+    /* ===== Feedback wall ===== */
+    .feedback-section { margin-top: 5rem; padding-top: 4rem; border-top: 1px solid var(--border); }
+    .feedback-intro { max-width: 720px; margin-bottom: 2.6rem; }
+
+    .testimonials-featured { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; margin-bottom: 1.8rem; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 1.2rem; }
+
+    .testimonial {
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: var(--radius); padding: 1.6rem 1.7rem;
+        position: relative; transition: all var(--transition);
+    }
+    .testimonial:hover { box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+    .testimonial.featured {
+        border-color: var(--primary-light);
+        background: linear-gradient(180deg, var(--surface) 0%, var(--bg-services) 100%);
+        padding: 2rem 2.2rem 1.8rem;
+    }
+    .testimonial.featured::before {
+        content: '“';
+        position: absolute; top: 0.1rem; left: 1.2rem;
+        font-family: 'Fraunces', Georgia, serif;
+        font-size: 5rem; line-height: 1;
+        color: var(--accent-warm); opacity: 0.65;
+        z-index: 0; pointer-events: none;
+    }
+    .testimonial-body {
+        font-family: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
+        font-size: 1.02rem; line-height: 1.65;
+        color: var(--text); margin-bottom: 1rem;
+        position: relative; z-index: 1;
+    }
+    .testimonial.featured .testimonial-body { font-size: 1.18rem; line-height: 1.6; }
+    .testimonial-meta {
+        font-size: 0.78rem; color: var(--text-muted);
+        border-top: 1px solid var(--border); padding-top: 0.7rem;
+        line-height: 1.45;
+    }
+    .testimonial-name { font-weight: 600; color: var(--text); font-family: 'Inter', sans-serif; }
+    .testimonial-role { font-style: italic; }
+    .testimonial-workshop { display: block; margin-top: 0.18rem; opacity: 0.78; }
+
+    .feedback-empty {
+        text-align: center; padding: 3rem 2rem;
+        font-style: italic; color: var(--text-muted);
+        background: var(--surface); border: 1px dashed var(--border);
+        border-radius: var(--radius);
+    }
+    .show-more-btn {
+        display: block; margin: 1.5rem auto 0;
+        background: transparent; border: 1px solid var(--border);
+        color: var(--text-muted); cursor: pointer;
+        padding: 0.6rem 1.4rem; border-radius: var(--radius-full);
+        font-size: 0.85rem; font-family: 'Inter', sans-serif;
+        transition: all var(--transition);
+    }
+    .show-more-btn:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* Submission form */
+    .leave-note {
+        margin-top: 4rem; background: var(--surface);
+        border: 1px solid var(--border); border-radius: var(--radius);
+        padding: 2.4rem 2.2rem;
+        max-width: 680px;
+    }
+    .leave-note h3 { font-size: 1.45rem; margin-bottom: 0.4rem; }
+    .leave-note > p { font-size: 0.92rem; margin-bottom: 1.6rem; max-width: 540px; }
+    .leave-note .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .leave-note input, .leave-note textarea {
+        width: 100%; padding: 0.7rem 0.95rem;
+        border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+        background: var(--bg); color: var(--text);
+        font-family: 'Inter', sans-serif; font-size: 0.9rem;
+        transition: border-color var(--transition); outline: none;
+    }
+    .leave-note input:focus, .leave-note textarea:focus { border-color: var(--primary); }
+    .leave-note textarea { min-height: 110px; resize: vertical; line-height: 1.5; }
+    .leave-note .form-actions { display: flex; align-items: center; gap: 1rem; margin-top: 1rem; }
+    .leave-note button[type="submit"] {
+        background: var(--primary); color: white; border: none;
+        padding: 0.75rem 1.6rem; border-radius: var(--radius-full);
+        font-family: 'Inter', sans-serif; font-size: 0.92rem; font-weight: 500;
+        cursor: pointer; transition: all var(--transition);
+    }
+    .leave-note button[type="submit"]:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .leave-note button[type="submit"]:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .leave-note .form-status { font-size: 0.85rem; color: var(--text-muted); }
+    .leave-note .form-status.ok { color: var(--secondary); }
+    .leave-note .form-status.err { color: var(--accent); }
+    .leave-note .field-note { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; font-style: italic; }
+
+    .feedback-disabled-note {
+        margin-top: 1rem; padding: 0.8rem 1rem;
+        background: var(--surface-alt); border-left: 3px solid var(--accent);
+        font-size: 0.83rem; color: var(--text-muted);
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+    .feedback-disabled-note strong { color: var(--text); }
+
     .closing-cta {
-        text-align: center; padding: 4rem 2rem; margin-top: 4rem;
+        text-align: center; padding: 4rem 2rem; margin-top: 5rem;
         background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border);
     }
     .closing-cta h2 { margin-bottom: 0.75rem; }
     .closing-cta p { max-width: 540px; margin: 0 auto 2rem; }
+
+    @media (max-width: 768px) {
+        .testimonials-featured { grid-template-columns: 1fr; }
+        .leave-note .form-row { grid-template-columns: 1fr; }
+    }
     </style>
 </head>
 <body>
@@ -56,7 +169,7 @@
 <nav id="navbar" class="site-nav solid">
     <div class="nav-inner">
         <a href="index.html" class="nav-logo">
-            <div class="nav-logo-mark"><svg viewBox="0 0 64 64" aria-hidden="true"><rect class="logo-bg" width="64" height="64" rx="14"/><path class="logo-star" d="M32 12 L36.7 25.4 L51 25.4 L39.4 33.7 L43.9 47 L32 38.8 L20.1 47 L24.6 33.7 L13 25.4 L27.3 25.4 Z"/></svg></div>
+            <div class="nav-logo-mark"><svg viewBox="0 0 64 64" aria-hidden="true"><rect class="logo-bg" width="64" height="64" rx="14"/><g class="logo-tower"><path d="M 25 52 L 39 52 L 36 22 L 28 22 Z"/><rect x="24" y="19" width="16" height="3"/><rect x="27" y="11" width="10" height="8"/><path d="M 25 11 L 39 11 L 32 4 Z"/></g><circle class="logo-beacon" cx="32" cy="15" r="2.5"/></svg></div>
             <span class="nav-logo-text">Andi Shehu</span>
         </a>
         <ul class="nav-links">
@@ -92,21 +205,97 @@
         <div class="page-intro fade-in">
             <span class="section-label">Services</span>
             <h1>What I do for organisations.</h1>
-            <p>Six things, listed below. Pricing depends on the project and on who you are. Civil-society groups usually pay nothing. Foundations and institutions usually pay a fee. The conversation is the same in both cases.</p>
+            <p>Six things, ordered by where I tend to be most useful. Civil-society groups usually pay nothing. Foundations and institutions usually pay a fee. The conversation is the same in both cases — you tell me what you're trying to change, I tell you what I think the route is.</p>
         </div>
 
         <div class="services-grid">
-            <div class="service-card fade-in"><span class="service-icon">📣</span><h3>Campaign strategy &amp; design</h3><p>From vision to movement. I help organisations design campaigns that move people, build coalitions and create durable policy change.</p><span class="svc-type svc-both">Fee / pro-bono</span></div>
-            <div class="service-card fade-in"><span class="service-icon">🔬</span><h3>Policy analysis &amp; research</h3><p>Clear, accessible analysis of complex EU and international policy landscapes. Position papers, briefings and memos that actually get read.</p><span class="svc-type svc-fee">Fee-based</span></div>
-            <div class="service-card fade-in"><span class="service-icon">🎤</span><h3>Workshop facilitation</h3><p>Interactive workshops on community organising, advocacy strategy and civic engagement, for NGOs, universities and civic groups.</p><span class="svc-type svc-both">Fee / pro-bono</span></div>
-            <div class="service-card fade-in"><span class="service-icon">🤝</span><h3>Community organising consultation</h3><p>Helping organisations and grassroots groups build power, recruit members and structure their advocacy for long-term impact.</p><span class="svc-type svc-free">Pro-bono available</span></div>
-            <div class="service-card fade-in"><span class="service-icon">📱</span><h3>Digital education &amp; content</h3><p>Strategic advice on using short-form video and social media to reach new audiences with policy and civic content.</p><span class="svc-type svc-fee">Fee-based</span></div>
-            <div class="service-card fade-in"><span class="service-icon">🌐</span><h3>Coalition building</h3><p>Connecting civil society actors, identifying common ground and building strategic alliances that amplify advocacy impact.</p><span class="svc-type svc-both">Fee / pro-bono</span></div>
+            <div class="service-card lead fade-in">
+                <span class="service-icon">🤝</span>
+                <h3>Community organising</h3>
+                <p>Power gets built, not declared. I help grassroots groups and NGOs turn a concern into a base, a base into a campaign, and a campaign into a decision someone has to make. Method, not motivation.</p>
+                <span class="svc-type svc-free">Pro-bono available</span>
+            </div>
+            <div class="service-card fade-in">
+                <span class="service-icon">🎤</span>
+                <h3>Workshop facilitation</h3>
+                <p>Sessions on community organising, advocacy strategy, and how to read a piece of legislation without giving up. For NGOs, universities and groups that want to leave the room with something they can use on Monday.</p>
+                <span class="svc-type svc-both">Fee / pro-bono</span>
+            </div>
+            <div class="service-card fade-in">
+                <span class="service-icon">📣</span>
+                <h3>Campaign strategy &amp; design</h3>
+                <p>From a problem to a movement. I help organisations design campaigns that build coalitions, move institutions, and don't fall apart at the first push-back from the people they are trying to convince.</p>
+                <span class="svc-type svc-both">Fee / pro-bono</span>
+            </div>
+            <div class="service-card fade-in">
+                <span class="service-icon">🌐</span>
+                <h3>Coalition building</h3>
+                <p>Most policy fights are won by the third or fourth ally, not the first. I help groups find common ground with the people they didn't think they could work with, and make those alliances structured enough to outlast a leadership change.</p>
+                <span class="svc-type svc-both">Fee / pro-bono</span>
+            </div>
+            <div class="service-card fade-in">
+                <span class="service-icon">🔬</span>
+                <h3>Policy analysis &amp; research</h3>
+                <p>Position papers, briefings and memos that actually get read. EU and international files made legible for boards, members and the journalists you are trying to brief. Footnotes included.</p>
+                <span class="svc-type svc-fee">Fee-based</span>
+            </div>
+            <div class="service-card fade-in">
+                <span class="service-icon">📱</span>
+                <h3>Digital education &amp; content</h3>
+                <p>Short-form video and social strategy for organisations that want to reach beyond the room. Built around the format, the audience and the actual policy — not around the algorithm of the week.</p>
+                <span class="svc-type svc-fee">Fee-based</span>
+            </div>
         </div>
 
+        <!-- ===== Feedback wall ===== -->
+        <section class="feedback-section">
+            <div class="page-intro feedback-intro fade-in">
+                <span class="section-label">From past workshops</span>
+                <h2>What people say.</h2>
+                <p>Notes from organisers, NGO staff and students who have been through one of my workshops or coaching sessions. Submissions appear here as they come in — moderated lightly, for relevance not for tone.</p>
+            </div>
+
+            <div class="testimonials-featured fade-in" id="featuredTestimonials" hidden></div>
+            <div class="testimonials-grid fade-in" id="allTestimonials"></div>
+            <button class="show-more-btn" id="showMoreBtn" hidden type="button">Show more notes →</button>
+
+            <div class="leave-note fade-in">
+                <h3>Did we work together? Leave a note.</h3>
+                <p>If you attended a workshop, a coaching session or a public talk, your note helps me improve and helps other groups decide whether to invite me. Your name appears with it; pseudonyms are fine.</p>
+
+                <form id="testimonialForm" autocomplete="off">
+                    <div class="form-row">
+                        <div>
+                            <input type="text" name="name" id="tName" placeholder="Your name *" maxlength="80" required>
+                        </div>
+                        <div>
+                            <input type="text" name="role_org" id="tRole" placeholder="Role · organisation (optional)" maxlength="120">
+                        </div>
+                    </div>
+                    <div>
+                        <input type="text" name="workshop" id="tWorkshop" placeholder="Which workshop / talk · when (optional)" maxlength="140">
+                        <div class="field-note">e.g. "Community organising · LUISS · Feb 2026"</div>
+                    </div>
+                    <div style="margin-top:1rem;">
+                        <textarea name="body" id="tBody" placeholder="What was useful? What could have been sharper? Write as you would speak. *" maxlength="1200" required></textarea>
+                    </div>
+                    <!-- honeypot for spam -->
+                    <input type="text" name="hp_field" id="tHp" style="display:none" tabindex="-1" autocomplete="off">
+
+                    <div class="form-actions">
+                        <button type="submit" id="tSubmit">Send note →</button>
+                        <span class="form-status" id="tStatus"></span>
+                    </div>
+                </form>
+                <div class="feedback-disabled-note" id="feedbackDisabledNote" hidden>
+                    <strong>Note:</strong> the feedback wall isn't connected to its backend yet. The seed entries above are placeholders. See <code>SUPABASE_SETUP.md</code> in the repo for the five-minute setup.
+                </div>
+            </div>
+        </section>
+
         <div class="closing-cta fade-in" style="margin-bottom:5rem;">
-            <h2>Interested in working together?</h2>
-            <p>Tell me about your project, your timeline and what you're trying to change. I read every message.</p>
+            <h2>Want to bring me in?</h2>
+            <p>Tell me what you're trying to change, who needs to do the changing, and what timeline you're working with. I read every message.</p>
             <a href="contact.html" class="btn btn-primary">Get in touch →</a>
         </div>
     </div>
@@ -118,15 +307,15 @@
         <div class="footer-grid">
             <div class="footer-brand">
                 <div style="display:flex;align-items:center;gap:0.7rem;">
-                    <div class="nav-logo-mark" style="width:36px;height:36px;"><svg viewBox="0 0 64 64" aria-hidden="true"><rect class="logo-bg" width="64" height="64" rx="14"/><path class="logo-star" d="M32 12 L36.7 25.4 L51 25.4 L39.4 33.7 L43.9 47 L32 38.8 L20.1 47 L24.6 33.7 L13 25.4 L27.3 25.4 Z"/></svg></div>
+                    <div class="nav-logo-mark" style="width:36px;height:36px;"><svg viewBox="0 0 64 64" aria-hidden="true"><rect class="logo-bg" width="64" height="64" rx="14"/><g class="logo-tower"><path d="M 25 52 L 39 52 L 36 22 L 28 22 Z"/><rect x="24" y="19" width="16" height="3"/><rect x="27" y="11" width="10" height="8"/><path d="M 25 11 L 39 11 L 32 4 Z"/></g><circle class="logo-beacon" cx="32" cy="15" r="2.5"/></svg></div>
                     <span style="font-family:'Fraunces','Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:600;color:var(--text);">Andi Shehu</span>
                 </div>
-                <p>Sense-maker. Democracy advocate. Historian at heart. Making European politics accessible, one article at a time.</p>
+                <p>Policy officer. Community organiser. Historian at heart. Making European decisions legible to the people who have to live with them.</p>
                 <a href="https://www.thegoodlobby.it/" target="_blank" rel="noopener" class="tgl-badge">
                     <div class="tgl-logo">GL</div>The Good Lobby Italia
                 </a>
             </div>
-            <div class="footer-col"><h4>Navigate</h4><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="writing.html">Writing</a></li><li><a href="services.html">Services</a></li><li><a href="reading.html">Reading</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+            <div class="footer-col"><h4>Navigate</h4><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="writing.html">Writing</a></li><li><a href="services.html">Services</a></li><li><a href="reading.html">Reading</a></li><li><a href="now.html">Now</a></li><li><a href="contact.html">Contact</a></li></ul></div>
             <div class="footer-col"><h4>Connect</h4><ul class="footer-links"><li><a href="https://substack.com/@shehuandi" target="_blank" rel="noopener">Substack</a></li><li><a href="https://www.instagram.com/sheh.andi/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://linkedin.com/in/inandishehu/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://x.com/AndShehu" target="_blank" rel="noopener">X / Twitter</a></li><li><a href="https://www.tiktok.com/@andishehu670" target="_blank" rel="noopener">TikTok</a></li></ul></div>
             <div class="footer-col"><h4>Writing</h4><ul class="footer-links"><li><a href="https://substack.com/@shehuandi" target="_blank" rel="noopener">The Continental Brief</a></li><li><a href="writing.html">Essays &amp; analysis</a></li><li><a href="contact.html">Pitch me a topic</a></li></ul></div>
         </div>
@@ -144,5 +333,7 @@
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="app.js"></script>
+<script src="supabase-config.js"></script>
+<script src="feedback-wall.js"></script>
 </body>
 </html>
