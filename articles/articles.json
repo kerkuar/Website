@@ -1,5 +1,23 @@
 [
   {
+    "slug": "forbidden-island",
+    "title": "The Forbidden Island",
+    "subtitle": "How Albania learned to say no",
+    "date": "2026-06-07",
+    "tags": [
+      "albania",
+      "environment",
+      "politics"
+    ],
+    "summary": "Albania's fight over Sazan and the Vjosa-Narta coast is more than an environmental protest. It is a country that once said yes to everything learning to defend the commons.",
+    "emoji": "🦩",
+    "color": "lav",
+    "reading_time": "19 min",
+    "external_url": "",
+    "hero_image": "articles/images/forbidden-island.jpg",
+    "hero_caption": "Flamingo double-headed eagle illustration. Image provided by author."
+  },
+  {
     "slug": "back-office-of-reparations",
     "title": "The Back Office of Reparations",
     "subtitle": "What €193 billion in a Belgian custody account tells us about European power",
