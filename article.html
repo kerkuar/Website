@@ -124,6 +124,9 @@
         font-size: 0.9rem; line-height: 1.5;
     }
     .article-body img {
+        display: block;
+        max-width: 100%;
+        height: auto;
         border-radius: var(--radius-sm); margin: 2rem auto;
         box-shadow: var(--shadow-md);
     }
@@ -454,6 +457,22 @@ function tagInlineQuotes(html) {
     return html.replace(/<em>(\s*[“"][^<]*?[”"]\s*)<\/em>/g, '<em class="q">$1</em>');
 }
 
+
+/* Markdown files live in /articles/, but their rendered HTML is inserted into
+   /article.html. Without this, a markdown image like
+   ![caption](images/file.jpg) resolves as /images/file.jpg instead of
+   /articles/images/file.jpg. */
+function resolveArticleImagePaths(bodyEl) {
+    if (!bodyEl) return;
+    bodyEl.querySelectorAll('img[src]').forEach(img => {
+        const src = img.getAttribute('src');
+        if (!src) return;
+        const isAbsolute = /^(?:[a-z][a-z0-9+.-]*:|\/\/|\/|#)/i.test(src);
+        if (isAbsolute || src.startsWith('articles/')) return;
+        img.setAttribute('src', 'articles/' + src.replace(/^\.\//, ''));
+    });
+}
+
 /* Build the right-margin TOC from h2/h3 in the rendered body. */
 function buildTOC(bodyEl, tocEl) {
     const headings = bodyEl.querySelectorAll('h2, h3');
@@ -657,6 +676,7 @@ function setupProgressBar(bodyEl) {
         `;
 
         const bodyEl = root.querySelector('.article-body');
+        if (bodyEl)           resolveArticleImagePaths(bodyEl);
         const tocEl  = document.getElementById('articleToc');
         if (bodyEl && tocEl)  buildTOC(bodyEl, tocEl);
         if (bodyEl)           setupFootnotePopups(bodyEl);
