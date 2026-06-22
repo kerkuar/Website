@@ -22,7 +22,7 @@ Eleonora Celoria, a lawyer with the Italian legal network ASGI, read the home-se
 
 Now back to Gjadër, because the practical story is the strangest of the three. Europe did not adopt this model sight unseen. It ran the experiment, at full scale, with real money and real people and the results are public. I can be more precise than that: someone I love went and looked.
 
-![Francesca Romana D'Antuono outside the Gjadër detention centre, wrapped in an EU flag](/articles/images/the-returns-francesca.jpg)
+![Francesca Romana D'Antuono outside the Gjadër detention centre, wrapped in an EU flag](images/the-returns-francesca.jpg)
 
 *Francesca Romana D'Antuono outside Gjadër. Image provided by author.*
 
