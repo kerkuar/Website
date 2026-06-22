@@ -1,5 +1,40 @@
 [
   {
+    "slug": "mismeasured",
+    "title": "Mismeasured",
+    "subtitle": "Why does Europe keep being told that it is the one in decline?",
+    "date": "2026-06-20",
+    "tags": [
+      "eu-politics",
+      "economy"
+    ],
+    "summary": "Europe's productivity gap with America is real. But the decline story measures output while ignoring lives, leisure and the welfare state — and risks fixing the wrong problem.",
+    "emoji": "📏",
+    "color": "gold",
+    "reading_time": "10 min",
+    "external_url": "",
+    "hero_image": "articles/images/mismeasured.jpg",
+    "hero_caption": "Inside an Amazon Logistics facility in Texas, 2020. Photograph released under CC0 via Wikimedia Commons."
+  },
+  {
+    "slug": "the-returns",
+    "title": "The Returns",
+    "subtitle": "Europe tested its deportation machine on my country. Last week it became the law of the continent.",
+    "date": "2026-06-11",
+    "tags": [
+      "eu-politics",
+      "migration",
+      "albania"
+    ],
+    "summary": "Italy's failed Albania detention experiment has become Europe's model for migration enforcement. Gjadër shows how failure can be scaled when the real goal is the performance of control.",
+    "emoji": "🛂",
+    "color": "lav",
+    "reading_time": "20 min",
+    "external_url": "",
+    "hero_image": "articles/images/the-returns.jpg",
+    "hero_caption": "Gjadër detention camp, Albania. Photo: Klodiana Millona, CC BY 2.0."
+  },
+  {
     "slug": "forbidden-island",
     "title": "The Forbidden Island",
     "subtitle": "How Albania learned to say no",
