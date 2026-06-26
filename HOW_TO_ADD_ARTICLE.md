@@ -79,6 +79,7 @@ Open `articles/articles.json` and add a new object to the array. Use this templa
   "title": "Your Article Title",
   "subtitle": "An optional one-line subtitle",
   "date": "2026-05-15",
+  "lang": "en",
   "tags": ["eu-politics", "economy"],
   "summary": "1-2 sentences for the listing card. Keep it punchy.",
   "emoji": "🛢️",
@@ -98,6 +99,7 @@ Open `articles/articles.json` and add a new object to the array. Use this templa
 | `title` | Headline shown on the article page and the card. |
 | `subtitle` | Optional. Italic line under the title on the article page. Empty string `""` to hide. |
 | `date` | ISO format: `YYYY-MM-DD`. Used to sort newest first. |
+| `lang` | Language of the piece: `"en"` for English, `"it"` for Italian. Drives the English / Italiano toggle on the Writing page. If you leave it out, it's treated as English. |
 | `tags` | Array. Use slugs (lowercase, hyphens). The filter buttons on the Writing page are generated automatically from whatever tags you use. Common ones: `eu-politics`, `human-rights`, `democracy`, `community`, `economy`. Add new ones freely — they appear as filters automatically. |
 | `summary` | The blurb on the listing card. ~1–2 sentences. |
 | `emoji` | The emoji shown in the card thumbnail. |

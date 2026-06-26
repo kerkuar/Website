@@ -35,6 +35,8 @@
     }
     .filter-btn:hover { border-color: var(--primary); color: var(--primary); }
     .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+    .lang-toggle { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-left: auto; padding-left: 0.5rem; border-left: 1px solid var(--border); }
+    @media (max-width: 640px) { .lang-toggle { margin-left: 0; padding-left: 0; border-left: none; width: 100%; } }
     </style>
 </head>
 <body>
@@ -47,11 +49,11 @@
             <span class="nav-logo-text">Andi Shehu</span>
         </a>
         <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
             <li><a href="writing.html">Writing</a></li>
+            <li><a href="podcasts.html">Podcasts</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="about.html">About</a></li>
             <li><a href="services.html">Services</a></li>
-            <li><a href="reading.html">Reading</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
         <div class="nav-actions">
@@ -66,11 +68,11 @@
     </div>
 </nav>
 <div class="mobile-nav" id="mobileNav">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
     <a href="writing.html">Writing</a>
+    <a href="podcasts.html">Podcasts</a>
+    <a href="publications.html">Publications</a>
+    <a href="about.html">About</a>
     <a href="services.html">Services</a>
-    <a href="reading.html">Reading</a>
     <a href="contact.html">Contact</a>
 </div>
 
@@ -90,6 +92,11 @@
             <div class="filter-tags" id="filterTags">
                 <button class="filter-btn active" data-filter="all">All</button>
                 <!-- Tag buttons added dynamically -->
+            </div>
+            <div class="lang-toggle" id="langToggle" role="group" aria-label="Filter by language">
+                <button class="filter-btn active" data-lang="all">🌍 All</button>
+                <button class="filter-btn" data-lang="en">🇬🇧 English</button>
+                <button class="filter-btn" data-lang="it">🇮🇹 Italiano</button>
             </div>
         </div>
 
@@ -119,7 +126,7 @@
                     <div class="tgl-logo">GL</div>The Good Lobby Italia
                 </a>
             </div>
-            <div class="footer-col"><h4>Navigate</h4><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="writing.html">Writing</a></li><li><a href="services.html">Services</a></li><li><a href="reading.html">Reading</a></li><li><a href="now.html">Now</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+            <div class="footer-col"><h4>Navigate</h4><ul class="footer-links"><li><a href="writing.html">Writing</a></li><li><a href="podcasts.html">Podcasts</a></li><li><a href="publications.html">Publications</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Contact</a></li></ul></div>
             <div class="footer-col"><h4>Connect</h4><ul class="footer-links"><li><a href="https://substack.com/@shehuandi" target="_blank" rel="noopener">Substack</a></li><li><a href="https://www.instagram.com/sheh.andi/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://linkedin.com/in/inandishehu/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://x.com/AndShehu" target="_blank" rel="noopener">X / Twitter</a></li><li><a href="https://www.tiktok.com/@andishehu670" target="_blank" rel="noopener">TikTok</a></li></ul></div>
             <div class="footer-col"><h4>Writing</h4><ul class="footer-links"><li><a href="https://substack.com/@shehuandi" target="_blank" rel="noopener">The Continental Brief</a></li><li><a href="writing.html">Essays &amp; analysis</a></li><li><a href="contact.html">Pitch me a topic</a></li></ul></div>
         </div>
@@ -152,16 +159,20 @@
         'economy':      'Economy'
     };
 
+    const langToggle = document.getElementById('langToggle');
+
     let articles = [];
     let activeFilter = 'all';
+    let activeLang = 'all';
 
     function render() {
         const q = search.value.toLowerCase().trim();
         const matched = articles.filter(a => {
             const tagOK = activeFilter === 'all' || (a.tags || []).includes(activeFilter);
+            const langOK = activeLang === 'all' || (a.lang || 'en') === activeLang;
             const txt = `${a.title} ${a.subtitle || ''} ${a.summary || ''}`.toLowerCase();
             const qOK = !q || txt.includes(q);
-            return tagOK && qOK;
+            return tagOK && langOK && qOK;
         }).sort((a,b) => new Date(b.date) - new Date(a.date));
 
         if (!matched.length) {
@@ -221,6 +232,12 @@
         if (!res.ok) throw new Error('fetch failed');
         articles = await res.json();
         buildFilterTags();
+        langToggle.querySelectorAll('.filter-btn').forEach(b => b.addEventListener('click', () => {
+            langToggle.querySelectorAll('.filter-btn').forEach(x => x.classList.remove('active'));
+            b.classList.add('active');
+            activeLang = b.dataset.lang;
+            render();
+        }));
         render();
         search.addEventListener('input', render);
     } catch (err) {
@@ -228,5 +245,9 @@
     }
 })();
 </script>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE_WITH_YOUR_CLOUDFLARE_TOKEN"}'></script>
+<!-- End Cloudflare Web Analytics -->
 </body>
 </html>

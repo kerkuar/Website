@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcasts, Andi Shehu</title>
+    <meta name="description" content="Podcasts by Andi Shehu — conversations on economics, climate and international politics. Coming soon.">
+    <meta property="og:title" content="Podcasts, Andi Shehu">
+    <meta property="og:description" content="Conversations on economics, climate and international politics. Coming soon.">
+    <meta property="og:url" content="https://andishehu.eu/podcasts.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,30..100;1,9..144,300..700,30..100&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <style>
+    .soon-wrap {
+        min-height: calc(100vh - var(--nav-height) - 320px);
+        display: flex; align-items: center;
+        padding: 5rem 0 4rem;
+    }
+    .soon-inner { max-width: 680px; }
+    .soon-badge {
+        display: inline-flex; align-items: center; gap: 0.55rem;
+        font-size: 0.83rem; font-weight: 500; color: var(--text-muted); font-style: italic;
+        background: var(--surface); padding: 0.5rem 1.2rem;
+        border-radius: var(--radius-full); margin-bottom: 1.6rem;
+        box-shadow: var(--shadow-sm); border: 1px solid var(--border);
+    }
+    .soon-emoji { font-size: 3.2rem; display: block; margin-bottom: 1rem; }
+    .soon-wrap h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); margin-bottom: 1rem; color: var(--text); }
+    .soon-wrap .lead { font-size: 1.1rem; line-height: 1.85; max-width: 560px; margin-bottom: 2rem; }
+    .soon-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar" class="site-nav solid">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+            <div class="nav-logo-mark"><svg viewBox="0 0 64 64" aria-hidden="true"><rect class="logo-bg" width="64" height="64" rx="14"/><g class="logo-tower"><path d="M 25 52 L 39 52 L 36 22 L 28 22 Z"/><rect x="24" y="19" width="16" height="3"/><rect x="27" y="11" width="10" height="8"/><path d="M 25 11 L 39 11 L 32 4 Z"/></g><circle class="logo-beacon" cx="32" cy="15" r="2.5"/></svg></div>
+            <span class="nav-logo-text">Andi Shehu</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="writing.html">Writing</a></li>
+            <li><a href="podcasts.html">Podcasts</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <span class="theme-icon sun">☀️</span>
+                <span class="theme-icon moon">🌙</span>
+            </button>
+            <button class="hamburger" id="hamburger" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+    <a href="writing.html">Writing</a>
+    <a href="podcasts.html">Podcasts</a>
+    <a href="publications.html">Publications</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+</div>
+
+<!-- COMING SOON -->
+<section class="soon-wrap">
+    <div class="container">
+        <div class="soon-inner">
+            <span class="soon-badge"><span class="soon-emoji" style="display:inline;font-size:1rem;margin:0;">🎙️</span> Podcasts</span>
+            <span class="soon-emoji">🎙️</span>
+            <h1>In the studio.</h1>
+            <p class="lead">
+                I'm putting together a podcast on economics, climate and international politics —
+                the same sense-making, out loud. Links to episodes and shows will live here.
+            </p>
+            <p class="lead" style="margin-bottom:2rem;">
+                Until then, the writing is the best place to start.
+            </p>
+            <div class="soon-ctas">
+                <a href="writing.html" class="btn btn-primary">📝 Read my writing</a>
+                <a href="https://substack.com/@shehuandi" target="_blank" rel="noopener" class="btn btn-outline">Subscribe to the newsletter →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div style="display:flex;align-items:center;gap:0.7rem;">
+                    <div class="nav-logo-mark" style="width:36px;height:36px;"><svg viewBox="0 0 64 64" aria-hidden="true"><rect class="logo-bg" width="64" height="64" rx="14"/><g class="logo-tower"><path d="M 25 52 L 39 52 L 36 22 L 28 22 Z"/><rect x="24" y="19" width="16" height="3"/><rect x="27" y="11" width="10" height="8"/><path d="M 25 11 L 39 11 L 32 4 Z"/></g><circle class="logo-beacon" cx="32" cy="15" r="2.5"/></svg></div>
+                    <span style="font-family:'Fraunces','Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:600;color:var(--text);">Andi Shehu</span>
+                </div>
+                <p>Policy officer. Community organiser. Historian at heart. Making European decisions legible to the people who have to live with them.</p>
+                <a href="https://www.thegoodlobby.it/" target="_blank" rel="noopener" class="tgl-badge">
+                    <div class="tgl-logo">GL</div>The Good Lobby Italia
+                </a>
+            </div>
+            <div class="footer-col"><h4>Navigate</h4><ul class="footer-links"><li><a href="writing.html">Writing</a></li><li><a href="podcasts.html">Podcasts</a></li><li><a href="publications.html">Publications</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+            <div class="footer-col"><h4>Connect</h4><ul class="footer-links"><li><a href="https://substack.com/@shehuandi" target="_blank" rel="noopener">Substack</a></li><li><a href="https://www.instagram.com/sheh.andi/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://linkedin.com/in/inandishehu/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://x.com/AndShehu" target="_blank" rel="noopener">X / Twitter</a></li><li><a href="https://www.tiktok.com/@andishehu670" target="_blank" rel="noopener">TikTok</a></li></ul></div>
+            <div class="footer-col"><h4>Writing</h4><ul class="footer-links"><li><a href="https://substack.com/@shehuandi" target="_blank" rel="noopener">The Continental Brief</a></li><li><a href="writing.html">Essays &amp; analysis</a></li><li><a href="contact.html">Pitch me a topic</a></li></ul></div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Andi Shehu · andishehu.eu</p>
+            <div class="footer-links-row">
+                <a href="contact.html">Contact</a>
+                <a href="https://www.thegoodlobby.it/" target="_blank" rel="noopener">The Good Lobby Italia</a>
+                <span class="easter-star">✦</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="app.js"></script>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE_WITH_YOUR_CLOUDFLARE_TOKEN"}'></script>
+<!-- End Cloudflare Web Analytics -->
+</body>
+</html>
