@@ -175,26 +175,26 @@
         <span class="section-label fade-in">Where to next</span>
         <h2 class="fade-in" style="margin-bottom:0.75rem;">Mostly, I write.</h2>
         <p class="fade-in" style="margin-bottom:0;max-width:560px;">
-            Essays first. Podcasts and outside writing are on the way. The rest is here if you want it.
+            Essays first. Guest appearances and outside writing are starting to gather in their own corners.
         </p>
         <div class="nav-cards">
             <a href="writing.html" class="nav-card fade-in">
                 <span class="nav-card-arrow">↗</span>
                 <div class="nav-card-icon">✍️</div>
                 <h3>Writing</h3>
-                <p>Essays on how European decisions actually get made, in English and Italian.</p>
+                <p>Essays on how European decisions actually get made. English first, Italian when you want it.</p>
             </a>
             <a href="podcasts.html" class="nav-card fade-in">
                 <span class="nav-card-arrow">↗</span>
                 <div class="nav-card-icon">🎙️</div>
                 <h3>Podcasts</h3>
-                <p>Conversations on economics, climate and politics. Coming soon.</p>
+                <p>Guest appearances and invited conversations on politics, rights and Europe.</p>
             </a>
             <a href="publications.html" class="nav-card fade-in">
                 <span class="nav-card-arrow">↗</span>
                 <div class="nav-card-icon">📰</div>
                 <h3>Publications</h3>
-                <p>My pieces in other outlets, collected in one place. Coming soon.</p>
+                <p>External bylines, translations and pieces first published in other outlets.</p>
             </a>
             <a href="https://substack.com/@shehuandi" target="_blank" rel="noopener" class="nav-card fade-in">
                 <span class="nav-card-arrow">↗</span>
@@ -338,7 +338,10 @@
         const res = await fetch('articles/articles.json');
         if (!res.ok) throw new Error('fetch failed');
         const articles = await res.json();
-        const sorted = articles.slice().sort((a,b) => new Date(b.date) - new Date(a.date));
+        const sorted = articles
+            .filter(a => (a.lang || 'en') === 'en')
+            .slice()
+            .sort((a,b) => new Date(b.date) - new Date(a.date));
         const top = sorted.slice(0, 3);
         if (!top.length) {
             list.innerHTML = '<div class="no-results"><span class="no-results-emoji">📭</span><p>No articles yet, first one coming soon!</p></div>';

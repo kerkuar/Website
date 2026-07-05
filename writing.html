@@ -94,8 +94,8 @@
                 <!-- Tag buttons added dynamically -->
             </div>
             <div class="lang-toggle" id="langToggle" role="group" aria-label="Filter by language">
-                <button class="filter-btn active" data-lang="all">🌍 All</button>
-                <button class="filter-btn" data-lang="en">🇬🇧 English</button>
+                <button class="filter-btn" data-lang="all">🌍 All</button>
+                <button class="filter-btn active" data-lang="en">🇬🇧 English</button>
                 <button class="filter-btn" data-lang="it">🇮🇹 Italiano</button>
             </div>
         </div>
@@ -163,7 +163,7 @@
 
     let articles = [];
     let activeFilter = 'all';
-    let activeLang = 'all';
+    let activeLang = 'en';
 
     function render() {
         const q = search.value.toLowerCase().trim();

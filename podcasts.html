@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Podcasts, Andi Shehu</title>
-    <meta name="description" content="Podcasts by Andi Shehu — conversations on economics, climate and international politics. Coming soon.">
-    <meta property="og:title" content="Podcasts, Andi Shehu">
-    <meta property="og:description" content="Conversations on economics, climate and international politics. Coming soon.">
+    <title>Podcast Appearances, Andi Shehu</title>
+    <meta name="description" content="Podcast appearances and invited conversations with Andi Shehu on European politics, human rights and democratic accountability.">
+    <meta property="og:title" content="Podcast Appearances, Andi Shehu">
+    <meta property="og:description" content="Podcast appearances and invited conversations with Andi Shehu on European politics, human rights and democratic accountability.">
     <meta property="og:url" content="https://andishehu.eu/podcasts.html">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,23 +16,35 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <style>
-    .soon-wrap {
-        min-height: calc(100vh - var(--nav-height) - 320px);
-        display: flex; align-items: center;
-        padding: 5rem 0 4rem;
+    .page-shell { padding-bottom: 5rem; }
+    .appearance-section { max-width: 860px; margin-bottom: 3rem; }
+    .appearance-section h2 { font-size: clamp(1.55rem, 3vw, 2.15rem); margin-bottom: 1rem; }
+    .appearance-list { display: grid; gap: 1rem; }
+    .appearance-card,
+    .empty-note {
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: var(--radius-sm); padding: 1.45rem 1.5rem;
+        box-shadow: var(--shadow-sm);
     }
-    .soon-inner { max-width: 680px; }
-    .soon-badge {
-        display: inline-flex; align-items: center; gap: 0.55rem;
-        font-size: 0.83rem; font-weight: 500; color: var(--text-muted); font-style: italic;
-        background: var(--surface); padding: 0.5rem 1.2rem;
-        border-radius: var(--radius-full); margin-bottom: 1.6rem;
-        box-shadow: var(--shadow-sm); border: 1px solid var(--border);
+    .appearance-meta {
+        display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center;
+        margin-bottom: 0.9rem; color: var(--text-muted); font-size: 0.82rem;
+        font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
     }
-    .soon-emoji { font-size: 3.2rem; display: block; margin-bottom: 1rem; }
-    .soon-wrap h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); margin-bottom: 1rem; color: var(--text); }
-    .soon-wrap .lead { font-size: 1.1rem; line-height: 1.85; max-width: 560px; margin-bottom: 2rem; }
-    .soon-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .status-pill {
+        background: var(--surface-alt); border: 1px solid var(--border);
+        border-radius: var(--radius-full); padding: 0.3rem 0.75rem;
+        color: var(--primary);
+    }
+    .appearance-card h3 { font-size: 1.28rem; margin-bottom: 0.5rem; }
+    .appearance-card p,
+    .empty-note p { margin-bottom: 0; max-width: 680px; }
+    .appearance-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.6rem; }
+    @media (max-width: 640px) {
+        .appearance-card,
+        .empty-note { padding: 1.25rem; }
+        .appearance-actions .btn { width: 100%; justify-content: center; }
+    }
     </style>
 </head>
 <body>
@@ -54,8 +66,8 @@
         </ul>
         <div class="nav-actions">
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-                <span class="theme-icon sun">☀️</span>
-                <span class="theme-icon moon">🌙</span>
+                <span class="theme-icon sun">&#9728;</span>
+                <span class="theme-icon moon">&#9790;</span>
             </button>
             <button class="hamburger" id="hamburger" aria-label="Open menu">
                 <span></span><span></span><span></span>
@@ -72,27 +84,47 @@
     <a href="contact.html">Contact</a>
 </div>
 
-<!-- COMING SOON -->
-<section class="soon-wrap">
-    <div class="container">
-        <div class="soon-inner">
-            <span class="soon-badge"><span class="soon-emoji" style="display:inline;font-size:1rem;margin:0;">🎙️</span> Podcasts</span>
-            <span class="soon-emoji">🎙️</span>
-            <h1>In the studio.</h1>
-            <p class="lead">
-                I'm putting together a podcast on economics, climate and international politics —
-                the same sense-making, out loud. Links to episodes and shows will live here.
+<main class="has-nav-offset page-shell">
+    <section class="page-intro">
+        <div class="container">
+            <span class="section-label fade-in">Podcasts</span>
+            <h1 class="fade-in">Podcast appearances.</h1>
+            <p class="fade-in">
+                Guest appearances and invited conversations on European politics, human rights,
+                democratic accountability and the economy.
             </p>
-            <p class="lead" style="margin-bottom:2rem;">
-                Until then, the writing is the best place to start.
-            </p>
-            <div class="soon-ctas">
-                <a href="writing.html" class="btn btn-primary">📝 Read my writing</a>
-                <a href="https://substack.com/@shehuandi" target="_blank" rel="noopener" class="btn btn-outline">Subscribe to the newsletter →</a>
+        </div>
+    </section>
+
+    <section class="section-sm" style="padding-top:0;">
+        <div class="container">
+            <div class="appearance-section fade-in">
+                <h2>Upcoming</h2>
+                <div class="appearance-list">
+                    <article class="appearance-card">
+                        <div class="appearance-meta">
+                            <span class="status-pill">Upcoming</span>
+                            <span>July 2026</span>
+                        </div>
+                        <h3>First guest appearance</h3>
+                        <p>Recording scheduled for July 2026. Episode link, host details and topics will be added once it is published.</p>
+                    </article>
+                </div>
+            </div>
+
+            <div class="appearance-section fade-in">
+                <h2>Past appearances</h2>
+                <div class="empty-note">
+                    <p>Published episodes will appear here after they go live.</p>
+                </div>
+                <div class="appearance-actions">
+                    <a href="contact.html" class="btn btn-outline">Invite me</a>
+                    <a href="writing.html" class="btn btn-primary">Read my writing</a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</main>
 
 <!-- FOOTER -->
 <footer>
@@ -113,11 +145,11 @@
             <div class="footer-col"><h4>Writing</h4><ul class="footer-links"><li><a href="https://substack.com/@shehuandi" target="_blank" rel="noopener">The Continental Brief</a></li><li><a href="writing.html">Essays &amp; analysis</a></li><li><a href="contact.html">Pitch me a topic</a></li></ul></div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 Andi Shehu · andishehu.eu</p>
+            <p>&copy; 2026 Andi Shehu &middot; andishehu.eu</p>
             <div class="footer-links-row">
                 <a href="contact.html">Contact</a>
                 <a href="https://www.thegoodlobby.it/" target="_blank" rel="noopener">The Good Lobby Italia</a>
-                <span class="easter-star">✦</span>
+                <span class="easter-star">&#10022;</span>
             </div>
         </div>
     </div>
