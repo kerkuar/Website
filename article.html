@@ -130,6 +130,43 @@
         border-radius: var(--radius-sm); margin: 2rem auto;
         box-shadow: var(--shadow-md);
     }
+    .article-body .article-inline-figure {
+        margin: 2.4rem 0;
+    }
+    .article-body .article-inline-figure img {
+        margin-bottom: 0.7rem;
+    }
+    .article-body .article-inline-figure figcaption {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.82rem;
+        color: var(--text-muted);
+        font-style: italic;
+        text-align: center;
+        line-height: 1.5;
+    }
+    .article-source-note {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: var(--text-muted);
+        background: var(--surface);
+        border-left: 3px solid var(--primary);
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        padding: 1rem 1.15rem;
+        margin-bottom: 2rem;
+        box-shadow: var(--shadow-sm);
+    }
+    .article-source-note a {
+        color: var(--primary);
+        font-weight: 600;
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+        text-decoration-color: rgba(156,61,46,0.35);
+    }
+    .article-source-note a:hover {
+        text-decoration-color: var(--primary);
+    }
     .article-body hr { border: none; height: 1px; background: var(--border); margin: 3rem 0; }
 
     /* ===== Footnotes (popup style) ===== */
@@ -429,6 +466,15 @@ function processDefinitions(md) {
     );
 }
 
+function processSourceNotes(md) {
+    return md.replace(/\{\{source:\s*([^|}]+?)\s*\|\s*([^|}]+?)\s*\|\s*([^}]+?)\s*\}\}/g, (_, intro, label, url) => {
+        const safeIntro = intro.trim();
+        const safeLabel = label.trim();
+        const safeUrl = url.trim().replace(/"/g, '&quot;');
+        return `<div class="article-source-note">${safeIntro} <a href="${safeUrl}" target="_blank" rel="noopener">${safeLabel}</a>.</div>`;
+    });
+}
+
 /* Footnotes:
    - `…sentence[^1].`           — inline reference
    - `[^1]: The explanation.`   — definition (anywhere in the file)
@@ -613,8 +659,9 @@ function setupProgressBar(bodyEl) {
         if (!mdRes.ok) throw new Error('Could not load article body');
         let md = await mdRes.text();
 
-        /* Pipeline: typography → sidenotes → definitions → footnotes → marked */
+        /* Pipeline: typography → source notes → sidenotes → definitions → footnotes → marked */
         md = smartenTypography(md);
+        md = processSourceNotes(md);
         md = processSidenotes(md);
         md = processDefinitions(md);
         md = processFootnotes(md);

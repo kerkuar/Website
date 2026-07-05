@@ -1,9 +1,67 @@
 [
   {
+    "slug": "machine-and-the-brakes",
+    "title": "The Machine and the Brakes",
+    "subtitle": "Europe is rearming, and it has done this before. The men who saw where it led were ignored, jailed and shot. A ghost story for 2026.",
+    "date": "2026-07-04",
+    "lang": "en",
+    "tags": [
+      "eu-politics",
+      "security",
+      "history"
+    ],
+    "summary": "Europe must rearm. But Jaurès, Bloch and Liebknecht warn that a war machine without democratic brakes begins to feed on itself.",
+    "emoji": "⚙️",
+    "color": "sky",
+    "external_url": "",
+    "hero_image": "articles/images/machine-and-the-brakes.jpg",
+    "hero_caption": "Jaurès at Pré-Saint-Gervais, 25 May 1913, speaking against the three-year law. Photo: Maurice-Louis Branger. Wikimedia Commons.",
+    "reading_time": "15 min"
+  },
+  {
+    "slug": "il-pellicano-e-il-fenicottero",
+    "title": "Il pellicano e il fenicottero",
+    "subtitle": "Come l’Albania ha imparato a difendere una laguna, e a smettere di fuggire verso l’Occidente",
+    "date": "2026-06-30",
+    "lang": "it",
+    "tags": [
+      "albania",
+      "environment",
+      "politics"
+    ],
+    "summary": "La rivolta dei fenicotteri non è solo una protesta ambientale: è il momento in cui un paese abituato a inseguire l’Occidente impara a difendere ciò che non è in vendita.",
+    "emoji": "🦩",
+    "color": "lav",
+    "external_url": "",
+    "hero_image": "articles/images/pelican-flamingo-narta.jpg",
+    "hero_caption": "Photo: Arben Llapashtica, Flamingos at Narta Lagoon, Albania, Wikimedia Commons, CC BY 4.0.",
+    "reading_time": "12 min"
+  },
+  {
+    "slug": "the-pelican-and-the-flamingo",
+    "title": "The Pelican and the Flamingo",
+    "subtitle": "How Albania learned to defend a lagoon, and to stop fleeing West",
+    "date": "2026-06-27",
+    "lang": "en",
+    "tags": [
+      "albania",
+      "environment",
+      "politics"
+    ],
+    "summary": "Albania’s flamingo protests are not just environmental. They mark a country that once fled toward the West learning to set conditions on what cannot be sold.",
+    "emoji": "🦩",
+    "color": "lav",
+    "external_url": "",
+    "hero_image": "articles/images/pelican-flamingo-narta.jpg",
+    "hero_caption": "Photo: Arben Llapashtica, Flamingos at Narta Lagoon, Albania, Wikimedia Commons, CC BY 4.0.",
+    "reading_time": "12 min"
+  },
+  {
     "slug": "mismeasured",
     "title": "Mismeasured",
     "subtitle": "Why does Europe keep being told that it is the one in decline?",
     "date": "2026-06-20",
+    "lang": "en",
     "tags": [
       "eu-politics",
       "economy"
@@ -21,6 +79,7 @@
     "title": "The Returns",
     "subtitle": "Europe tested its deportation machine on my country. Last week it became the law of the continent.",
     "date": "2026-06-11",
+    "lang": "en",
     "tags": [
       "eu-politics",
       "migration",
@@ -39,6 +98,7 @@
     "title": "The Forbidden Island",
     "subtitle": "How Albania learned to say no",
     "date": "2026-06-07",
+    "lang": "en",
     "tags": [
       "albania",
       "environment",
@@ -57,6 +117,7 @@
     "title": "The Back Office of Reparations",
     "subtitle": "What €193 billion in a Belgian custody account tells us about European power",
     "date": "2026-06-01",
+    "lang": "en",
     "tags": [
       "eu-politics",
       "ukraine",
@@ -75,6 +136,7 @@
     "title": "A Suez Without a Sequel",
     "subtitle": "Europe at Hormuz, and the missing treaty",
     "date": "2026-04-30",
+    "lang": "en",
     "tags": [
       "eu-politics",
       "economy"
